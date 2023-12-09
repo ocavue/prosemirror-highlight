@@ -3,7 +3,7 @@ import { Plugin, PluginKey, Transaction } from 'prosemirror-state'
 import type { Mapping } from 'prosemirror-transform'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import type { DecorationBuilder } from './types'
+import type { DecorationBuilder, LanguageExtractor } from './types'
 
 // TODO `map` is not actually part of the exposed api for Decoration,
 // so we have to add our own type definitions to expose it
@@ -131,7 +131,7 @@ export class DecorationCache {
 export function highlightPlugin(
   decorationBuilder: DecorationBuilder,
   nodeTypes: string[] = ['code_block'],
-  languageExtractor?: (node: ProseMirrorNode) => string,
+  languageExtractor: LanguageExtractor = defaultLanguageExtractor,
 ): Plugin<HighlightPluginState> {
   const extractor =
     languageExtractor ||
@@ -198,4 +198,9 @@ export function highlightPlugin(
       },
     },
   })
+}
+
+function defaultLanguageExtractor(node: ProseMirrorNode): string {
+  const language = node.attrs.language as string | null
+  return language || ''
 }

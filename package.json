@@ -15,22 +15,18 @@
   "bugs": "https://github.com/ocavue/prosemirror-highlight/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
+      "default": "./src/index.ts"
+    },
+    "./lowlight": {
+      "default": "./src/lowlight.ts"
+    },
+    "./shiki": {
+      "default": "./src/shiki.ts"
     }
   },
   "files": [
@@ -47,12 +43,12 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
+    "@types/hast": "^3.0.0",
     "highlight.js": "^11.9.0",
     "prosemirror-model": "^1.19.3",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
-    "prosemirror-view": "^1.32.4",
-    "@types/hast": "^3.0.0"
+    "prosemirror-view": "^1.32.4"
   },
   "peerDependenciesMeta": {
     "prosemirror-model": {
@@ -94,6 +90,33 @@
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vitest": "^0.34.6"
+  },
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./lowlight": {
+        "types": "./dist/lowlight.d.ts",
+        "default": "./dist/lowlight.js"
+      },
+      "./shiki": {
+        "types": "./dist/shiki.d.ts",
+        "default": "./dist/shiki.js"
+      }
+    },
+    "typesVersions": {
+      "*": {
+        "*": [
+          "./dist/*",
+          "./dist/index.d.ts"
+        ]
+      }
+    }
   },
   "renovate": {
     "extends": [
