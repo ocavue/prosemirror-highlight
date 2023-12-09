@@ -11,6 +11,9 @@ devDependencies:
   '@ocavue/eslint-config':
     specifier: ^1.4.0
     version: 1.4.0(eslint@8.52.0)(typescript@5.2.2)
+  '@types/hast':
+    specifier: ^3.0.3
+    version: 3.0.3
   '@types/node':
     specifier: ^20.9.1
     version: 20.10.1

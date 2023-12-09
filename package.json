@@ -51,7 +51,8 @@
     "prosemirror-model": "^1.19.3",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
-    "prosemirror-view": "^1.32.4"
+    "prosemirror-view": "^1.32.4",
+    "@types/hast": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "prosemirror-model": {
@@ -68,11 +69,15 @@
     },
     "highlight.js": {
       "optional": true
+    },
+    "@types/hast": {
+      "optional": true
     }
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.8",
     "@ocavue/eslint-config": "^1.4.0",
+    "@types/hast": "^3.0.3",
     "@types/node": "^20.9.1",
     "eslint": "^8.52.0",
     "highlight.js": "^11.9.0",

@@ -9,6 +9,7 @@ import { EditorView } from 'prosemirror-view'
 import { one } from '../dist'
 
 import { shikiPlugin } from './shiki'
+import { lowlightPlugin } from './lowlight'
 
 console.log('one', one)
 
@@ -50,7 +51,7 @@ const view = new EditorView(document.querySelector('#editor'), {
     doc: DOMParser.fromSchema(mySchema).parse(
       document.querySelector('#content')!,
     ),
-    plugins: [...exampleSetup({ schema: mySchema }), shikiPlugin],
+    plugins: [...exampleSetup({ schema: mySchema }), lowlightPlugin],
   }),
 })
 
