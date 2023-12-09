@@ -1,10 +1,9 @@
-import type { HLJSApi } from 'highlight.js'
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Plugin, PluginKey, Transaction } from 'prosemirror-state'
 import type { Mapping } from 'prosemirror-transform'
-import { Decoration, DecorationSet, EditorView } from 'prosemirror-view'
+import { Decoration, DecorationSet } from 'prosemirror-view'
 
-import { getHighlightDecorations } from './getHighlightDecorations'
+import type { DecorationBuilder } from './types'
 
 // TODO `map` is not actually part of the exposed api for Decoration,
 // so we have to add our own type definitions to expose it
@@ -18,11 +17,6 @@ declare module 'prosemirror-view' {
 export interface HighlightPluginState {
   cache: DecorationCache
   decorations: DecorationSet
-  autodetectedLanguages: {
-    node: ProseMirrorNode
-    pos: number
-    language: string | undefined
-  }[]
 }
 
 /** Represents a cache of doc positions to the node and decorations at that position */
@@ -117,6 +111,14 @@ export class DecorationCache {
 
     return returnCache
   }
+
+  build() {
+    const output: Decoration[] = []
+    for (const { decorations } of Object.values(this.cache)) {
+      output.push(...decorations)
+    }
+    return output
+  }
 }
 
 /**
@@ -127,15 +129,9 @@ export class DecorationCache {
  * @param languageSetter A method that is called after language autodetection of a node in order to save a autohighlight value for future use
  */
 export function highlightPlugin(
-  hljs: HLJSApi,
+  decorationBuilder: DecorationBuilder,
   nodeTypes: string[] = ['code_block'],
   languageExtractor?: (node: ProseMirrorNode) => string,
-  languageSetter?: (
-    tr: Transaction,
-    node: ProseMirrorNode,
-    pos: number,
-    language: string | undefined,
-  ) => Transaction | null,
 ): Plugin<HighlightPluginState> {
   const extractor =
     languageExtractor ||
@@ -145,41 +141,22 @@ export function highlightPlugin(
       return detectedLanguage || params?.split(' ')[0] || ''
     }
 
-  const setter =
-    languageSetter ||
-    function (tr, node, pos, language) {
-      const attrs = node.attrs || {}
-
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      attrs['detectedHighlightLanguage'] = language
-
-      // set the params attribute of the node to the detected language
-      return tr.setNodeMarkup(pos, undefined, attrs)
-    }
-
   const getDecos = (doc: ProseMirrorNode, cache: DecorationCache) => {
-    const autodetectedLanguages: {
-      node: ProseMirrorNode
-      pos: number
-      language: string | undefined
-    }[] = []
+    doc.descendants((node, pos) => {
+      if (!nodeTypes.includes(node.type.name)) {
+        return
+      }
 
-    const content = getHighlightDecorations(doc, hljs, nodeTypes, extractor, {
-      preRenderer: (_, pos) => cache.get(pos)?.decorations,
-      postRenderer: (b, pos, decorations) => {
-        cache.set(pos, b, decorations)
-      },
-      autohighlightCallback: (node, pos, language) => {
-        autodetectedLanguages.push({
-          node,
-          pos,
-          language,
-        })
-      },
+      const language = extractor(node)
+
+      const decorations = decorationBuilder({
+        content: node.textContent,
+        language: language || undefined,
+        pos,
+      })
+
+      cache.set(pos, node, decorations)
     })
-
-    return { content, autodetectedLanguages }
   }
 
   // key the plugin so we can easily find it in the state later
@@ -190,29 +167,28 @@ export function highlightPlugin(
     state: {
       init(_, instance) {
         const cache = new DecorationCache({})
-        const result = getDecos(instance.doc, cache)
+
+        getDecos(instance.doc, cache)
+
         return {
           cache: cache,
-          decorations: DecorationSet.create(instance.doc, result.content),
-          autodetectedLanguages: result.autodetectedLanguages,
+          decorations: DecorationSet.create(instance.doc, cache.build()),
         }
       },
       apply(tr, data) {
-        const updatedCache = data.cache.invalidate(tr)
+        const cache = data.cache.invalidate(tr)
         if (!tr.docChanged) {
           return {
-            cache: updatedCache,
+            cache: cache,
             decorations: data.decorations.map(tr.mapping, tr.doc),
-            autodetectedLanguages: [],
           }
         }
 
-        const result = getDecos(tr.doc, updatedCache)
+        getDecos(tr.doc, cache)
 
         return {
-          cache: updatedCache,
-          decorations: DecorationSet.create(tr.doc, result.content),
-          autodetectedLanguages: result.autodetectedLanguages,
+          cache: cache,
+          decorations: DecorationSet.create(tr.doc, cache.build()),
         }
       },
     },
@@ -220,44 +196,6 @@ export function highlightPlugin(
       decorations(this: Plugin<HighlightPluginState>, state) {
         return this.getState(state)?.decorations
       },
-    },
-    view(initialView: EditorView) {
-      // TODO `view` is only called when the state is attached to an EditorView
-      // this is likely not a problem for the majority of users, but could be an issue
-      // for consumers using this plugin server-side with no view
-
-      // dispatches a transaction to update a node's language if needed
-      const updateNodeLanguages = (view: EditorView) => {
-        const pluginState = key.getState(view.state)
-
-        // if there's no pluginState found or if no block was autodetected, no need to do anything
-        if (!pluginState || pluginState.autodetectedLanguages.length === 0) {
-          return
-        }
-
-        let tr = view.state.tr
-
-        // for each autodetected language, place it
-        pluginState.autodetectedLanguages.forEach((l) => {
-          if (l.language) {
-            const newTr = setter(tr, l.node, l.pos, l.language)
-            tr = newTr || tr
-          }
-        })
-
-        // ensure that our behind-the-scenes update doesn't get added to the editor history
-        tr = tr.setMeta('addToHistory', false)
-
-        view.dispatch(tr)
-      }
-
-      // go ahead and update the nodes immediately
-      updateNodeLanguages(initialView)
-
-      // update all the nodes whenever the document updates
-      return {
-        update: updateNodeLanguages,
-      }
     },
   })
 }

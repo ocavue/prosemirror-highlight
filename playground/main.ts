@@ -1,4 +1,3 @@
-import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/default.css'
 
 import { exampleSetup } from 'prosemirror-example-setup'
@@ -8,7 +7,8 @@ import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 
 import { one } from '../dist'
-import { highlightPlugin } from '../src'
+
+import { shikiPlugin } from './shiki'
 
 console.log('one', one)
 
@@ -50,7 +50,7 @@ const view = new EditorView(document.querySelector('#editor'), {
     doc: DOMParser.fromSchema(mySchema).parse(
       document.querySelector('#content')!,
     ),
-    plugins: [...exampleSetup({ schema: mySchema }), highlightPlugin(hljs)],
+    plugins: [...exampleSetup({ schema: mySchema }), shikiPlugin],
   }),
 })
 
