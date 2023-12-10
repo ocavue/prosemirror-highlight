@@ -13,7 +13,16 @@
     "url": "https://github.com/ocavue/prosemirror-highlight.git"
   },
   "bugs": "https://github.com/ocavue/prosemirror-highlight/issues",
-  "keywords": [],
+  "keywords": [
+    "prosemirror",
+    "editor",
+    "highlight.js",
+    "shiki",
+    "shikiji",
+    "refractor",
+    "lowlight",
+    "prism"
+  ],
   "sideEffects": false,
   "main": "./src/index.ts",
   "module": "./src/index.ts",
