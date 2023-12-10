@@ -3,6 +3,8 @@ import lowlightCode from './lowlight?raw'
 import { setupView } from './setup'
 import { shikiPlugin } from './shiki'
 import shikiCode from './shiki?raw'
+import { shikijiPlugin } from './shikiji'
+import shikijiCode from './shikiji?raw'
 
 function getOrCreateElement(id: string): HTMLElement {
   let element = document.getElementById(id)
@@ -28,6 +30,13 @@ function main() {
     plugin: lowlightPlugin,
     title: 'Lowlight Example',
     code: lowlightCode,
+  })
+
+  setupView({
+    mount: getOrCreateElement('editor-shikiji'),
+    plugin: shikijiPlugin,
+    title: 'Shikiji Example',
+    code: shikijiCode,
   })
 }
 

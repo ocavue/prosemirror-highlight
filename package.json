@@ -27,6 +27,9 @@
     },
     "./shiki": {
       "default": "./src/shiki.ts"
+    },
+    "./shikiji": {
+      "default": "./src/shikiji.ts"
     }
   },
   "files": [
@@ -45,12 +48,24 @@
   "peerDependencies": {
     "@types/hast": "^3.0.0",
     "highlight.js": "^11.9.0",
+    "lowlight": "^3.1.0",
     "prosemirror-model": "^1.19.3",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
-    "prosemirror-view": "^1.32.4"
+    "prosemirror-view": "^1.32.4",
+    "shiki": "^0.14.6",
+    "shikiji": "^0.8.0"
   },
   "peerDependenciesMeta": {
+    "@types/hast": {
+      "optional": true
+    },
+    "highlight.js": {
+      "optional": true
+    },
+    "lowlight": {
+      "optional": true
+    },
     "prosemirror-model": {
       "optional": true
     },
@@ -63,10 +78,10 @@
     "prosemirror-view": {
       "optional": true
     },
-    "highlight.js": {
+    "shiki": {
       "optional": true
     },
-    "@types/hast": {
+    "shikiji": {
       "optional": true
     }
   },
@@ -87,6 +102,7 @@
     "prosemirror-transform": "^1.8.0",
     "prosemirror-view": "^1.32.4",
     "shiki": "^0.14.6",
+    "shikiji": "^0.8.0",
     "tsup": "^8.0.1",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
@@ -108,6 +124,10 @@
       "./shiki": {
         "types": "./dist/shiki.d.ts",
         "default": "./dist/shiki.js"
+      },
+      "./shikiji": {
+        "types": "./dist/shikiji.d.ts",
+        "default": "./dist/shikiji.js"
       }
     },
     "typesVersions": {
