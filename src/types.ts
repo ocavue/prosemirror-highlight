@@ -1,10 +1,21 @@
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Decoration } from 'prosemirror-view'
 
-export type DecorationBuilder = (options: {
+export type Parser = (options: {
+  /**
+   * The text content of the code block node.
+   */
   content: string
-  language?: string | null
+
+  /**
+   * The start position of the code block node.
+   */
   pos: number
+
+  /**
+   * The language of the code block node.
+   */
+  language?: string
 }) => Decoration[]
 
-export type LanguageExtractor = (node: ProseMirrorNode) => string
+export type LanguageExtractor = (node: ProseMirrorNode) => string | undefined

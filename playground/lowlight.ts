@@ -2,9 +2,9 @@ import 'highlight.js/styles/default.css'
 
 import { common, createLowlight } from 'lowlight'
 
-import { highlightPlugin } from 'prosemirror-highlight'
-import { createDecorationBuilder } from 'prosemirror-highlight/lowlight'
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/lowlight'
 
 const lowlight = createLowlight(common)
-const builder = createDecorationBuilder(lowlight)
-export const lowlightPlugin = highlightPlugin(builder)
+const parser = createParser(lowlight)
+export const lowlightPlugin = createHighlightPlugin({ parser })

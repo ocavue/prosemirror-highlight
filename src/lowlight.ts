@@ -1,15 +1,15 @@
 import type { Element, ElementContent, Root, RootContent } from 'hast'
 import { Decoration } from 'prosemirror-view'
 
-import type { DecorationBuilder } from './types'
+import type { Parser } from './types'
 
 export type Lowlight = {
   highlight: (language: string, value: string) => Root
   highlightAuto: (value: string) => Root
 }
 
-export function createDecorationBuilder(lowlight: Lowlight): DecorationBuilder {
-  return function decorationBuilder({ content, language, pos }) {
+export function createParser(lowlight: Lowlight): Parser {
+  return function highlighter({ content, language, pos }) {
     const root = language
       ? lowlight.highlight(language, content)
       : lowlight.highlightAuto(content)

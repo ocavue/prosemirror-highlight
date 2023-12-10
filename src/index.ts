@@ -1,2 +1,3 @@
-export * from './getHighlightDecorations'
-export * from './plugin'
+export { type HighlightPluginState, createHighlightPlugin } from './plugin'
+
+export { DecorationCache } from './cache'

@@ -1,12 +1,10 @@
 import { Decoration } from 'prosemirror-view'
 import { type Highlighter } from 'shiki'
 
-import type { DecorationBuilder } from './types'
+import type { Parser } from './types'
 
-export function createDecorationBuilder(
-  highlighter: Highlighter,
-): DecorationBuilder {
-  return function decorationBuilder({ content, language, pos }) {
+export function createParser(highlighter: Highlighter): Parser {
+  return function parser({ content, language, pos }) {
     const decorations: Decoration[] = []
 
     const tokens = highlighter.codeToThemedTokens(
