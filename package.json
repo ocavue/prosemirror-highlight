@@ -25,6 +25,9 @@
     "./lowlight": {
       "default": "./src/lowlight.ts"
     },
+    "./refractor": {
+      "default": "./src/refractor.ts"
+    },
     "./shiki": {
       "default": "./src/shiki.ts"
     },
@@ -125,6 +128,10 @@
       "./lowlight": {
         "types": "./dist/lowlight.d.ts",
         "default": "./dist/lowlight.js"
+      },
+      "./refractor": {
+        "types": "./dist/refractor.d.ts",
+        "default": "./dist/refractor.js"
       },
       "./shiki": {
         "types": "./dist/shiki.d.ts",
