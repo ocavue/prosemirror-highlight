@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/prosemirror-highlight?color=a1b858&label=)](https://www.npmjs.com/package/prosemirror-highlight)
 
-Highlight your code blocks in ProseMirror, with any syntax highlighter you want.
+Highlight your code blocks in [ProseMirror], with any syntax highlighter you want.
 
 ## Usage
 
@@ -51,6 +51,7 @@ export const lowlightPlugin = createHighlightPlugin({ parser })
 
 MIT
 
+[ProseMirror]: https://prosemirror.net
 [prosemirror-highlightjs]: https://github.com/b-kelly/prosemirror-highlightjs
 [lowlight]: https://github.com/wooorm/lowlight
 [Highlight.js]: https://github.com/highlightjs/highlight.js
