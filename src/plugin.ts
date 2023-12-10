@@ -1,11 +1,13 @@
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Plugin, PluginKey } from 'prosemirror-state'
-import { DecorationSet } from 'prosemirror-view'
+import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { DecorationCache } from './cache'
 import type { LanguageExtractor, Parser } from './types'
 
-/** Describes the current state of the highlightPlugin  */
+/**
+ * Describes the current state of the highlightPlugin
+ */
 export interface HighlightPluginState {
   cache: DecorationCache
   decorations: DecorationSet
@@ -39,32 +41,6 @@ export function createHighlightPlugin({
    */
   languageExtractor?: LanguageExtractor
 }): Plugin<HighlightPluginState> {
-  const extractor =
-    languageExtractor ||
-    function (node: ProseMirrorNode) {
-      const detectedLanguage = node.attrs.detectedHighlightLanguage as string
-      const params = node.attrs.params as string
-      return detectedLanguage || params?.split(' ')[0] || ''
-    }
-
-  const getDecos = (doc: ProseMirrorNode, cache: DecorationCache) => {
-    doc.descendants((node, pos) => {
-      if (!nodeTypes.includes(node.type.name)) {
-        return
-      }
-
-      const language = extractor(node)
-
-      const decorations = parser({
-        content: node.textContent,
-        language: language || undefined,
-        pos,
-      })
-
-      cache.set(pos, node, decorations)
-    })
-  }
-
   // key the plugin so we can easily find it in the state later
   const key = new PluginKey<HighlightPluginState>()
 
@@ -72,36 +48,74 @@ export function createHighlightPlugin({
     key,
     state: {
       init(_, instance) {
-        const cache = new DecorationCache({})
-
-        getDecos(instance.doc, cache)
-
-        return {
-          cache: cache,
-          decorations: DecorationSet.create(instance.doc, cache.build()),
-        }
+        const cache = new DecorationCache()
+        const decorations = getDecorationSet(
+          instance.doc,
+          parser,
+          nodeTypes,
+          languageExtractor,
+          cache,
+        )
+        return { cache, decorations }
       },
       apply(tr, data) {
         const cache = data.cache.invalidate(tr)
+
         if (!tr.docChanged) {
-          return {
-            cache: cache,
-            decorations: data.decorations.map(tr.mapping, tr.doc),
-          }
+          const decorations = data.decorations.map(tr.mapping, tr.doc)
+          return { cache, decorations }
         }
 
-        getDecos(tr.doc, cache)
-
-        return {
-          cache: cache,
-          decorations: DecorationSet.create(tr.doc, cache.build()),
-        }
+        const decorations = getDecorationSet(
+          tr.doc,
+          parser,
+          nodeTypes,
+          languageExtractor,
+          cache,
+        )
+        return { cache, decorations }
       },
     },
     props: {
-      decorations(this: Plugin<HighlightPluginState>, state) {
+      decorations(this, state) {
         return this.getState(state)?.decorations
       },
     },
   })
+}
+
+function getDecorationSet(
+  doc: ProseMirrorNode,
+  parser: Parser,
+  nodeTypes: string[],
+  languageExtractor: LanguageExtractor,
+  cache: DecorationCache,
+): DecorationSet {
+  const result: Decoration[] = []
+
+  doc.descendants((node, pos) => {
+    if (!node.type.isTextblock) {
+      return true
+    }
+
+    if (nodeTypes.includes(node.type.name)) {
+      const language = languageExtractor(node)
+      const cached = cache.get(pos)
+
+      if (cached) {
+        result.push(...cached.decorations)
+      } else {
+        const decorations = parser({
+          content: node.textContent,
+          language: language || undefined,
+          pos,
+        })
+        cache.set(pos, node, decorations)
+        result.push(...decorations)
+      }
+    }
+    return false
+  })
+
+  return DecorationSet.create(doc, result)
 }
