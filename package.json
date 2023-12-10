@@ -53,6 +53,7 @@
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
     "prosemirror-view": "^1.32.4",
+    "refractor": "^4.8.1",
     "shiki": "^0.14.6",
     "shikiji": "^0.8.0"
   },
@@ -78,6 +79,9 @@
     "prosemirror-view": {
       "optional": true
     },
+    "refractor": {
+      "optional": true
+    },
     "shiki": {
       "optional": true
     },
@@ -101,6 +105,7 @@
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
     "prosemirror-view": "^1.32.4",
+    "refractor": "^4.8.1",
     "shiki": "^0.14.6",
     "shikiji": "^0.8.0",
     "tsup": "^8.0.1",
