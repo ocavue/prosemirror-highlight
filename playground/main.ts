@@ -1,5 +1,7 @@
 import { lowlightPlugin } from './lowlight'
 import lowlightCode from './lowlight?raw'
+import { refractorPlugin } from './refractor'
+import refractorCode from './refractor?raw'
 import { setupView } from './setup'
 import { shikiPlugin } from './shiki'
 import shikiCode from './shiki?raw'
@@ -36,8 +38,15 @@ function main() {
   setupView({
     mount: getOrCreateElement('editor-lowlight'),
     plugin: lowlightPlugin,
-    title: 'Lowlight Example',
+    title: 'lowlight Example',
     code: lowlightCode,
+  })
+
+  setupView({
+    mount: getOrCreateElement('editor-refractor'),
+    plugin: refractorPlugin,
+    title: 'refractor Example',
+    code: refractorCode,
   })
 }
 

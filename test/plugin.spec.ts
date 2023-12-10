@@ -51,6 +51,51 @@ describe('createHighlightPlugin', () => {
     )
   })
 
+  it('can highlight code blocks with refractor', async () => {
+    const { createParser } = await import('../src/refractor')
+    const { refractor } = await import('refractor')
+
+    const parser = createParser(refractor)
+    const plugin = createHighlightPlugin({ parser })
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(
+      `
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre data-language="typescript">
+          <code>
+            <span class="token builtin">console</span>
+            <span class="token punctuation">.</span>
+            <span class="token function">log</span>
+            <span class="token punctuation">(</span>
+            <span class="token number">123</span>
+            <span class="token operator">+</span>
+            <span class="token string">"456"</span>
+            <span class="token punctuation">)</span>
+            <span class="token punctuation">;</span>
+          </code>
+        </pre>
+        <pre data-language="python">
+          <code>
+            <span class="token keyword">print</span>
+            <span class="token punctuation">(</span>
+            <span class="token string">"1+1"</span>
+            <span class="token punctuation">,</span>
+            <span class="token string">"="</span>
+            <span class="token punctuation">,</span>
+            <span class="token number">2</span>
+            <span class="token punctuation">)</span>
+          </code>
+        </pre>
+      </div>;
+      "
+    `,
+    )
+  })
+
   it('can highlight code blocks with shikiji', async () => {
     const { createParser } = await import('../src/shikiji')
     const { getHighlighter } = await import('shikiji')

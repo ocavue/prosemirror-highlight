@@ -1,21 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProseMirror Playground</title>
-    <link rel="stylesheet" href="https://prosemirror.net/css/editor.css" />
-    <style>
-      .ProseMirror pre {
-        background-color: rgb(246, 248, 250);
-        padding: 16px;
-        border-radius: 6px;
-      }
-    </style>
-  </head>
 
-  <body>
-    <script type="module" src="/main.ts" defer></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProseMirror Playground</title>
+  <link rel="stylesheet" href="https://prosemirror.net/css/editor.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.css" />
+  <style>
+    .ProseMirror pre {
+      background-color: rgb(246, 248, 250);
+      padding: 16px;
+      border-radius: 6px;
+    }
+
+    .editor {
+      margin: 8px;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1200px) {
+      body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script type="module" src="/main.ts" defer></script>
+</body>
+
 </html>

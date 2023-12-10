@@ -25,6 +25,9 @@
     "./lowlight": {
       "default": "./src/lowlight.ts"
     },
+    "./refractor": {
+      "default": "./src/refractor.ts"
+    },
     "./shiki": {
       "default": "./src/shiki.ts"
     },
@@ -53,6 +56,7 @@
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
     "prosemirror-view": "^1.32.4",
+    "refractor": "^4.8.1",
     "shiki": "^0.14.6",
     "shikiji": "^0.8.0"
   },
@@ -78,6 +82,9 @@
     "prosemirror-view": {
       "optional": true
     },
+    "refractor": {
+      "optional": true
+    },
     "shiki": {
       "optional": true
     },
@@ -101,6 +108,7 @@
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.8.0",
     "prosemirror-view": "^1.32.4",
+    "refractor": "^4.8.1",
     "shiki": "^0.14.6",
     "shikiji": "^0.8.0",
     "tsup": "^8.0.1",
@@ -120,6 +128,10 @@
       "./lowlight": {
         "types": "./dist/lowlight.d.ts",
         "default": "./dist/lowlight.js"
+      },
+      "./refractor": {
+        "types": "./dist/refractor.d.ts",
+        "default": "./dist/refractor.js"
       },
       "./shiki": {
         "types": "./dist/shiki.d.ts",
