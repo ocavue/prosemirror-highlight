@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.2.0...v0.3.0) (2023-12-10)
+
+
+### Features
+
+* support refractor ([#4](https://github.com/ocavue/prosemirror-highlight/issues/4)) ([ffee694](https://github.com/ocavue/prosemirror-highlight/commit/ffee694e0113bfe14a6f1dc05d0cbc5fcf679b9d))
+
 ## [0.2.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.1.0...v0.2.0) (2023-12-10)
 
 
