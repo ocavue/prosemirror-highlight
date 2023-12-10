@@ -7,10 +7,7 @@ export function createParser(highlighter: Highlighter): Parser {
   return function parser({ content, language, pos }) {
     const decorations: Decoration[] = []
 
-    const tokens = highlighter.codeToThemedTokens(
-      content,
-      language ?? undefined,
-    )
+    const tokens = highlighter.codeToThemedTokens(content, language)
 
     let from = pos + 1
 

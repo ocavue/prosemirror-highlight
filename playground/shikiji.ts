@@ -1,12 +1,10 @@
-import { getHighlighter, setCDN } from 'shiki'
+import { getHighlighter } from 'shikiji'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
-import { createParser } from 'prosemirror-highlight/shiki'
-
-setCDN('https://unpkg.com/shiki@0.14.6/')
+import { createParser } from 'prosemirror-highlight/shikiji'
 
 const highlighter = await getHighlighter({
-  theme: 'github-light',
+  themes: ['vitesse-light'],
   langs: ['javascript', 'typescript', 'python'],
 })
 const parser = createParser(highlighter)

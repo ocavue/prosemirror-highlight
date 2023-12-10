@@ -1,5 +1,5 @@
 import { Decoration } from 'prosemirror-view'
-import { type Highlighter } from 'shiki'
+import { type Highlighter } from 'shikiji'
 
 import type { Parser } from './types'
 
@@ -7,10 +7,9 @@ export function createParser(highlighter: Highlighter): Parser {
   return function parser({ content, language, pos }) {
     const decorations: Decoration[] = []
 
-    const tokens = highlighter.codeToThemedTokens(
-      content,
-      language ?? undefined,
-    )
+    const tokens = highlighter.codeToThemedTokens(content, {
+      lang: language,
+    })
 
     let from = pos + 1
 
