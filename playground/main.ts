@@ -27,17 +27,17 @@ function main() {
   })
 
   setupView({
-    mount: getOrCreateElement('editor-lowlight'),
-    plugin: lowlightPlugin,
-    title: 'Lowlight Example',
-    code: lowlightCode,
-  })
-
-  setupView({
     mount: getOrCreateElement('editor-shikiji'),
     plugin: shikijiPlugin,
     title: 'Shikiji Example',
     code: shikijiCode,
+  })
+
+  setupView({
+    mount: getOrCreateElement('editor-lowlight'),
+    plugin: lowlightPlugin,
+    title: 'Lowlight Example',
+    code: lowlightCode,
   })
 }
 

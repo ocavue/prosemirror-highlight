@@ -24,6 +24,22 @@ const parser = createParser(highlighter)
 export const shikiPlugin = createHighlightPlugin({ parser })
 ```
 
+### With [Shikiji]
+
+```ts
+import { getHighlighter } from 'shikiji'
+
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/shikiji'
+
+const highlighter = await getHighlighter({
+  themes: ['vitesse-light'],
+  langs: ['javascript', 'typescript', 'python'],
+})
+const parser = createParser(highlighter)
+export const shikijiPlugin = createHighlightPlugin({ parser })
+```
+
 ### With [lowlight] (based on [Highlight.js])
 
 ```ts
@@ -56,3 +72,4 @@ MIT
 [lowlight]: https://github.com/wooorm/lowlight
 [Highlight.js]: https://github.com/highlightjs/highlight.js
 [Shiki]: https://github.com/shikijs/shiki
+[Shikiji]: https://github.com/antfu/shikiji
