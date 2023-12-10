@@ -1,0 +1,51 @@
+import { common, createLowlight } from 'lowlight'
+import { EditorState } from 'prosemirror-state'
+import { EditorView } from 'prosemirror-view'
+import { describe, expect, it } from 'vitest'
+
+import { schema } from '../playground/schema'
+import { createParser } from '../src/lowlight'
+import { createHighlightPlugin } from '../src/plugin'
+
+import { formatHtml, setupNodes } from './helpers'
+
+describe('createHighlightPlugin', () => {
+  const nodes = setupNodes(schema)
+
+  it('can highlight code blocks', async () => {
+    const lowlight = createLowlight(common)
+    const parser = createParser(lowlight)
+    const plugin = createHighlightPlugin({ parser })
+
+    const doc = nodes.doc([
+      nodes.codeBlock('typescript', 'console.log(123+"456");'),
+      nodes.codeBlock('python', 'print("1+1","=",2)'),
+    ])
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(
+      `
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre data-language="typescript">
+          <code>
+            <span class="hljs-variable language_">console</span>.
+            <span class="hljs-title function_">log</span>(
+            <span class="hljs-number">123</span>+
+            <span class="hljs-string">"456"</span>);
+          </code>
+        </pre>
+        <pre data-language="python">
+          <code>
+            <span class="hljs-built_in">print</span>(
+            <span class="hljs-string">"1+1"</span>,
+            <span class="hljs-string">"="</span>,<span class="hljs-number">2</span>)
+          </code>
+        </pre>
+      </div>;
+      "
+    `,
+    )
+  })
+})

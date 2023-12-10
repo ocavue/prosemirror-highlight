@@ -92,7 +92,8 @@ export class DecorationCache {
         const updatedDecorations = decorations
           .map((d): Decoration | null => {
             // @ts-expect-error: internal api
-            return d.map(mapping, 0, 0)
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+            return d.map(mapping, 0, 0) as Decoration | null
           })
           .filter((d): d is Decoration => d != null)
         returnCache.replace(pos, result.pos, mappedNode, updatedDecorations)
