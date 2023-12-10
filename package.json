@@ -140,6 +140,7 @@
     }
   },
   "renovate": {
+    "dependencyDashboard": true,
     "extends": [
       "github>ocavue/config-renovate"
     ]
