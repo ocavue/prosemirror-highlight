@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/prosemirror-highlight?color=a1b858&label=)](https://www.npmjs.com/package/prosemirror-highlight)
 
-Highlight your code blocks in [ProseMirror], with any syntax highlighter you want.
+Highlight your code blocks in [ProseMirror], with the syntax highlighter you like!
 
 ## Usage
 
@@ -55,6 +55,10 @@ const parser = createParser(lowlight)
 export const lowlightPlugin = createHighlightPlugin({ parser })
 ```
 
+### With [refractor] (based on [Prism])
+
+TODO
+
 ## Online demo
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-highlight?file=playground%2Fmain.ts)
@@ -73,3 +77,5 @@ MIT
 [Highlight.js]: https://github.com/highlightjs/highlight.js
 [Shiki]: https://github.com/shikijs/shiki
 [Shikiji]: https://github.com/antfu/shikiji
+[refractor]: https://github.com/wooorm/refractor
+[Prism]: https://github.com/PrismJS/prism
