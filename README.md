@@ -57,7 +57,15 @@ export const lowlightPlugin = createHighlightPlugin({ parser })
 
 ### With [refractor] (based on [Prism])
 
-TODO
+```ts
+import { refractor } from 'refractor'
+
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/refractor'
+
+const parser = createParser(refractor)
+export const refractorPlugin = createHighlightPlugin({ parser })
+```
 
 ## Online demo
 
