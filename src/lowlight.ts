@@ -21,4 +21,3 @@ export function createParser(lowlight: Lowlight): Parser {
     return decorations
   }
 }
-
