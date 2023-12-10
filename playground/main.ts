@@ -12,6 +12,7 @@ function getOrCreateElement(id: string): HTMLElement {
     element = document.createElement('div')
     element.id = id
     element.classList.add('editor')
+    element.setAttribute('spellcheck', 'false')
     document.body.appendChild(element)
   }
   return element
