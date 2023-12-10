@@ -11,7 +11,11 @@ export function createParser(refractor: Refractor): Parser {
 
     const decorations: Decoration[] = []
     const from = pos + 1
-    fillFromRoot(decorations, root as Root, from)
+
+    // @ts-expect-error: the return value of `highlight` is not exactly a `hast.Root`
+    const hastRoot: Root = root
+
+    fillFromRoot(decorations, hastRoot, from)
     return decorations
   }
 }
