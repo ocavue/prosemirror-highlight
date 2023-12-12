@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.0...v0.3.1) (2023-12-12)
+
+
+### Bug Fixes
+
+* fix publish script ([3814c85](https://github.com/ocavue/prosemirror-highlight/commit/3814c8503f73de91a78e9577142b827e493f3b56))
+
 ## [0.3.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.2.0...v0.3.0) (2023-12-10)
 
 
