@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.1...v0.3.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* support shikiji v0.9.0 ([7b8f1ce](https://github.com/ocavue/prosemirror-highlight/commit/7b8f1ce1dca760e3657b6e7fc9eba4df172aed47))
+
 ## [0.3.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.0...v0.3.1) (2023-12-12)
 
 
