@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.2...v0.3.3) (2023-12-16)
+
+
+### Bug Fixes
+
+* export type Parser ([#13](https://github.com/ocavue/prosemirror-highlight/issues/13)) ([350e37e](https://github.com/ocavue/prosemirror-highlight/commit/350e37eb0db49dcc1f75704553500823facdebf4))
+
 ## [0.3.2](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.1...v0.3.2) (2023-12-14)
 
 
