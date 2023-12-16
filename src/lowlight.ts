@@ -4,6 +4,8 @@ import { Decoration } from 'prosemirror-view'
 import { fillFromRoot } from './hast'
 import type { Parser } from './types'
 
+export type { Parser }
+
 export type Lowlight = {
   highlight: (language: string, value: string) => Root
   highlightAuto: (value: string) => Root

@@ -5,6 +5,8 @@ import type { Refractor } from 'refractor/lib/core'
 import { fillFromRoot } from './hast'
 import type { Parser } from './types'
 
+export type { Parser }
+
 export function createParser(refractor: Refractor): Parser {
   return function highlighter({ content, language, pos }) {
     const root = refractor.highlight(content, language || '')

@@ -3,6 +3,8 @@ import { type Highlighter } from 'shikiji'
 
 import type { Parser } from './types'
 
+export type { Parser }
+
 export function createParser(highlighter: Highlighter): Parser {
   return function parser({ content, language, pos }) {
     const decorations: Decoration[] = []
