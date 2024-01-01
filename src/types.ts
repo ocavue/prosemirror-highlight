@@ -1,6 +1,11 @@
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Decoration } from 'prosemirror-view'
 
+/**
+ * A function that parses the text content of a code block node and returns an
+ * array of decorations. If the underlying syntax highlighter is still loading,
+ * you can return a promise that will be resolved when the highlighter is ready.
+ */
 export type Parser = (options: {
   /**
    * The text content of the code block node.
@@ -18,4 +23,7 @@ export type Parser = (options: {
   language?: string
 }) => Decoration[] | Promise<void>
 
+/**
+ * A function that extracts the language of a code block node.
+ */
 export type LanguageExtractor = (node: ProseMirrorNode) => string | undefined
