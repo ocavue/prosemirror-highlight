@@ -11,7 +11,7 @@ let parser: Parser | undefined
 const loadedLanguages = new Set<string>()
 
 /**
- * Lazy load highlighter and highlighter languages. 
+ * Lazy load highlighter and highlighter languages.
  *
  * When the highlighter or the required language is not loaded, it returns a
  * promise that resolves when the highlighter or the language is loaded.
