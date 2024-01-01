@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.3...v0.4.0) (2024-01-01)
+
+
+### Features
+
+* allow the parser to return a promise ([#16](https://github.com/ocavue/prosemirror-highlight/issues/16)) ([83751b3](https://github.com/ocavue/prosemirror-highlight/commit/83751b33c35db0ce78ea95299048ef389a9c9324))
+
 ## [0.3.3](https://github.com/ocavue/prosemirror-highlight/compare/v0.3.2...v0.3.3) (2023-12-16)
 
 
