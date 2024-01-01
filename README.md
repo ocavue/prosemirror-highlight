@@ -6,7 +6,10 @@ Highlight your code blocks in [ProseMirror], with any syntax highlighter you lik
 
 ## Usage
 
-### With [Shiki]
+<details>
+  <summary>
+  ### With [Shiki]
+  </summary>
 
 ```ts
 import { getHighlighter, setCDN } from 'shiki'
@@ -23,6 +26,8 @@ const highlighter = await getHighlighter({
 const parser = createParser(highlighter)
 export const shikiPlugin = createHighlightPlugin({ parser })
 ```
+
+</details>
 
 ### With [Shikiji]
 

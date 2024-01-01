@@ -16,6 +16,6 @@ export type Parser = (options: {
    * The language of the code block node.
    */
   language?: string
-}) => Decoration[]
+}) => Decoration[] | Promise<void>
 
 export type LanguageExtractor = (node: ProseMirrorNode) => string | undefined

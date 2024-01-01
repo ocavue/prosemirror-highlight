@@ -11,6 +11,7 @@ import type { LanguageExtractor, Parser } from './types'
 export interface HighlightPluginState {
   cache: DecorationCache
   decorations: DecorationSet
+  promises: Promise<void>[]
 }
 
 /**
@@ -41,7 +42,6 @@ export function createHighlightPlugin({
    */
   languageExtractor?: LanguageExtractor
 }): Plugin<HighlightPluginState> {
-  // key the plugin so we can easily find it in the state later
   const key = new PluginKey<HighlightPluginState>()
 
   return new Plugin<HighlightPluginState>({
@@ -49,32 +49,71 @@ export function createHighlightPlugin({
     state: {
       init(_, instance) {
         const cache = new DecorationCache()
-        const decorations = getDecorationSet(
+        const [decorations, promises] = calculateDecoration(
           instance.doc,
           parser,
           nodeTypes,
           languageExtractor,
           cache,
         )
-        return { cache, decorations }
-      },
-      apply(tr, data) {
-        const cache = data.cache.invalidate(tr)
 
-        if (!tr.docChanged) {
+        return { cache, decorations, promises }
+      },
+      apply: (tr, data) => {
+        const cache = data.cache.invalidate(tr)
+        const refresh = !!tr.getMeta('prosemirror-highlight-refresh')
+
+        if (!tr.docChanged && !refresh) {
           const decorations = data.decorations.map(tr.mapping, tr.doc)
-          return { cache, decorations }
+          const promises = data.promises
+          return { cache, decorations, promises }
         }
 
-        const decorations = getDecorationSet(
+        const [decorations, promises] = calculateDecoration(
           tr.doc,
           parser,
           nodeTypes,
           languageExtractor,
           cache,
         )
-        return { cache, decorations }
+        return { cache, decorations, promises }
       },
+    },
+    view: (view) => {
+      const promises = new Set<Promise<void>>()
+
+      // Refresh the decorations when all promises resolve
+      const refresh = () => {
+        if (promises.size > 0) {
+          return
+        }
+        const tr = view.state.tr.setMeta('prosemirror-highlight-refresh', true)
+        view.dispatch(tr)
+      }
+
+      const check = () => {
+        const state = key.getState(view.state)
+
+        for (const promise of state?.promises ?? []) {
+          promises.add(promise)
+          promise
+            .then(() => {
+              promises.delete(promise)
+              refresh()
+            })
+            .catch(() => {
+              promises.delete(promise)
+            })
+        }
+      }
+
+      check()
+
+      return {
+        update: () => {
+          check()
+        },
+      }
     },
     props: {
       decorations(this, state) {
@@ -84,14 +123,15 @@ export function createHighlightPlugin({
   })
 }
 
-function getDecorationSet(
+function calculateDecoration(
   doc: ProseMirrorNode,
   parser: Parser,
   nodeTypes: string[],
   languageExtractor: LanguageExtractor,
   cache: DecorationCache,
-): DecorationSet {
+) {
   const result: Decoration[] = []
+  const promises: Promise<void>[] = []
 
   doc.descendants((node, pos) => {
     if (!node.type.isTextblock) {
@@ -110,12 +150,18 @@ function getDecorationSet(
           language: language || undefined,
           pos,
         })
-        cache.set(pos, node, decorations)
-        result.push(...decorations)
+
+        if (decorations && Array.isArray(decorations)) {
+          cache.set(pos, node, decorations)
+          result.push(...decorations)
+        } else if (decorations instanceof Promise) {
+          cache.remove(pos)
+          promises.push(decorations)
+        }
       }
     }
     return false
   })
 
-  return DecorationSet.create(doc, result)
+  return [DecorationSet.create(doc, result), promises] as const
 }
