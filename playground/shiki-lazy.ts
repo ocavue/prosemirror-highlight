@@ -3,7 +3,7 @@ import { getHighlighter, setCDN, type Highlighter, type Lang } from 'shiki'
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 
-setCDN('https://unpkg.com/shiki@0.14.6/')
+setCDN('https://unpkg.com/shiki@0.14.7/')
 
 let highlighterPromise: Promise<void> | undefined
 let highlighter: Highlighter | undefined
