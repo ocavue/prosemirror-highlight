@@ -6,13 +6,10 @@ import { Decoration } from 'prosemirror-view'
  * Represents a cache of doc positions to the node and decorations at that position
  */
 export class DecorationCache {
-  private cache: Map<
-    number,
-    { node: ProseMirrorNode; decorations: Decoration[] }
-  >
+  private cache: Map<number, [node: ProseMirrorNode, decorations: Decoration[]]>
 
   constructor(
-    cache?: Map<number, { node: ProseMirrorNode; decorations: Decoration[] }>,
+    cache?: Map<number, [node: ProseMirrorNode, decorations: Decoration[]]>,
   ) {
     this.cache = new Map(cache)
   }
@@ -37,7 +34,7 @@ export class DecorationCache {
       return
     }
 
-    this.cache.set(pos, { node, decorations })
+    this.cache.set(pos, [node, decorations])
   }
 
   /**
@@ -77,7 +74,7 @@ export class DecorationCache {
     const returnCache = new DecorationCache(this.cache)
     const mapping = tr.mapping
 
-    this.cache.forEach(({ node, decorations }, pos) => {
+    this.cache.forEach(([node, decorations], pos) => {
       if (pos < 0) {
         return
       }

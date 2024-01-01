@@ -143,7 +143,8 @@ function calculateDecoration(
       const cached = cache.get(pos)
 
       if (cached) {
-        result.push(...cached.decorations)
+        const [_, decorations] = cached
+        result.push(...decorations)
       } else {
         const decorations = parser({
           content: node.textContent,
