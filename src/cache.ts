@@ -62,7 +62,7 @@ export class DecorationCache {
    * Removes the cache entry at the given position
    * @param pos The doc position to remove from cache
    */
-  private remove(pos: number): void {
+  remove(pos: number): void {
     this.cache.delete(pos)
   }
 

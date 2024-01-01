@@ -4,8 +4,12 @@ import { refractorPlugin } from './refractor'
 import refractorCode from './refractor?raw'
 import { setupView } from './setup'
 import { shikiPlugin } from './shiki'
+import { shikiLazyPlugin } from './shiki-lazy'
+import shikiLazyCode from './shiki-lazy?raw'
 import shikiCode from './shiki?raw'
 import { shikijiPlugin } from './shikiji'
+import { shikijiLazyPlugin } from './shikiji-lazy'
+import shikijiLazyCode from './shikiji-lazy?raw'
 import shikijiCode from './shikiji?raw'
 
 function getOrCreateElement(id: string): HTMLElement {
@@ -47,6 +51,20 @@ function main() {
     plugin: refractorPlugin,
     title: 'refractor Example',
     code: refractorCode,
+  })
+
+  setupView({
+    mount: getOrCreateElement('editor-shiki-lazy'),
+    plugin: shikiLazyPlugin,
+    title: 'Shiki Lazy Example',
+    code: shikiLazyCode,
+  })
+
+  setupView({
+    mount: getOrCreateElement('editor-shikiji-lazy'),
+    plugin: shikijiLazyPlugin,
+    title: 'Shikiji Lazy Example',
+    code: shikijiLazyCode,
   })
 }
 

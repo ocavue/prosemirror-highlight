@@ -8,6 +8,9 @@ Highlight your code blocks in [ProseMirror], with any syntax highlighter you lik
 
 ### With [Shiki]
 
+<details>
+<summary>Static loading of a fixed set of languages</summary>
+
 ```ts
 import { getHighlighter, setCDN } from 'shiki'
 
@@ -24,7 +27,69 @@ const parser = createParser(highlighter)
 export const shikiPlugin = createHighlightPlugin({ parser })
 ```
 
+</details>
+
+<details>
+<summary>Dynamic loading of arbitrary languages</summary>
+
+```ts
+import { getHighlighter, setCDN, type Highlighter, type Lang } from 'shiki'
+
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser, type Parser } from 'prosemirror-highlight/shiki'
+
+setCDN('https://unpkg.com/shiki@0.14.6/')
+
+let highlighterPromise: Promise<void> | undefined
+let highlighter: Highlighter | undefined
+let parser: Parser | undefined
+const loadedLanguages = new Set<string>()
+
+/**
+ * Lazy load highlighter and highlighter languages.
+ *
+ * When the highlighter or the required language is not loaded, it returns a
+ * promise that resolves when the highlighter or the language is loaded.
+ * Otherwise, it returns an array of decorations.
+ */
+const lazyParser: Parser = (options) => {
+  if (!highlighterPromise) {
+    highlighterPromise = getHighlighter({
+      themes: ['github-light'],
+      langs: [],
+    }).then((h) => {
+      highlighter = h
+    })
+    return highlighterPromise
+  }
+
+  if (!highlighter) {
+    return highlighterPromise
+  }
+
+  const language = options.language
+  if (language && !loadedLanguages.has(language)) {
+    return highlighter.loadLanguage(language as Lang).then(() => {
+      loadedLanguages.add(language)
+    })
+  }
+
+  if (!parser) {
+    parser = createParser(highlighter)
+  }
+
+  return parser(options)
+}
+
+export const shikiLazyPlugin = createHighlightPlugin({ parser: lazyParser })
+```
+
+</details>
+
 ### With [Shikiji]
+
+<details>
+<summary>Static loading of a fixed set of languages</summary>
 
 ```ts
 import { getHighlighter } from 'shikiji'
@@ -40,7 +105,67 @@ const parser = createParser(highlighter)
 export const shikijiPlugin = createHighlightPlugin({ parser })
 ```
 
+</details>
+
+<details>
+<summary>Dynamic loading of arbitrary languages</summary>
+
+```ts
+import { getHighlighter, type Highlighter, type BuiltinLanguage } from 'shikiji'
+
+import { createHighlightPlugin, type Parser } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/shikiji'
+
+let highlighterPromise: Promise<void> | undefined
+let highlighter: Highlighter | undefined
+let parser: Parser | undefined
+const loadedLanguages = new Set<string>()
+
+/**
+ * Lazy load highlighter and highlighter languages.
+ *
+ * When the highlighter or the required language is not loaded, it returns a
+ * promise that resolves when the highlighter or the language is loaded.
+ * Otherwise, it returns an array of decorations.
+ */
+const lazyParser: Parser = (options) => {
+  if (!highlighterPromise) {
+    highlighterPromise = getHighlighter({
+      themes: ['vitesse-light'],
+      langs: [],
+    }).then((h) => {
+      highlighter = h
+    })
+    return highlighterPromise
+  }
+
+  if (!highlighter) {
+    return highlighterPromise
+  }
+
+  const language = options.language
+  if (language && !loadedLanguages.has(language)) {
+    return highlighter.loadLanguage(language as BuiltinLanguage).then(() => {
+      loadedLanguages.add(language)
+    })
+  }
+
+  if (!parser) {
+    parser = createParser(highlighter)
+  }
+
+  return parser(options)
+}
+
+export const shikijiLazyPlugin = createHighlightPlugin({ parser: lazyParser })
+```
+
+</details>
+
 ### With [lowlight] (based on [Highlight.js])
+
+<details>
+<summary>Static loading of all languages</summary>
 
 ```ts
 import 'highlight.js/styles/default.css'
@@ -55,7 +180,12 @@ const parser = createParser(lowlight)
 export const lowlightPlugin = createHighlightPlugin({ parser })
 ```
 
+</details>
+
 ### With [refractor] (based on [Prism])
+
+<details>
+<summary>Static loading of all languages</summary>
 
 ```ts
 import { refractor } from 'refractor'
@@ -66,6 +196,8 @@ import { createParser } from 'prosemirror-highlight/refractor'
 const parser = createParser(refractor)
 export const refractorPlugin = createHighlightPlugin({ parser })
 ```
+
+</details>
 
 ## Online demo
 
