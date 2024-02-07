@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.4.1...v0.5.0) (2024-02-07)
+
+
+### Features
+
+* update shiki to v1.0.0 ([#24](https://github.com/ocavue/prosemirror-highlight/issues/24)) ([3dab37a](https://github.com/ocavue/prosemirror-highlight/commit/3dab37a41feb1e07be639cd348f5606561de63fe))
+
 ## [0.4.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.4.0...v0.4.1) (2024-01-23)
 
 
