@@ -12,15 +12,13 @@ Highlight your code blocks in [ProseMirror], with any syntax highlighter you lik
 <summary>Static loading of a fixed set of languages</summary>
 
 ```ts
-import { getHighlighter, setCDN } from 'shiki'
+import { getHighlighter } from 'shiki'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/shiki'
 
-setCDN('https://unpkg.com/shiki@0.14.7/')
-
 const highlighter = await getHighlighter({
-  theme: 'github-light',
+  themes: ['github-light'],
   langs: ['javascript', 'typescript', 'python'],
 })
 const parser = createParser(highlighter)
@@ -33,12 +31,10 @@ export const shikiPlugin = createHighlightPlugin({ parser })
 <summary>Dynamic loading of arbitrary languages</summary>
 
 ```ts
-import { getHighlighter, setCDN, type Highlighter, type Lang } from 'shiki'
+import { getHighlighter, type Highlighter, type BuiltinLanguage } from 'shiki'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser, type Parser } from 'prosemirror-highlight/shiki'
-
-setCDN('https://unpkg.com/shiki@0.14.7/')
 
 let highlighterPromise: Promise<void> | undefined
 let highlighter: Highlighter | undefined
@@ -69,7 +65,7 @@ const lazyParser: Parser = (options) => {
 
   const language = options.language
   if (language && !loadedLanguages.has(language)) {
-    return highlighter.loadLanguage(language as Lang).then(() => {
+    return highlighter.loadLanguage(language as BuiltinLanguage).then(() => {
       loadedLanguages.add(language)
     })
   }
