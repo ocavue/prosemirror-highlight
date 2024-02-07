@@ -1,9 +1,7 @@
-import { getHighlighter, setCDN, type Highlighter, type Lang } from 'shiki'
+import { getHighlighter, type Highlighter, type BuiltinLanguage } from 'shiki'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser, type Parser } from 'prosemirror-highlight/shiki'
-
-setCDN('https://unpkg.com/shiki@0.14.7/')
 
 let highlighterPromise: Promise<void> | undefined
 let highlighter: Highlighter | undefined
@@ -34,7 +32,7 @@ const lazyParser: Parser = (options) => {
 
   const language = options.language
   if (language && !loadedLanguages.has(language)) {
-    return highlighter.loadLanguage(language as Lang).then(() => {
+    return highlighter.loadLanguage(language as BuiltinLanguage).then(() => {
       loadedLanguages.add(language)
     })
   }
