@@ -106,7 +106,7 @@
     "@ocavue/eslint-config": "^1.4.0",
     "@types/hast": "^3.0.3",
     "@types/node": "^20.10.6",
-    "eslint": "^8.56.0",
+    "eslint": "^9.0.0",
     "highlight.js": "^11.9.0",
     "jsdom": "^24.0.0",
     "lowlight": "^3.1.0",
