@@ -42,6 +42,8 @@
     },
     "./shikiji": {
       "default": "./src/shikiji.ts"
+    },"./sugar-high": {
+      "default": "./src/sugar-high.ts"
     }
   },
   "files": [
@@ -154,7 +156,11 @@
       "./shikiji": {
         "types": "./dist/shikiji.d.ts",
         "default": "./dist/shikiji.js"
+      }, "./sugar-high": {
+        "types": "./dist/sugar-high.d.ts",
+        "default": "./dist/sugar-high.js"
       }
+
     },
     "typesVersions": {
       "*": {
