@@ -17,19 +17,14 @@
         border-radius: 6px;
       }
 
-      .editor {
-        margin: 8px;
-      }
-
       body {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-count: auto;
+        column-gap: 20px;
+        column-width: 500px;
       }
 
-      @media (min-width: 1200px) {
-        body {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+      body > * {
+        break-inside: avoid;
       }
 
       #editor-sugar-high {
