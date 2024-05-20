@@ -58,7 +58,7 @@ function main() {
   setupView({
     mount: getOrCreateElement('editor-sugar-high'),
     plugin: sugarHighPlugin,
-    title: 'sugar-high Example',
+    title: 'Sugar High Example',
     code: sugarHighCode,
   })
 
