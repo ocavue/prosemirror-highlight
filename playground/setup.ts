@@ -17,7 +17,7 @@ export function setupView({
   code: string
 }) {
   const div = document.createElement('div')
-  div.innerHTML = `<h1>${title}</h1><pre data-language="typescript"><code>${code.trim()}</code></pre>`
+  div.innerHTML = `<h2>With ${title}</h2><pre data-language="typescript"><code>${code.trim()}</code></pre>`
 
   return new EditorView(mount, {
     state: EditorState.create({

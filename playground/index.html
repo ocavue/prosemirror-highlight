@@ -4,29 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProseMirror Playground</title>
+    <title>ProseMirror Highlight</title>
     <link rel="stylesheet" href="https://prosemirror.net/css/editor.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css"
     />
+
     <style>
-      .ProseMirror pre {
-        background-color: rgb(246, 248, 250);
-        padding: 16px;
-        border-radius: 6px;
-      }
-
-      body {
-        column-count: auto;
-        column-gap: 20px;
-        column-width: 500px;
-      }
-
-      body > * {
-        break-inside: avoid;
-      }
-
       :root {
         --sh-class: #2d5e9d;
         --sh-identifier: #354150;
@@ -39,19 +28,30 @@
         --sh-comment: #a19595;
       }
 
-      :root {
-        font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-          'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      body .editor {
+        margin-top: 16px;
+        padding: 8px;
+        padding-bottom: 16px;
       }
 
-      pre {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          'Liberation Mono', 'Courier New', monospace;
+      body .ProseMirror pre {
+        margin: 0;
+        padding: 0;
       }
     </style>
   </head>
 
   <body>
+    <h1>
+      <a href="https://github.com/ocavue/prosemirror-highlight"
+        >ProseMirror Highlight</a
+      >
+    </h1>
+    <p>
+      Highlight your <a href="https://prosemirror.net">ProseMirror</a> code
+      blocks with any syntax highlighter you like.
+    </p>
+    <div id="container"></div>
     <script type="module" src="/main.ts" defer></script>
   </body>
 </html>
