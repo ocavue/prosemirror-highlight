@@ -199,7 +199,7 @@ export const refractorPlugin = createHighlightPlugin({ parser })
 ### With [Sugar high]
 
 <details>
-<summary>With custom CSS</summary>
+<summary>Highlight with CSS</summary>
 
 ```ts
 import { createHighlightPlugin } from 'prosemirror-highlight'
