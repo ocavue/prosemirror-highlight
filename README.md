@@ -195,7 +195,6 @@ export const refractorPlugin = createHighlightPlugin({ parser })
 
 </details>
 
-
 ### With [Sugar high]
 
 <details>
