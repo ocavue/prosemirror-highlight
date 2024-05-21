@@ -26,9 +26,9 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Publish to NPM
-        run: pnpm publish
+        run: pnpm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
