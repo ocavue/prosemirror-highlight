@@ -11,6 +11,8 @@ import { shikijiPlugin } from './shikiji'
 import { shikijiLazyPlugin } from './shikiji-lazy'
 import shikijiLazyCode from './shikiji-lazy?raw'
 import shikijiCode from './shikiji?raw'
+import { sugarHighPlugin } from './sugar-high'
+import sugarHighCode from './sugar-high?raw'
 
 function getOrCreateElement(id: string): HTMLElement {
   let element = document.getElementById(id)
@@ -51,6 +53,13 @@ function main() {
     plugin: refractorPlugin,
     title: 'refractor Example',
     code: refractorCode,
+  })
+
+  setupView({
+    mount: getOrCreateElement('editor-sugar-high'),
+    plugin: sugarHighPlugin,
+    title: 'Sugar High Example',
+    code: sugarHighCode,
   })
 
   setupView({

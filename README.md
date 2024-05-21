@@ -195,6 +195,35 @@ export const refractorPlugin = createHighlightPlugin({ parser })
 
 </details>
 
+### With [Sugar high]
+
+<details>
+<summary>Highlight with CSS</summary>
+
+```ts
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/sugar-high'
+
+const parser = createParser()
+export const sugarHighPlugin = createHighlightPlugin({ parser })
+```
+
+```css
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-property: #0550ae;
+  --sh-entity: #249a97;
+  --sh-jsxliterals: #6266d1;
+  --sh-string: #00a99a;
+  --sh-keyword: #f47067;
+  --sh-comment: #a19595;
+}
+```
+
+</details>
+
 ## Online demo
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-highlight?file=playground%2Fmain.ts)
@@ -215,3 +244,4 @@ MIT
 [Shikiji]: https://github.com/antfu/shikiji
 [refractor]: https://github.com/wooorm/refractor
 [Prism]: https://github.com/PrismJS/prism
+[Sugar high]: https://github.com/huozhi/sugar-high

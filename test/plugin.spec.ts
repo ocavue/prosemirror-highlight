@@ -149,4 +149,100 @@ describe('createHighlightPlugin', () => {
     `,
     )
   })
+
+  it('can highlight code blocks with sugar-high', async () => {
+    const { createParser } = await import('../src/sugar-high')
+
+    const parser = createParser()
+    const plugin = createHighlightPlugin({ parser })
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(
+      `
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre data-language="typescript">
+          <code>
+            <span class="sh__token--identifier" style="">
+              console
+            </span>
+            <span class="sh__token--sign" style="">
+              .
+            </span>
+            <span class="sh__token--property" style="">
+              log
+            </span>
+            <span class="sh__token--sign" style="">
+              (
+            </span>
+            <span class="sh__token--class" style="">
+              123
+            </span>
+            <span class="sh__token--sign" style="">
+              +
+            </span>
+            <span class="sh__token--string" style="">
+              "
+            </span>
+            <span class="sh__token--string" style="">
+              456
+            </span>
+            <span class="sh__token--string" style="">
+              "
+            </span>
+            <span class="sh__token--sign" style="">
+              )
+            </span>
+            <span class="sh__token--sign" style="">
+              ;
+            </span>
+          </code>
+        </pre>
+        <pre data-language="python">
+          <code>
+            <span class="sh__token--identifier" style="">
+              print
+            </span>
+            <span class="sh__token--sign" style="">
+              (
+            </span>
+            <span class="sh__token--string" style="">
+              "
+            </span>
+            <span class="sh__token--string" style="">
+              1+1
+            </span>
+            <span class="sh__token--string" style="">
+              "
+            </span>
+            <span class="sh__token--sign" style="">
+              ,
+            </span>
+            <span class="sh__token--string" style="">
+              "
+            </span>
+            <span class="sh__token--string" style="">
+              =
+            </span>
+            <span class="sh__token--string" style="">
+              "
+            </span>
+            <span class="sh__token--sign" style="">
+              ,
+            </span>
+            <span class="sh__token--class" style="">
+              2
+            </span>
+            <span class="sh__token--sign" style="">
+              )
+            </span>
+          </code>
+        </pre>
+      </div>;
+      "
+    `,
+    )
+  })
 })

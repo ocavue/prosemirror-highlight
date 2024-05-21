@@ -42,6 +42,9 @@
     },
     "./shikiji": {
       "default": "./src/shikiji.ts"
+    },
+    "./sugar-high": {
+      "default": "./src/sugar-high.ts"
     }
   },
   "files": [
@@ -67,7 +70,8 @@
     "prosemirror-view": "^1.32.4",
     "refractor": "^4.8.1",
     "shiki": "^1.0.0",
-    "shikiji": "^0.8.0 || ^0.9.0 || ^0.10.0"
+    "shikiji": "^0.8.0 || ^0.9.0 || ^0.10.0",
+    "sugar-high": "^0.6.1"
   },
   "peerDependenciesMeta": {
     "@types/hast": {
@@ -99,6 +103,9 @@
     },
     "shikiji": {
       "optional": true
+    },
+    "sugar-high": {
+      "optional": true
     }
   },
   "devDependencies": {
@@ -120,6 +127,7 @@
     "refractor": "^4.8.1",
     "shiki": "^1.0.0",
     "shikiji": "^0.10.2",
+    "sugar-high": "^0.6.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
@@ -149,6 +157,10 @@
       "./shikiji": {
         "types": "./dist/shikiji.d.ts",
         "default": "./dist/shikiji.js"
+      },
+      "./sugar-high": {
+        "types": "./dist/sugar-high.d.ts",
+        "default": "./dist/sugar-high.js"
       }
     },
     "typesVersions": {

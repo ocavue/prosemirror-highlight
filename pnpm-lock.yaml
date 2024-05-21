@@ -59,6 +59,9 @@ devDependencies:
   shikiji:
     specifier: ^0.10.2
     version: 0.10.2
+  sugar-high:
+    specifier: ^0.6.1
+    version: 0.6.1
   tsup:
     specifier: ^8.0.1
     version: 8.0.1(typescript@5.3.3)
@@ -3583,6 +3586,10 @@ packages:
       mz: 2.7.0
       pirates: 4.0.5
       ts-interface-checker: 0.1.13
+    dev: true
+
+  /sugar-high@0.6.1:
+    resolution: {integrity: sha512-kg1qMW7WwJcueXIlHkChL/p2EWY3gf8rQmP6n5nUq2TWVqatqDTMLvViS9WgAjgyTKH5/3/b8sRwWPOOAo1zMA==}
     dev: true
 
   /supports-color@5.5.0:
