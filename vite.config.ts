@@ -13,4 +13,8 @@ export default defineConfig({
     root: './',
     environment: 'jsdom',
   },
+
+  build: {
+    target: ['chrome100', 'safari15', 'firefox100'],
+  },
 })

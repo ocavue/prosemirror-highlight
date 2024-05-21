@@ -18,7 +18,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Lint
-        run: nr lint
+        run: pnpm run lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -28,15 +28,14 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Typecheck
-        run: nr typecheck
+        run: pnpm run typecheck
 
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node: [18.x, 20.x]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [18.x, 20.x, 22.x]
       fail-fast: false
 
     steps:
@@ -47,7 +46,33 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Test
-        run: nr test
+        run: pnpm run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Build
+        run: pnpm run build:playground
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: prosemirror-highlight
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          workingDirectory: playground
+          directory: dist

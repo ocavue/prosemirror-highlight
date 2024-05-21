@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/prosemirror-highlight?color=a1b858&label=)](https://www.npmjs.com/package/prosemirror-highlight)
 
-Highlight your code blocks in [ProseMirror], with any syntax highlighter you like!
+Highlight your [ProseMirror] code blocks with any syntax highlighter you like!
 
 ## Usage
 

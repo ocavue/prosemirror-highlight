@@ -53,6 +53,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsup",
+    "build:playground": "vite build",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "nr build",
