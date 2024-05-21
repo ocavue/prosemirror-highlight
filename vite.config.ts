@@ -15,6 +15,6 @@ export default defineConfig({
   },
 
   build: {
-    target: ["chrome100", "safari15", "firefox100"]
-  }
+    target: ['chrome100', 'safari15', 'firefox100'],
+  },
 })
