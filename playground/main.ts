@@ -1,17 +1,10 @@
-import { lowlightPlugin } from './lowlight'
 import lowlightCode from './lowlight?raw'
-import { refractorPlugin } from './refractor'
 import refractorCode from './refractor?raw'
 import { setupView } from './setup'
-import { shikiPlugin } from './shiki'
-import { shikiLazyPlugin } from './shiki-lazy'
 import shikiLazyCode from './shiki-lazy?raw'
 import shikiCode from './shiki?raw'
-import { shikijiPlugin } from './shikiji'
-import { shikijiLazyPlugin } from './shikiji-lazy'
 import shikijiLazyCode from './shikiji-lazy?raw'
 import shikijiCode from './shikiji?raw'
-import { sugarHighPlugin } from './sugar-high'
 import sugarHighCode from './sugar-high?raw'
 
 function getOrCreateElement(id: string): HTMLElement {
@@ -32,51 +25,51 @@ function getOrCreateElement(id: string): HTMLElement {
 }
 
 function main() {
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-shiki'),
-    plugin: shikiPlugin,
+    plugin: () => import('./shiki').then((mod) => mod.shikiPlugin),
     title: 'Shiki',
     code: shikiCode,
   })
 
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-shikiji'),
-    plugin: shikijiPlugin,
+    plugin: () => import('./shikiji').then((mod) => mod.shikijiPlugin),
     title: 'Shikiji',
     code: shikijiCode,
   })
 
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-lowlight'),
-    plugin: lowlightPlugin,
+    plugin: () => import('./lowlight').then((mod) => mod.lowlightPlugin),
     title: 'lowlight',
     code: lowlightCode,
   })
 
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-refractor'),
-    plugin: refractorPlugin,
+    plugin: () => import('./refractor').then((mod) => mod.refractorPlugin),
     title: 'refractor',
     code: refractorCode,
   })
 
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-sugar-high'),
-    plugin: sugarHighPlugin,
+    plugin: () => import('./sugar-high').then((mod) => mod.sugarHighPlugin),
     title: 'Sugar High',
     code: sugarHighCode,
   })
 
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-shiki-lazy'),
-    plugin: shikiLazyPlugin,
+    plugin: () => import('./shiki-lazy').then((mod) => mod.shikiLazyPlugin),
     title: 'Shiki (Lazy language loading)',
     code: shikiLazyCode,
   })
 
-  setupView({
+  void setupView({
     mount: getOrCreateElement('editor-shikiji-lazy'),
-    plugin: shikijiLazyPlugin,
+    plugin: () => import('./shikiji-lazy').then((mod) => mod.shikijiLazyPlugin),
     title: 'Shikiji (Lazy language loading)',
     code: shikijiLazyCode,
   })

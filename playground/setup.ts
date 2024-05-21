@@ -5,14 +5,14 @@ import { EditorView } from 'prosemirror-view'
 
 import { schema } from './schema'
 
-export function setupView({
+export async function setupView({
   mount,
   plugin,
   title,
   code,
 }: {
   mount: HTMLElement
-  plugin: Plugin
+  plugin: () => Promise<Plugin>
   title: string
   code: string
 }) {
@@ -22,7 +22,7 @@ export function setupView({
   return new EditorView(mount, {
     state: EditorState.create({
       doc: DOMParser.fromSchema(schema).parse(div),
-      plugins: [...exampleSetup({ schema, menuBar: false }), plugin],
+      plugins: [...exampleSetup({ schema, menuBar: false }), await plugin()],
     }),
   })
 }
