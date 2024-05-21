@@ -42,14 +42,14 @@ function main() {
   void setupView({
     mount: getOrCreateElement('editor-lowlight'),
     plugin: () => import('./lowlight').then((mod) => mod.lowlightPlugin),
-    title: 'lowlight',
+    title: 'Lowlight',
     code: lowlightCode,
   })
 
   void setupView({
     mount: getOrCreateElement('editor-refractor'),
     plugin: () => import('./refractor').then((mod) => mod.refractorPlugin),
-    title: 'refractor',
+    title: 'Refractor',
     code: refractorCode,
   })
 
