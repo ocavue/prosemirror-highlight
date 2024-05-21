@@ -66,7 +66,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Build
-        run: pnpm run build:website
+        run: pnpm run build:playground
 
       - name: Set config
         run: |
@@ -85,5 +85,5 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: prosemirror-highlight
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          workingDirectory: website
+          workingDirectory: playground
           directory: dist
