@@ -12,12 +12,12 @@ Highlight your [ProseMirror] code blocks with any syntax highlighter you like!
 <summary>Static loading of a fixed set of languages</summary>
 
 ```ts
-import { getHighlighter } from 'shiki'
+import { getSingletonHighlighter } from 'shiki'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/shiki'
 
-const highlighter = await getHighlighter({
+const highlighter = await getSingletonHighlighter({
   themes: ['github-light'],
   langs: ['javascript', 'typescript', 'python'],
 })
@@ -31,15 +31,17 @@ export const shikiPlugin = createHighlightPlugin({ parser })
 <summary>Dynamic loading of arbitrary languages</summary>
 
 ```ts
-import { getHighlighter, type Highlighter, type BuiltinLanguage } from 'shiki'
+import {
+  getSingletonHighlighter,
+  type BuiltinLanguage,
+  type Highlighter,
+} from 'shiki'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 
-let highlighterPromise: Promise<void> | undefined
 let highlighter: Highlighter | undefined
 let parser: Parser | undefined
-const loadedLanguages = new Set<string>()
 
 /**
  * Lazy load highlighter and highlighter languages.
@@ -49,25 +51,18 @@ const loadedLanguages = new Set<string>()
  * Otherwise, it returns an array of decorations.
  */
 const lazyParser: Parser = (options) => {
-  if (!highlighterPromise) {
-    highlighterPromise = getHighlighter({
+  if (!highlighter) {
+    return getSingletonHighlighter({
       themes: ['github-light'],
       langs: [],
     }).then((h) => {
       highlighter = h
     })
-    return highlighterPromise
   }
 
-  if (!highlighter) {
-    return highlighterPromise
-  }
-
-  const language = options.language
-  if (language && !loadedLanguages.has(language)) {
-    return highlighter.loadLanguage(language as BuiltinLanguage).then(() => {
-      loadedLanguages.add(language)
-    })
+  const language = options.language as BuiltinLanguage
+  if (language && !highlighter.getLoadedLanguages().includes(language)) {
+    return highlighter.loadLanguage(language)
   }
 
   if (!parser) {
