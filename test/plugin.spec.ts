@@ -96,60 +96,6 @@ describe('createHighlightPlugin', () => {
     )
   })
 
-  it('can highlight code blocks with shikiji', async () => {
-    const { createParser } = await import('../src/shikiji')
-    const { getHighlighter } = await import('shikiji')
-
-    const highlighter = await getHighlighter({
-      themes: ['vitesse-light'],
-      langs: ['javascript', 'typescript', 'python'],
-    })
-    const parser = createParser(highlighter)
-    const plugin = createHighlightPlugin({ parser })
-
-    const state = EditorState.create({ doc, plugins: [plugin] })
-    const view = new EditorView(document.createElement('div'), { state })
-
-    const html = await formatHtml(view.dom.outerHTML)
-    expect(html).toMatchInlineSnapshot(
-      `
-      "<div contenteditable="true" translate="no" class="ProseMirror">
-        <pre data-language="typescript">
-          <code>
-            <span style="color: rgb(176, 125, 72);">console</span>
-            <span style="color: rgb(153, 153, 153);">.</span>
-            <span style="color: rgb(89, 135, 58);">log</span>
-            <span style="color: rgb(153, 153, 153);">(</span>
-            <span style="color: rgb(47, 121, 138);">123</span>
-            <span style="color: rgb(171, 89, 89);">+</span>
-            <span style="color: rgba(181, 105, 89, 0.6);">"</span>
-            <span style="color: rgb(181, 105, 89);">456</span>
-            <span style="color: rgba(181, 105, 89, 0.6);">"</span>
-            <span style="color: rgb(153, 153, 153);">);</span>
-          </code>
-        </pre>
-        <pre data-language="python">
-          <code>
-            <span style="color: rgb(153, 132, 24);">print</span>
-            <span style="color: rgb(153, 153, 153);">(</span>
-            <span style="color: rgba(181, 105, 89, 0.6);">"</span>
-            <span style="color: rgb(181, 105, 89);">1+1</span>
-            <span style="color: rgba(181, 105, 89, 0.6);">"</span>
-            <span style="color: rgb(153, 153, 153);">,</span>
-            <span style="color: rgba(181, 105, 89, 0.6);">"</span>
-            <span style="color: rgb(181, 105, 89);">=</span>
-            <span style="color: rgba(181, 105, 89, 0.6);">"</span>
-            <span style="color: rgb(153, 153, 153);">,</span>
-            <span style="color: rgb(47, 121, 138);">2</span>
-            <span style="color: rgb(153, 153, 153);">)</span>
-          </code>
-        </pre>
-      </div>;
-      "
-    `,
-    )
-  })
-
   it('can highlight code blocks with sugar-high', async () => {
     const { createParser } = await import('../src/sugar-high')
 

@@ -6,7 +6,6 @@ export default defineConfig({
     'src/lowlight.ts',
     'src/refractor.ts',
     'src/shiki.ts',
-    'src/shikiji.ts',
     'src/sugar-high.ts',
   ],
   format: ['esm'],
