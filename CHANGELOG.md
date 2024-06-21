@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.7.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.6.0...v0.7.0) (2024-06-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove shikiji support ([#36](https://github.com/ocavue/prosemirror-highlight/issues/36))
+
+### Miscellaneous Chores
+
+* update shiki ([#38](https://github.com/ocavue/prosemirror-highlight/issues/38)) ([9df0d59](https://github.com/ocavue/prosemirror-highlight/commit/9df0d5934616cd82e3d26ea26ac7f77923fff347))
+
+
+### Code Refactoring
+
+* remove shikiji support ([#36](https://github.com/ocavue/prosemirror-highlight/issues/36)) ([383e0d3](https://github.com/ocavue/prosemirror-highlight/commit/383e0d3e8f182c1ae988e545f40c23c5969e5b6c))
+
 ## [0.6.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.5.0...v0.6.0) (2024-05-21)
 
 
