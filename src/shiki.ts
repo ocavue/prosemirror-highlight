@@ -1,16 +1,20 @@
 import { Decoration } from 'prosemirror-view'
-import { type BundledLanguage, type Highlighter } from 'shiki'
+import type { BundledLanguage, BundledTheme, Highlighter } from 'shiki'
 
 import type { Parser } from './types'
 
 export type { Parser }
 
-export function createParser(highlighter: Highlighter): Parser {
+export function createParser(
+  highlighter: Highlighter,
+  options?: { theme?: BundledTheme },
+): Parser {
   return function parser({ content, language, pos }) {
     const decorations: Decoration[] = []
 
     const tokens = highlighter.codeToTokensBase(content, {
       lang: language as BundledLanguage,
+      theme: options?.theme,
     })
 
     let from = pos + 1
