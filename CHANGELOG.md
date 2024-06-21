@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.7.0...v0.8.0) (2024-06-21)
+
+
+### Features
+
+* accept shiki theme option ([#40](https://github.com/ocavue/prosemirror-highlight/issues/40)) ([fbfbfc9](https://github.com/ocavue/prosemirror-highlight/commit/fbfbfc9df48ac1bc8bdca2831f468ad77d658619))
+
 ## [0.7.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.6.0...v0.7.0) (2024-06-21)
 
 
