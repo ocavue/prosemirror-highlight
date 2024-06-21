@@ -3,8 +3,6 @@ import refractorCode from './refractor?raw'
 import { setupView } from './setup'
 import shikiLazyCode from './shiki-lazy?raw'
 import shikiCode from './shiki?raw'
-import shikijiLazyCode from './shikiji-lazy?raw'
-import shikijiCode from './shikiji?raw'
 import sugarHighCode from './sugar-high?raw'
 
 function getOrCreateElement(id: string): HTMLElement {
@@ -33,13 +31,6 @@ function main() {
   })
 
   void setupView({
-    mount: getOrCreateElement('editor-shikiji'),
-    plugin: () => import('./shikiji').then((mod) => mod.shikijiPlugin),
-    title: 'Shikiji',
-    code: shikijiCode,
-  })
-
-  void setupView({
     mount: getOrCreateElement('editor-lowlight'),
     plugin: () => import('./lowlight').then((mod) => mod.lowlightPlugin),
     title: 'Lowlight',
@@ -65,13 +56,6 @@ function main() {
     plugin: () => import('./shiki-lazy').then((mod) => mod.shikiLazyPlugin),
     title: 'Shiki (Lazy language loading)',
     code: shikiLazyCode,
-  })
-
-  void setupView({
-    mount: getOrCreateElement('editor-shikiji-lazy'),
-    plugin: () => import('./shikiji-lazy').then((mod) => mod.shikijiLazyPlugin),
-    title: 'Shikiji (Lazy language loading)',
-    code: shikijiLazyCode,
   })
 }
 

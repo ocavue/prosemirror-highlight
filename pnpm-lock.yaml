@@ -59,9 +59,6 @@ importers:
       shiki:
         specifier: ^1.6.2
         version: 1.6.2
-      shikiji:
-        specifier: ^0.10.2
-        version: 0.10.2
       sugar-high:
         specifier: ^0.6.1
         version: 0.6.1
@@ -2116,12 +2113,6 @@ packages:
 
   shiki@1.6.2:
     resolution: {integrity: sha512-X3hSm5GzzBd/BmPmGfkueOUADLyBoZo1ojYQXhd+NU2VJn458yt4duaS0rVzC+WtqftSV7mTVvDw+OB9AHi3Eg==}
-
-  shikiji-core@0.10.2:
-    resolution: {integrity: sha512-9Of8HMlF96usXJHmCL3Gd0Fcf0EcyJUF9m8EoAKKd98mHXi0La2AZl1h6PegSFGtiYcBDK/fLuKbDa1l16r1fA==}
-
-  shikiji@0.10.2:
-    resolution: {integrity: sha512-wtZg3T0vtYV2PnqusWQs3mDaJBdCPWxFDrBM/SE5LfrX92gjUvfEMlc+vJnoKY6Z/S44OWaCRzNIsdBRWcTAiw==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -4811,12 +4802,6 @@ snapshots:
   shiki@1.6.2:
     dependencies:
       '@shikijs/core': 1.6.2
-
-  shikiji-core@0.10.2: {}
-
-  shikiji@0.10.2:
-    dependencies:
-      shikiji-core: 0.10.2
 
   side-channel@1.0.6:
     dependencies:
