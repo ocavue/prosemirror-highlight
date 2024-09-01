@@ -1,6 +1,6 @@
 import { exampleSetup } from 'prosemirror-example-setup'
 import { DOMParser } from 'prosemirror-model'
-import { EditorState, Plugin } from 'prosemirror-state'
+import { EditorState, type Plugin } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 
 import { schema } from './schema'

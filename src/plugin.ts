@@ -1,6 +1,6 @@
-import { Node as ProseMirrorNode } from 'prosemirror-model'
+import type { Node as ProseMirrorNode } from 'prosemirror-model'
 import { Plugin, PluginKey } from 'prosemirror-state'
-import { Decoration, DecorationSet } from 'prosemirror-view'
+import { type Decoration, DecorationSet } from 'prosemirror-view'
 
 import { DecorationCache } from './cache'
 import type { LanguageExtractor, Parser } from './types'

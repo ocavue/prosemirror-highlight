@@ -4,6 +4,7 @@
     "module": "esnext",
     "lib": ["esnext", "dom"],
     "types": ["vite/client"],
+    "allowJs": true,
     "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "strict": true,
@@ -17,5 +18,6 @@
     "paths": {
       "prosemirror-highlight": ["./src/"]
     }
-  }
+  },
+  "include": ["."]
 }

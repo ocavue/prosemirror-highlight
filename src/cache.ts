@@ -1,6 +1,6 @@
-import { Node as ProseMirrorNode } from 'prosemirror-model'
-import { Transaction } from 'prosemirror-state'
-import { Decoration } from 'prosemirror-view'
+import type { Node as ProseMirrorNode } from 'prosemirror-model'
+import type { Transaction } from 'prosemirror-state'
+import type { Decoration } from 'prosemirror-view'
 
 /**
  * Represents a cache of doc positions to the node and decorations at that position
