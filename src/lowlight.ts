@@ -1,5 +1,5 @@
 import type { Root } from 'hast'
-import { Decoration } from 'prosemirror-view'
+import type { Decoration } from 'prosemirror-view'
 
 import { fillFromRoot } from './hast'
 import type { Parser } from './types'

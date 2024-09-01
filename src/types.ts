@@ -1,5 +1,5 @@
-import { Node as ProseMirrorNode } from 'prosemirror-model'
-import { Decoration } from 'prosemirror-view'
+import type { Node as ProseMirrorNode } from 'prosemirror-model'
+import type { Decoration } from 'prosemirror-view'
 
 /**
  * A function that parses the text content of a code block node and returns an
