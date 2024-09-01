@@ -1,3 +1,3 @@
-import { basic } from '@ocavue/eslint-config'
+import { basic, markdown } from '@ocavue/eslint-config'
 
-export default [...basic()]
+export default [...basic(), ...markdown()]

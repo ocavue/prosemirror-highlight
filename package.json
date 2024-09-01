@@ -103,10 +103,10 @@
   },
   "devDependencies": {
     "@antfu/ni": "^0.22.0",
-    "@ocavue/eslint-config": "^1.11.2",
+    "@ocavue/eslint-config": "^2.0.0",
     "@types/hast": "^3.0.4",
     "@types/node": "^20.14.13",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "highlight.js": "^11.10.0",
     "jsdom": "^24.1.1",
     "lowlight": "^3.1.0",
