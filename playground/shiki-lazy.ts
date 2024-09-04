@@ -1,7 +1,7 @@
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 import {
-  getSingletonHighlighter,
+  createHighlighter,
   type BuiltinLanguage,
   type Highlighter,
 } from 'shiki'
@@ -18,8 +18,8 @@ let parser: Parser | undefined
  */
 const lazyParser: Parser = (options) => {
   if (!highlighter) {
-    return getSingletonHighlighter({
-      themes: ['github-light'],
+    return createHighlighter({
+      themes: ['github-light', 'github-dark'],
       langs: [],
     }).then((h) => {
       highlighter = h
@@ -32,7 +32,12 @@ const lazyParser: Parser = (options) => {
   }
 
   if (!parser) {
-    parser = createParser(highlighter)
+    parser = createParser(highlighter, {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+    })
   }
 
   return parser(options)
