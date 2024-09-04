@@ -191,4 +191,134 @@ describe('createHighlightPlugin', () => {
     `,
     )
   })
+
+  it('can highlight code blocks with shiki', async () => {
+    const { createParser } = await import('../src/shiki')
+    const { createHighlighter } = await import('shiki')
+
+    const highlighter = await createHighlighter({
+      themes: ['github-light', 'github-dark', 'github-dark-dimmed'],
+      langs: ['typescript', 'python'],
+    })
+
+    const parser = createParser(highlighter, {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+        dim: 'github-dark-dimmed',
+      },
+      defaultColor: false,
+    })
+    const plugin = createHighlightPlugin({ parser })
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(
+      `
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre data-language="typescript">
+          <code>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              console.
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #6F42C1; --shiki-dark: #B392F0; --shiki-dim: #DCBDFB;"
+            >
+              log
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              (
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #005CC5; --shiki-dark: #79B8FF; --shiki-dim: #6CB6FF;"
+            >
+              123
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #D73A49; --shiki-dark: #F97583; --shiki-dim: #F47067;"
+            >
+              +
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #032F62; --shiki-dark: #9ECBFF; --shiki-dim: #96D0FF;"
+            >
+              "456"
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              );
+            </span>
+          </code>
+        </pre>
+        <pre data-language="python">
+          <code>
+            <span
+              class="shiki"
+              style="--shiki-light: #005CC5; --shiki-dark: #79B8FF; --shiki-dim: #6CB6FF;"
+            >
+              print
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              (
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #032F62; --shiki-dark: #9ECBFF; --shiki-dim: #96D0FF;"
+            >
+              "1+1"
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              ,
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #032F62; --shiki-dark: #9ECBFF; --shiki-dim: #96D0FF;"
+            >
+              "="
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              ,
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #005CC5; --shiki-dark: #79B8FF; --shiki-dim: #6CB6FF;"
+            >
+              2
+            </span>
+            <span
+              class="shiki"
+              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+            >
+              )
+            </span>
+          </code>
+        </pre>
+      </div>;
+      "
+    `,
+    )
+  })
 })
