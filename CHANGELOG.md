@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.9.0...v0.10.0) (2024-10-11)
+
+
+### Features
+
+* support shiki's object `token.htmlStyle` ([#55](https://github.com/ocavue/prosemirror-highlight/issues/55)) ([70fc971](https://github.com/ocavue/prosemirror-highlight/commit/70fc971754597c8fd03c9b72b8442d103404c201))
+
 ## [0.9.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.8.0...v0.9.0) (2024-09-04)
 
 
