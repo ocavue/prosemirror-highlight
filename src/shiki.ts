@@ -34,7 +34,9 @@ export function createParser(
 
         const decoration = Decoration.inline(from, to, {
           // When using `options.themes` the `htmlStyle` field will be set, otherwise `color` will be set
-          style: token.htmlStyle ?? `color: ${token.color}`,
+          style: stringifyTokenStyle(
+            token.htmlStyle ?? `color: ${token.color}`,
+          ),
           class: 'shiki',
         })
 
@@ -48,4 +50,16 @@ export function createParser(
 
     return decorations
   }
+}
+
+/**
+ * Copied from https://github.com/shikijs/shiki/blob/f76a371dbc2752cba341023df00ebfe9b66cb3f6/packages/core/src/utils.ts#L213
+ *
+ * Copy instead of import it from `shiki` to avoid importing the `shiki` package in this file.
+ */
+function stringifyTokenStyle(token: string | Record<string, string>): string {
+  if (typeof token === 'string') return token
+  return Object.entries(token)
+    .map(([key, value]) => `${key}:${value}`)
+    .join(';')
 }
