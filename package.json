@@ -118,7 +118,7 @@
     "prosemirror-transform": "^1.10.0",
     "prosemirror-view": "^1.34.1",
     "refractor": "^4.8.1",
-    "shiki": "^1.15.2",
+    "shiki": "^1.22.0",
     "sugar-high": "^0.7.0",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
