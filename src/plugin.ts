@@ -20,7 +20,7 @@ export interface HighlightPluginState {
  */
 export function createHighlightPlugin({
   parser,
-  nodeTypes = ['code_block'],
+  nodeTypes = ['code_block', 'codeBlock'],
   languageExtractor = (node) => node.attrs.language as string | undefined,
 }: {
   /**
@@ -32,7 +32,7 @@ export function createHighlightPlugin({
   /**
    * An array containing all the node type name to target for highlighting.
    *
-   * @default ['code_block']
+   * @default ['code_block', 'codeBlock']
    */
   nodeTypes?: string[]
 
