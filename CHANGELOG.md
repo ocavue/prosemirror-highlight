@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.10.0...v0.11.0) (2024-12-03)
+
+
+### Features
+
+* add `codeBlock` as one of the default node type names ([#61](https://github.com/ocavue/prosemirror-highlight/issues/61)) ([e96ec9e](https://github.com/ocavue/prosemirror-highlight/commit/e96ec9ea6b0ed0ca2ba373f3c9fb0cee2ac1badc))
+
 ## [0.10.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.9.0...v0.10.0) (2024-10-11)
 
 
