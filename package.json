@@ -126,29 +126,34 @@
     "vitest": "^2.1.8"
   },
   "publishConfig": {
-    "main": "./dist/index.js",
+    "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
       ".": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
       },
       "./lowlight": {
         "types": "./dist/lowlight.d.ts",
-        "default": "./dist/lowlight.js"
+        "import": "./dist/lowlight.js",
+        "require": "./dist/lowlight.cjs"
       },
       "./refractor": {
         "types": "./dist/refractor.d.ts",
-        "default": "./dist/refractor.js"
+        "import": "./dist/refractor.js",
+        "require": "./dist/refractor.cjs"
       },
       "./shiki": {
         "types": "./dist/shiki.d.ts",
-        "default": "./dist/shiki.js"
+        "import": "./dist/shiki.js",
+        "require": "./dist/shiki.cjs"
       },
       "./sugar-high": {
         "types": "./dist/sugar-high.d.ts",
-        "default": "./dist/sugar-high.js"
+        "import": "./dist/sugar-high.js",
+        "require": "./dist/sugar-high.cjs"
       }
     },
     "typesVersions": {
