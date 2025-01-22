@@ -103,7 +103,7 @@ export const lowlightPlugin = createHighlightPlugin({ parser })
 <summary>Static loading of all languages</summary>
 
 ```ts
-import { refractor } from 'refractor'
+import { refractor } from 'refractor/lib/all'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/refractor'

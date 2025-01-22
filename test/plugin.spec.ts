@@ -53,7 +53,7 @@ describe('createHighlightPlugin', () => {
 
   it('can highlight code blocks with refractor', async () => {
     const { createParser } = await import('../src/refractor')
-    const { refractor } = await import('refractor')
+    const { refractor } = await import('refractor/lib/all')
 
     const parser = createParser(refractor)
     const plugin = createHighlightPlugin({ parser })
