@@ -3,8 +3,9 @@ import type { Decoration } from 'prosemirror-view'
 
 /**
  * A function that parses the text content of a code block node and returns an
- * array of decorations. If the underlying syntax highlighter is still loading,
- * you can return a promise that will be resolved when the highlighter is ready.
+ * array of ProseMirror decorations. If the underlying syntax highlighter is
+ * still loading, you can return a promise that will be resolved when the
+ * highlighter is ready.
  */
 export type Parser = (options: {
   /**
