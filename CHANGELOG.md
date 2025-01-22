@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.11.0...v0.11.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* support shiki v2 and sugar-high v0.8 ([#67](https://github.com/ocavue/prosemirror-highlight/issues/67)) ([b7fff1d](https://github.com/ocavue/prosemirror-highlight/commit/b7fff1d609173c37c439e1355e47c252054efe13))
+
 ## [0.11.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.10.0...v0.11.0) (2024-12-03)
 
 
