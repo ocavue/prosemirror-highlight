@@ -27,8 +27,7 @@ describe('createHighlightPlugin', () => {
     const view = new EditorView(document.createElement('div'), { state })
 
     const html = await formatHtml(view.dom.outerHTML)
-    expect(html).toMatchInlineSnapshot(
-      `
+    expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre data-language="typescript">
           <code>
@@ -47,8 +46,7 @@ describe('createHighlightPlugin', () => {
         </pre>
       </div>;
       "
-    `,
-    )
+    `)
   })
 
   it('can highlight code blocks with refractor', async () => {
@@ -62,8 +60,7 @@ describe('createHighlightPlugin', () => {
     const view = new EditorView(document.createElement('div'), { state })
 
     const html = await formatHtml(view.dom.outerHTML)
-    expect(html).toMatchInlineSnapshot(
-      `
+    expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre data-language="typescript">
           <code>
@@ -92,8 +89,7 @@ describe('createHighlightPlugin', () => {
         </pre>
       </div>;
       "
-    `,
-    )
+    `)
   })
 
   it('can highlight code blocks with sugar-high', async () => {
@@ -215,10 +211,12 @@ describe('createHighlightPlugin', () => {
     const view = new EditorView(document.createElement('div'), { state })
 
     const html = await formatHtml(view.dom.outerHTML)
-    expect(html).toMatchInlineSnapshot(
-      `
+    expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
-        <pre data-language="typescript">
+        <pre
+          data-language="typescript"
+          style="--shiki-light: #24292e; --shiki-dark: #e1e4e8; --shiki-dim: #adbac7; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e; --shiki-dim-bg: #22272e;"
+        >
           <code>
             <span
               class="shiki"
@@ -264,7 +262,10 @@ describe('createHighlightPlugin', () => {
             </span>
           </code>
         </pre>
-        <pre data-language="python">
+        <pre
+          data-language="python"
+          style="--shiki-light: #24292e; --shiki-dark: #e1e4e8; --shiki-dim: #adbac7; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e; --shiki-dim-bg: #22272e;"
+        >
           <code>
             <span
               class="shiki"
@@ -318,7 +319,6 @@ describe('createHighlightPlugin', () => {
         </pre>
       </div>;
       "
-    `,
-    )
+    `)
   })
 })

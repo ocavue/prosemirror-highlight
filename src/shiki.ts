@@ -17,7 +17,7 @@ export function createParser(
   return function parser({ content, language, pos, size }) {
     const decorations: Decoration[] = []
 
-    const { tokens, fg, bg } = highlighter.codeToTokens(content, {
+    const { tokens, fg, bg, rootStyle } = highlighter.codeToTokens(content, {
       lang: language as BundledLanguage,
 
       // Use provided options for themes or just use first loaded theme
@@ -26,9 +26,13 @@ export function createParser(
       }),
     })
 
+    const style =
+      rootStyle ||
+      (fg && bg
+        ? `--prosekit-highlight:${fg};--prosekit-highlight-bg:${bg}`
+        : '')
 
-    if (bg && fg) {
-      const style = `--prosekit-highlight-bg:${bg};--prosekit-highlight-fg:${fg};`
+    if (style) {
       const decoration = Decoration.node(pos, pos + size, { style })
       decorations.push(decoration)
     }
