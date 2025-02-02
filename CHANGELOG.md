@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.12.0...v0.12.1) (2025-02-02)
+
+
+### Bug Fixes
+
+* correct css variable names ([#72](https://github.com/ocavue/prosemirror-highlight/issues/72)) ([eaf73fd](https://github.com/ocavue/prosemirror-highlight/commit/eaf73fdfd3470759b78c762488dd36811c8e37dc))
+
 ## [0.12.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.11.1...v0.12.0) (2025-02-02)
 
 
