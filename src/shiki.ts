@@ -29,7 +29,7 @@ export function createParser(
     const style =
       rootStyle ||
       (fg && bg
-        ? `--prosekit-highlight:${fg};--prosekit-highlight-bg:${bg}`
+        ? `--prosemirror-highlight:${fg};--prosemirror-highlight-bg:${bg}`
         : '')
 
     if (style) {
