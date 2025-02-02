@@ -77,6 +77,25 @@ export const shikiLazyPlugin = createHighlightPlugin({ parser: lazyParser })
 
 </details>
 
+<details>
+<summary>Set code block background color based on theme</summary>
+
+When using Shiki, two CSS variables are set automatically to the `<pre>` element:
+
+- `--prosekit-highlight-bg`
+- `--prosekit-highlight-fg`
+
+You can use these variables to set the background color and text color of the code block.
+
+```css
+.ProseMirror pre code {
+  background-color: var(--prosekit-highlight-bg, inherit);
+  color: var(--prosekit-highlight-fg, inherit);
+}
+```
+
+</details>
+
 ### With [lowlight] (based on [Highlight.js])
 
 <details>

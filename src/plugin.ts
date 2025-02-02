@@ -150,6 +150,7 @@ function calculateDecoration(
           content: node.textContent,
           language: language || undefined,
           pos,
+          size: node.nodeSize,
         })
 
         if (decorations && Array.isArray(decorations)) {
