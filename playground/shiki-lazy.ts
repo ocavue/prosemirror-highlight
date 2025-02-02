@@ -20,7 +20,7 @@ let parser: Parser | undefined
 const lazyParser: Parser = (options) => {
   if (!highlighter) {
     return createHighlighter({
-      themes: ['github-light', 'github-dark'],
+      themes: ['github-light', 'github-dark', 'github-dark-dimmed'],
       langs: [],
     }).then((h) => {
       highlighter = h
@@ -37,7 +37,9 @@ const lazyParser: Parser = (options) => {
       themes: {
         light: 'github-light',
         dark: 'github-dark',
+        dim: 'github-dark-dimmed',
       },
+      defaultColor: 'dim',
     })
   }
 
