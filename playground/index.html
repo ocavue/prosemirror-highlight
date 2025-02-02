@@ -41,6 +41,13 @@
         border-width: 1px;
         border-radius: 12px;
         min-height: 64px;
+        background-color: transparent;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body .editor {
+          border-color: rgb(255 255 255 / 0.1);
+        }
       }
 
       body .ProseMirror pre {
