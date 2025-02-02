@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.11.1...v0.12.0) (2025-02-02)
+
+
+### Features
+
+* support shiki background color ([#70](https://github.com/ocavue/prosemirror-highlight/issues/70)) ([be0e879](https://github.com/ocavue/prosemirror-highlight/commit/be0e8797e1af7859d83d90c06f5338817769435d))
+
 ## [0.11.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.11.0...v0.11.1) (2025-01-22)
 
 
