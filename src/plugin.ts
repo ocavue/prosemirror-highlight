@@ -42,7 +42,7 @@ export function createHighlightPlugin({
    */
   languageExtractor?: LanguageExtractor
 }): Plugin<HighlightPluginState> {
-  const key = new PluginKey<HighlightPluginState>()
+  const key = new PluginKey<HighlightPluginState>('prosemirror-highlight')
 
   return new Plugin<HighlightPluginState>({
     key,
@@ -150,6 +150,7 @@ function calculateDecoration(
           content: node.textContent,
           language: language || undefined,
           pos,
+          size: node.nodeSize,
         })
 
         if (decorations && Array.isArray(decorations)) {

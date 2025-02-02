@@ -22,6 +22,11 @@ export type Parser = (options: {
    * The language of the code block node.
    */
   language?: string
+
+  /**
+   * The size of the code block node.
+   */
+  size: number
 }) => Decoration[] | Promise<void>
 
 /**

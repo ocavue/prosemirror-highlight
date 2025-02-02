@@ -41,6 +41,13 @@
         border-width: 1px;
         border-radius: 12px;
         min-height: 64px;
+        background-color: transparent;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body .editor {
+          border-color: rgb(255 255 255 / 0.1);
+        }
       }
 
       body .ProseMirror pre {
@@ -51,6 +58,13 @@
       body .ProseMirror h2 {
         margin-bottom: 16px;
       }
+
+      body .ProseMirror pre code {
+        --background: #f8f8f8;
+        color: var(--prosekit-highlight, inherit);
+        background-color: var(--prosekit-highlight-bg, var(--background, inherit));
+      }
+
     </style>
   </head>
 
