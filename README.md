@@ -82,15 +82,15 @@ export const shikiLazyPlugin = createHighlightPlugin({ parser: lazyParser })
 
 When using Shiki, two CSS variables are set automatically to the `<pre>` element:
 
-- `--prosekit-highlight`: The text color of the code block
-- `--prosekit-highlight-bg`: The background color of the code block
+- `--prosemirror-highlight`: The text color of the code block
+- `--prosemirror-highlight-bg`: The background color of the code block
 
 You can use these variables to set the background color and text color of the code block.
 
 ```css
 .ProseMirror pre {
-  color: var(--prosekit-highlight, inherit);
-  background-color: var(--prosekit-highlight-bg, inherit);
+  color: var(--prosemirror-highlight, inherit);
+  background-color: var(--prosemirror-highlight-bg, inherit);
 }
 ```
 

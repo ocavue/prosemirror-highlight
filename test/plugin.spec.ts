@@ -211,7 +211,7 @@ describe('createHighlightPlugin', () => {
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre
           data-language="typescript"
-          style="--prosekit-highlight: #e1e4e8; --prosekit-highlight-bg: #24292e;"
+          style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
             <span class="shiki" style="color: rgb(225, 228, 232);">
@@ -239,7 +239,7 @@ describe('createHighlightPlugin', () => {
         </pre>
         <pre
           data-language="python"
-          style="--prosekit-highlight: #e1e4e8; --prosekit-highlight-bg: #24292e;"
+          style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
             <span class="shiki" style="color: rgb(121, 184, 255);">
