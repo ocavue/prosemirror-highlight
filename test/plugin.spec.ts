@@ -193,16 +193,12 @@ describe('createHighlightPlugin', () => {
     const { createHighlighter } = await import('shiki')
 
     const highlighter = await createHighlighter({
-      themes: ['github-light', 'github-dark', 'github-dark-dimmed'],
+      themes: ['github-dark'],
       langs: ['typescript', 'python'],
     })
 
     const parser = createParser(highlighter, {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-        dim: 'github-dark-dimmed',
-      },
+      theme: 'github-dark',
       defaultColor: false,
     })
     const plugin = createHighlightPlugin({ parser })
@@ -215,48 +211,138 @@ describe('createHighlightPlugin', () => {
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre
           data-language="typescript"
-          style="--shiki-light: #24292e; --shiki-dark: #e1e4e8; --shiki-dim: #adbac7; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e; --shiki-dim-bg: #22272e;"
+          style="--prosekit-highlight: #e1e4e8; --prosekit-highlight-bg: #24292e;"
+        >
+          <code>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              console.
+            </span>
+            <span class="shiki" style="color: rgb(179, 146, 240);">
+              log
+            </span>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              (
+            </span>
+            <span class="shiki" style="color: rgb(121, 184, 255);">
+              123
+            </span>
+            <span class="shiki" style="color: rgb(249, 117, 131);">
+              +
+            </span>
+            <span class="shiki" style="color: rgb(158, 203, 255);">
+              "456"
+            </span>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              );
+            </span>
+          </code>
+        </pre>
+        <pre
+          data-language="python"
+          style="--prosekit-highlight: #e1e4e8; --prosekit-highlight-bg: #24292e;"
+        >
+          <code>
+            <span class="shiki" style="color: rgb(121, 184, 255);">
+              print
+            </span>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              (
+            </span>
+            <span class="shiki" style="color: rgb(158, 203, 255);">
+              "1+1"
+            </span>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              ,
+            </span>
+            <span class="shiki" style="color: rgb(158, 203, 255);">
+              "="
+            </span>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              ,
+            </span>
+            <span class="shiki" style="color: rgb(121, 184, 255);">
+              2
+            </span>
+            <span class="shiki" style="color: rgb(225, 228, 232);">
+              )
+            </span>
+          </code>
+        </pre>
+      </div>;
+      "
+    `)
+  })
+
+  it('can highlight code blocks with shiki and multiple themes', async () => {
+    const { createParser } = await import('../src/shiki')
+    const { createHighlighter } = await import('shiki')
+
+    const highlighter = await createHighlighter({
+      themes: ['github-light', 'github-dark', 'github-dark-dimmed'],
+      langs: ['typescript', 'python'],
+    })
+
+    const parser = createParser(highlighter, {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+        dim: 'github-dark-dimmed',
+      },
+      defaultColor: false,
+      cssVariablePrefix: '--custom-prefix-',
+    })
+    const plugin = createHighlightPlugin({ parser })
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(`
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre
+          data-language="typescript"
+          style="--custom-prefix-light: #24292e; --custom-prefix-dark: #e1e4e8; --custom-prefix-dim: #adbac7; --custom-prefix-light-bg: #fff; --custom-prefix-dark-bg: #24292e; --custom-prefix-dim-bg: #22272e;"
         >
           <code>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               console.
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #6F42C1; --shiki-dark: #B392F0; --shiki-dim: #DCBDFB;"
+              style="--custom-prefix-light: #6F42C1; --custom-prefix-dark: #B392F0; --custom-prefix-dim: #DCBDFB;"
             >
               log
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               (
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #005CC5; --shiki-dark: #79B8FF; --shiki-dim: #6CB6FF;"
+              style="--custom-prefix-light: #005CC5; --custom-prefix-dark: #79B8FF; --custom-prefix-dim: #6CB6FF;"
             >
               123
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #D73A49; --shiki-dark: #F97583; --shiki-dim: #F47067;"
+              style="--custom-prefix-light: #D73A49; --custom-prefix-dark: #F97583; --custom-prefix-dim: #F47067;"
             >
               +
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #032F62; --shiki-dark: #9ECBFF; --shiki-dim: #96D0FF;"
+              style="--custom-prefix-light: #032F62; --custom-prefix-dark: #9ECBFF; --custom-prefix-dim: #96D0FF;"
             >
               "456"
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               );
             </span>
@@ -264,54 +350,54 @@ describe('createHighlightPlugin', () => {
         </pre>
         <pre
           data-language="python"
-          style="--shiki-light: #24292e; --shiki-dark: #e1e4e8; --shiki-dim: #adbac7; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e; --shiki-dim-bg: #22272e;"
+          style="--custom-prefix-light: #24292e; --custom-prefix-dark: #e1e4e8; --custom-prefix-dim: #adbac7; --custom-prefix-light-bg: #fff; --custom-prefix-dark-bg: #24292e; --custom-prefix-dim-bg: #22272e;"
         >
           <code>
             <span
               class="shiki"
-              style="--shiki-light: #005CC5; --shiki-dark: #79B8FF; --shiki-dim: #6CB6FF;"
+              style="--custom-prefix-light: #005CC5; --custom-prefix-dark: #79B8FF; --custom-prefix-dim: #6CB6FF;"
             >
               print
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               (
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #032F62; --shiki-dark: #9ECBFF; --shiki-dim: #96D0FF;"
+              style="--custom-prefix-light: #032F62; --custom-prefix-dark: #9ECBFF; --custom-prefix-dim: #96D0FF;"
             >
               "1+1"
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               ,
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #032F62; --shiki-dark: #9ECBFF; --shiki-dim: #96D0FF;"
+              style="--custom-prefix-light: #032F62; --custom-prefix-dark: #9ECBFF; --custom-prefix-dim: #96D0FF;"
             >
               "="
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               ,
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #005CC5; --shiki-dark: #79B8FF; --shiki-dim: #6CB6FF;"
+              style="--custom-prefix-light: #005CC5; --custom-prefix-dark: #79B8FF; --custom-prefix-dim: #6CB6FF;"
             >
               2
             </span>
             <span
               class="shiki"
-              style="--shiki-light: #24292E; --shiki-dark: #E1E4E8; --shiki-dim: #ADBAC7;"
+              style="--custom-prefix-light: #24292E; --custom-prefix-dark: #E1E4E8; --custom-prefix-dim: #ADBAC7;"
             >
               )
             </span>
