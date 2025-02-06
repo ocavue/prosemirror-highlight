@@ -1,7 +1,7 @@
 {
   "name": "prosemirror-highlight",
   "type": "module",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "packageManager": "pnpm@9.15.4",
   "description": "A ProseMirror plugin to highlight code blocks",
   "author": "ocavue <ocavue@gmail.com>",

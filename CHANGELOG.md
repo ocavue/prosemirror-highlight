@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.2](https://github.com/ocavue/prosemirror-highlight/compare/v0.12.1...v0.12.2) (2025-02-06)
+
+
+### Bug Fixes
+
+* support sugar-high v9 ([#75](https://github.com/ocavue/prosemirror-highlight/issues/75)) ([69c8e86](https://github.com/ocavue/prosemirror-highlight/commit/69c8e86245b59ff6ea8e496982d646a6b4eb4daf))
+
 ## [0.12.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.12.0...v0.12.1) (2025-02-02)
 
 
