@@ -60,8 +60,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       sugar-high:
-        specifier: ^0.8.2
-        version: 0.8.2
+        specifier: ^0.9.2
+        version: 0.9.2
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.5.1)(typescript@5.7.3)
@@ -2401,8 +2401,8 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
-  sugar-high@0.8.2:
-    resolution: {integrity: sha512-u/U1idCsHBMG9p5z88XYdEh9bxU19o5kueS0a3TKBYSFbTqtRqSyVqdbkFNXv/sDc9WYALCFT56EosyA0k1+3Q==}
+  sugar-high@0.9.2:
+    resolution: {integrity: sha512-jqbFM/pR6KlanZw87kBQZd0DO+C2mX8PML2q9VrTc3gz1c/jQtF2cZpBCnKDR4hRraUb15jS5WIxeRhua6gAXA==}
 
   supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
@@ -5548,7 +5548,7 @@ snapshots:
       pirates: 4.0.5
       ts-interface-checker: 0.1.13
 
-  sugar-high@0.8.2: {}
+  sugar-high@0.9.2: {}
 
   supports-color@5.5.0:
     dependencies:
