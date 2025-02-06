@@ -1,26 +1,11 @@
 import { Decoration } from 'prosemirror-view'
-import { tokenize } from 'sugar-high'
+import { tokenize, SugarHigh } from 'sugar-high'
 
 import type { Parser } from './types'
 
 export type { Parser }
 
-/**
- * Copied from https://github.com/huozhi/sugar-high/blob/v0.6.1/lib/index.js#L80-L107
- */
-const types = [
-  'identifier',
-  'keyword',
-  'string',
-  'class',
-  'property',
-  'entity',
-  'jsxliterals',
-  'sign',
-  'comment',
-  'break',
-  'space',
-] as const
+const types = SugarHigh.TokenTypes
 
 export function createParser(): Parser {
   return function parser({ content, pos }) {
