@@ -102,7 +102,7 @@
     }
   },
   "devDependencies": {
-    "@antfu/ni": "^0.23.2",
+    "@antfu/ni": "^23.3.1",
     "@ocavue/eslint-config": "^2.12.4",
     "@types/hast": "^3.0.4",
     "@types/node": "^20.17.5",
