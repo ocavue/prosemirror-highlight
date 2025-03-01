@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@antfu/ni':
-        specifier: ^0.23.2
-        version: 0.23.2
+        specifier: ^23.3.1
+        version: 23.3.1
       '@ocavue/eslint-config':
         specifier: ^2.12.4
         version: 2.12.4(@types/estree@1.0.6)(eslint@9.18.0)(jsonc-eslint-parser@2.4.0)(typescript@5.7.3)
@@ -84,8 +84,8 @@ packages:
   '@altano/repository-tools@0.1.1':
     resolution: {integrity: sha512-5vbUs2A98CC3g1AlOBdkBE0BMukkLjLIsMHAtuxg6Pt9dQXxYWdLKOf66v6c/vIqtNcgTMv0oGtddLdMuH9X6w==}
 
-  '@antfu/ni@0.23.2':
-    resolution: {integrity: sha512-FSEVWXvwroExDXUu8qV6Wqp2X3D1nJ0Li4LFymCyvCVrm7I3lNfG0zZWSWvGU1RE7891eTnFTyh31L3igOwNKQ==}
+  '@antfu/ni@23.3.1':
+    resolution: {integrity: sha512-C90iyzm/jLV7Lomv2UzwWUzRv9WZr1oRsFRKsX5HjQL4EXrbi9H/RtBkjCP+NF+ABZXUKpAa4F1dkoTaea4zHg==}
     hasBin: true
 
   '@babel/code-frame@7.24.7':
@@ -2834,7 +2834,7 @@ snapshots:
 
   '@altano/repository-tools@0.1.1': {}
 
-  '@antfu/ni@0.23.2': {}
+  '@antfu/ni@23.3.1': {}
 
   '@babel/code-frame@7.24.7':
     dependencies:
