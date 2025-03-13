@@ -1,17 +1,18 @@
 import { Decoration } from 'prosemirror-view'
 import {
-  type BundledLanguage,
-  type BundledTheme,
   type CodeToTokensOptions,
-  type Highlighter,
-} from 'shiki'
+  type HighlighterGeneric,
+} from '@shikijs/types'
 
 import type { Parser } from './types'
 
 export type { Parser }
 
-export function createParser(
-  highlighter: Highlighter,
+export function createParser<
+  BundledLanguage extends string,
+  BundledTheme extends string,
+>(
+  highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>,
   options?: CodeToTokensOptions<BundledLanguage, BundledTheme>,
 ): Parser {
   return function parser({ content, language, pos, size }) {
