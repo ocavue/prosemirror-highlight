@@ -1,6 +1,6 @@
 import type { Root } from 'hast'
 import type { Decoration } from 'prosemirror-view'
-import type { Refractor } from 'refractor/lib/core'
+import type { Refractor } from 'refractor/core'
 
 import { fillFromRoot } from './hast'
 import type { Parser } from './types'
@@ -9,15 +9,12 @@ export type { Parser }
 
 export function createParser(refractor: Refractor): Parser {
   return function highlighter({ content, language, pos }) {
-    const root = refractor.highlight(content, language || '')
+    const root: Root = refractor.highlight(content, language || '')
 
     const decorations: Decoration[] = []
     const from = pos + 1
 
-    // @ts-expect-error: the return value of `highlight` is not exactly a `hast.Root`
-    const hastRoot: Root = root
-
-    fillFromRoot(decorations, hastRoot, from)
+    fillFromRoot(decorations, root, from)
     return decorations
   }
 }
