@@ -1,4 +1,4 @@
-import { refractor } from 'refractor/lib/all'
+import { refractor } from 'refractor/all'
 
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/refractor'
