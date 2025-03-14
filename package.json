@@ -110,6 +110,7 @@
     "highlight.js": "^11.11.1",
     "jsdom": "^25.0.1",
     "lowlight": "^3.3.0",
+    "pkg-pr-new": "^0.0.41",
     "prettier": "^3.5.2",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-model": "^1.24.1",
