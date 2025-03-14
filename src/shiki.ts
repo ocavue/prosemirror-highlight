@@ -6,17 +6,17 @@ import type { Parser } from './types'
 export type { Parser }
 
 export function createParser<
-  Languages extends string = string,
-  Themes extends string = string,
+  Language extends string = string,
+  Theme extends string = string,
 >(
-  highlighter: HighlighterGeneric<Languages, Themes>,
-  options?: CodeToTokensOptions<Languages, Themes>,
+  highlighter: HighlighterGeneric<Language, Theme>,
+  options?: CodeToTokensOptions<Language, Theme>,
 ): Parser {
   return function parser({ content, language, pos, size }) {
     const decorations: Decoration[] = []
 
     const { tokens, fg, bg, rootStyle } = highlighter.codeToTokens(content, {
-      lang: language as Languages | undefined,
+      lang: language as Language | undefined,
 
       // Use provided options for themes or just use first loaded theme
       ...(options ?? {
