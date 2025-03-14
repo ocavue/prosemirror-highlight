@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.13.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.12.2...v0.13.0) (2025-03-14)
+
+
+### Features
+
+* support shiki v3 and shiki-codegen ([#80](https://github.com/ocavue/prosemirror-highlight/issues/80)) ([5690b56](https://github.com/ocavue/prosemirror-highlight/commit/5690b566ec7a2b7291ea6b03e7392d5de01f2d39))
+* update refractor to v5 ([#88](https://github.com/ocavue/prosemirror-highlight/issues/88)) ([8b51bc2](https://github.com/ocavue/prosemirror-highlight/commit/8b51bc262ce1195b9f6ab016a8192acf51bd3839))
+
 ## [0.12.2](https://github.com/ocavue/prosemirror-highlight/compare/v0.12.1...v0.12.2) (2025-02-06)
 
 
