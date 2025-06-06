@@ -107,77 +107,77 @@ describe('createHighlightPlugin', () => {
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre data-language="typescript">
           <code>
-            <span class="sh__token--identifier" style="">
+            <span class="sh__token--identifier" style="color: var(--sh-identifier);">
               console
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               .
             </span>
-            <span class="sh__token--property" style="">
+            <span class="sh__token--property" style="color: var(--sh-property);">
               log
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               (
             </span>
-            <span class="sh__token--class" style="">
+            <span class="sh__token--class" style="color: var(--sh-class);">
               123
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               +
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               "
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               456
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               "
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               )
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               ;
             </span>
           </code>
         </pre>
         <pre data-language="python">
           <code>
-            <span class="sh__token--identifier" style="">
+            <span class="sh__token--identifier" style="color: var(--sh-identifier);">
               print
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               (
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               "
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               1+1
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               "
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               ,
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               "
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               =
             </span>
-            <span class="sh__token--string" style="">
+            <span class="sh__token--string" style="color: var(--sh-string);">
               "
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               ,
             </span>
-            <span class="sh__token--class" style="">
+            <span class="sh__token--class" style="color: var(--sh-class);">
               2
             </span>
-            <span class="sh__token--sign" style="">
+            <span class="sh__token--sign" style="color: var(--sh-sign);">
               )
             </span>
           </code>
