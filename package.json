@@ -52,7 +52,7 @@
     "build:playground": "vite build",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "pnpm run build",
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
@@ -102,7 +102,6 @@
     }
   },
   "devDependencies": {
-    "@antfu/ni": "^23.3.1",
     "@ocavue/eslint-config": "^3.1.1",
     "@types/hast": "^3.0.4",
     "@types/node": "^20.17.5",
