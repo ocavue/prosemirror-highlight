@@ -1,4 +1,4 @@
-import type { Schema, Node as ProseMirrorNode } from 'prosemirror-model'
+import type { Node as ProseMirrorNode, Schema } from 'prosemirror-model'
 
 export function setupNodes(schema: Schema) {
   const doc = (nodes: ProseMirrorNode[]) => {
@@ -7,7 +7,7 @@ export function setupNodes(schema: Schema) {
   const codeBlock = (language: string, text: string) => {
     return schema.nodes.code_block.createChecked(
       { language },
-      schema.text(text),
+      text ? schema.text(text) : null,
     )
   }
 

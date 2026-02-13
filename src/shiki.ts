@@ -62,7 +62,7 @@ export function createParser<
 }
 
 /**
- * Copied from https://github.com/shikijs/shiki/blob/f76a371dbc2752cba341023df00ebfe9b66cb3f6/packages/core/src/utils.ts#L213
+ * Copied from https://github.com/shikijs/shiki/blob/v3.22.0/packages/core/src/utils/tokens.ts#L151
  *
  * Copy instead of import it from `shiki` to avoid importing the `shiki` package in this file.
  */

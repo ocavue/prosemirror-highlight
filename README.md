@@ -186,6 +186,25 @@ export const sugarHighPlugin = createHighlightPlugin({ parser })
 
 </details>
 
+## Line Numbers
+
+You can add line numbers to code blocks by wrapping any parser with `withLineNumbers`:
+
+```ts
+import { createHighlightPlugin, withLineNumbers } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/shiki'
+import { getSingletonHighlighter } from 'shiki'
+
+const highlighter = await getSingletonHighlighter({
+  themes: ['github-light'],
+  langs: ['javascript', 'typescript', 'python'],
+})
+const parser = withLineNumbers(createParser(highlighter))
+export const shikiPlugin = createHighlightPlugin({ parser })
+```
+
+This inserts `<span class="line-number">` elements with class name `line-number` at the start of each line.
+
 ## Online demo
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ocavue/prosemirror-highlight?file=playground%2Fmain.ts)
