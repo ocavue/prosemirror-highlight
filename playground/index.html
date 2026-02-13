@@ -27,6 +27,13 @@
         --sh-keyword: #f47067;
         --sh-comment: #a19595;
       }
+      :root {
+        --tok-keyword: #cf222e;
+        --tok-string: #0a3069;
+        --tok-number: #0550ae;
+        --tok-variable: #24292f;
+        --tok-property: #953800;
+      }
 
       body {
         margin-bottom: 128px;
@@ -66,6 +73,36 @@
           --prosemirror-highlight-bg,
           var(--background, inherit)
         );
+      }
+
+      body .ProseMirror .tok-keyword {
+        color: var(--tok-keyword);
+      }
+
+      body .ProseMirror .tok-string {
+        color: var(--tok-string);
+      }
+
+      body .ProseMirror .tok-number {
+        color: var(--tok-number);
+      }
+
+      body .ProseMirror .tok-variableName {
+        color: var(--tok-variable);
+      }
+
+      body .ProseMirror .tok-propertyName {
+        color: var(--tok-property);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --tok-keyword: #ff7b72;
+          --tok-string: #a5d6ff;
+          --tok-number: #79c0ff;
+          --tok-variable: #e6edf3;
+          --tok-property: #ffa657;
+        }
       }
     </style>
   </head>
