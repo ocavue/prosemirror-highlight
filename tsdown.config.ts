@@ -8,8 +8,6 @@ export default defineConfig({
     'src/shiki.ts',
     'src/sugar-high.ts',
   ],
-  platform: "neutral",
+  platform: 'neutral',
   format: ['esm'],
-  clean: true,
-  dts: true,
 })
