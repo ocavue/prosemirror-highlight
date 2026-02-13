@@ -53,17 +53,17 @@ function main() {
   })
 
   void setupView({
-    mount: getOrCreateElement('editor-shiki-lazy'),
-    plugin: () => import('./shiki-lazy').then((mod) => mod.shikiLazyPlugin),
-    title: 'Shiki (Lazy language loading)',
-    code: shikiLazyCode,
-  })
-
-  void setupView({
     mount: getOrCreateElement('editor-lezer'),
     plugin: () => import('./lezer').then((mod) => mod.lezerPlugin),
     title: 'Lezer',
     code: lezerCode,
+  })
+
+  void setupView({
+    mount: getOrCreateElement('editor-shiki-lazy'),
+    plugin: () => import('./shiki-lazy').then((mod) => mod.shikiLazyPlugin),
+    title: 'Shiki (Lazy language loading)',
+    code: shikiLazyCode,
   })
 }
 
