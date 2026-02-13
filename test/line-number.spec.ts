@@ -231,6 +231,53 @@ describe('withLineNumbers', () => {
     `)
   })
 
+  it('can handle \\r\\n line endings', async () => {
+    const { createParser } = await import('../src/lowlight')
+    const { common, createLowlight } = await import('lowlight')
+
+    const lowlight = createLowlight(common)
+    const parser = withLineNumbers(createParser(lowlight))
+    const plugin = createHighlightPlugin({ parser })
+
+    const doc = nodes.doc([
+      // eslint-disable-next-line unicorn/prefer-string-raw
+      nodes.codeBlock('typescript', 'const a = 1\r\nconst b = 2'),
+    ])
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = formatHTML(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(`
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
+        <pre data-language="typescript">
+          <code>
+            <span class="line-number ProseMirror-widget">
+              1
+            </span>
+            <span class="hljs-keyword">
+              const
+            </span>
+            a =
+            <span class="hljs-number">
+              1
+            </span>
+            \\r\\nconst b =
+            <span class="hljs-number">
+              2
+            </span>
+          </code>
+        </pre>
+      </div>
+      "
+    `)
+  })
+
   it('works with empty code blocks', async () => {
     const { createParser } = await import('../src/shiki')
     const { createHighlighter } = await import('shiki')
