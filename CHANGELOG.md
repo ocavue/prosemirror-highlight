@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.14.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.13.1...v0.14.0) (2026-02-13)
+
+
+### Features
+
+* print error messages when the parser fails ([#105](https://github.com/ocavue/prosemirror-highlight/issues/105)) ([24a305c](https://github.com/ocavue/prosemirror-highlight/commit/24a305c8cf75e4e5812b88077b907b8cf40867a6))
+
+
+### Bug Fixes
+
+* update dependencies ([#94](https://github.com/ocavue/prosemirror-highlight/issues/94)) ([19c8692](https://github.com/ocavue/prosemirror-highlight/commit/19c86921f8a6b11a2d5992f4732ce2e7833c2927))
+
 ## [0.13.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.13.0...v0.13.1) (2026-02-13)
 
 
