@@ -1,11 +1,10 @@
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 import {
   createHighlighter,
   type BuiltinLanguage,
   type Highlighter,
 } from 'shiki'
-
-import { createHighlightPlugin } from 'prosemirror-highlight'
-import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 
 let highlighter: Highlighter | undefined
 let parser: Parser | undefined

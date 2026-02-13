@@ -12,10 +12,9 @@ Highlight your [ProseMirror] code blocks with any syntax highlighter you like!
 <summary>Static loading of a fixed set of languages</summary>
 
 ```ts
-import { getSingletonHighlighter } from 'shiki'
-
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/shiki'
+import { getSingletonHighlighter } from 'shiki'
 
 const highlighter = await getSingletonHighlighter({
   themes: ['github-light'],
@@ -31,14 +30,13 @@ export const shikiPlugin = createHighlightPlugin({ parser })
 <summary>Dynamic loading of arbitrary languages</summary>
 
 ```ts
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 import {
   getSingletonHighlighter,
   type BuiltinLanguage,
   type Highlighter,
 } from 'shiki'
-
-import { createHighlightPlugin } from 'prosemirror-highlight'
-import { createParser, type Parser } from 'prosemirror-highlight/shiki'
 
 let highlighter: Highlighter | undefined
 let parser: Parser | undefined
@@ -105,7 +103,6 @@ You can use these variables to set the background color and text color of the co
 import 'highlight.js/styles/default.css'
 
 import { common, createLowlight } from 'lowlight'
-
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/lowlight'
 
@@ -122,10 +119,9 @@ export const lowlightPlugin = createHighlightPlugin({ parser })
 <summary>Static loading of all languages</summary>
 
 ```ts
-import { refractor } from 'refractor/all'
-
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser } from 'prosemirror-highlight/refractor'
+import { refractor } from 'refractor/all'
 
 const parser = createParser(refractor)
 export const refractorPlugin = createHighlightPlugin({ parser })

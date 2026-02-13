@@ -70,6 +70,9 @@
     "sugar-high": "^0.6.1 || ^0.7.0 || ^0.8.0 || ^0.9.0"
   },
   "peerDependenciesMeta": {
+    "@shikijs/types": {
+      "optional": true
+    },
     "@types/hast": {
       "optional": true
     },
@@ -92,9 +95,6 @@
       "optional": true
     },
     "refractor": {
-      "optional": true
-    },
-    "@shikijs/types": {
       "optional": true
     },
     "sugar-high": {
