@@ -242,7 +242,7 @@ describe('withLineNumbers', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    expect(view.dom.innerHTML.replaceAll(/\r/g, 'R').replaceAll(/\n/g, 'N')).toMatchInlineSnapshot(`"<pre data-language="typescript"><code><span class="line-number ProseMirror-widget">1</span>FirstR<span class="line-number ProseMirror-widget">2</span>NSecondR<span class="line-number ProseMirror-widget">3</span>N<br class="ProseMirror-trailingBreak"></code></pre>"`)
+    expect(view.dom.innerHTML.replaceAll(/\r/g, 'R').replaceAll(/\n/g, 'N')).toMatchInlineSnapshot(`"<pre data-language="typescript"><code><span class="line-number ProseMirror-widget">1</span>FirstRN<span class="line-number ProseMirror-widget">2</span>SecondRN<span class="line-number ProseMirror-widget">3</span><img class="ProseMirror-separator" alt=""><br class="ProseMirror-trailingBreak"></code></pre>"`)
   })
 
   it('works with empty code blocks', async () => {
