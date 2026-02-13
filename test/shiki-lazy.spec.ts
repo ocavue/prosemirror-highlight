@@ -10,9 +10,7 @@ import { formatHtml, setupNodes } from './helpers'
 describe('shikiLazyPlugin', () => {
   it('can highlight javascript code block', async () => {
     const nodes = setupNodes(schema)
-    const doc = nodes.doc([
-      nodes.codeBlock('javascript', '1+2'),
-    ])
+    const doc = nodes.doc([nodes.codeBlock('javascript', '1+2')])
     const state = EditorState.create({ doc, plugins: [shikiLazyPlugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
@@ -55,9 +53,7 @@ describe('shikiLazyPlugin', () => {
 
   it.skip('can highlight plaintext code block', async () => {
     const nodes = setupNodes(schema)
-    const doc = nodes.doc([
-      nodes.codeBlock('plaintext', '1+2'),
-    ])
+    const doc = nodes.doc([nodes.codeBlock('plaintext', '1+2')])
     const state = EditorState.create({ doc, plugins: [shikiLazyPlugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
