@@ -53,7 +53,6 @@
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "pnpm run build",
-    "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc -b"
   },
