@@ -7,23 +7,19 @@ import type { Parser, ParserOptions } from './types'
 
 export type { Parser }
 
-
-export function createParser(
-  {
-    parse,
-    highlighter
-  }: {
-    parse: (options: ParserOptions) => Tree | undefined
-    highlighter: Highlighter | readonly Highlighter[]
-  }
-): Parser {
+export function createParser({
+  parse,
+  highlighter,
+}: {
+  parse: (options: ParserOptions) => Tree | undefined
+  highlighter: Highlighter | readonly Highlighter[]
+}): Parser {
   return function lezerParser(options) {
     const tree = parse(options)
 
     if (!tree) {
       return []
     }
-
 
     const decorations: Decoration[] = []
     const offset = options.pos + 1

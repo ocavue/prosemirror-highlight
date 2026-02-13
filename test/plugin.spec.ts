@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 import { schema } from '../playground/schema'
 import { createHighlightPlugin } from '../src/plugin'
+import type { ParserOptions } from '../src/types'
 
 import { formatHtml, setupNodes } from './helpers'
 
@@ -191,19 +192,47 @@ describe('createHighlightPlugin', () => {
   it('can highlight code blocks with lezer', async () => {
     const { createParser } = await import('../src/lezer')
     const { classHighlighter } = await import('@lezer/highlight')
-    const { parser: jsParser } = await import('@lezer/javascript')
+    const { parser: javascriptParser } = await import('@lezer/javascript')
+    const { parser: cssParser } = await import('@lezer/css')
 
-    const parser = createParser(
-      { typescript: jsParser, javascript: jsParser },
-      classHighlighter,
-    )
+    const parse = (options: ParserOptions) => {
+      const lang = options.language?.toLowerCase() || ''
+      if (['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx'].includes(lang)) {
+        return javascriptParser.parse(options.content)
+      }
+      if (['css'].includes(lang)) {
+        return cssParser.parse(options.content)
+      }
+    }
+
+    const parser = createParser({ parse, highlighter: classHighlighter })
     const plugin = createHighlightPlugin({ parser })
 
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
     const html = await formatHtml(view.dom.outerHTML)
-    expect(html).toMatchSnapshot()
+    expect(html).toMatchInlineSnapshot(`
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre data-language="typescript">
+          <code>
+            <span class="tok-variableName">console</span>
+            <span class="tok-operator">.</span>
+            <span class="tok-propertyName">log</span>
+            <span class="tok-punctuation">(</span>
+            <span class="tok-number">123</span>
+            <span class="tok-operator">+</span>
+            <span class="tok-string">"456"</span>
+            <span class="tok-punctuation">)</span>
+            <span class="tok-punctuation">;</span>
+          </code>
+        </pre>
+        <pre data-language="python">
+          <code>print("1+1","=",2)</code>
+        </pre>
+      </div>;
+      "
+    `)
   })
 
   it('can highlight code blocks with shiki', async () => {
