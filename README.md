@@ -157,6 +157,44 @@ export const refractorPlugin = createHighlightPlugin({ parser })
 
 </details>
 
+### With [Lezer]
+
+<details>
+<summary>Using Lezer parsers with classHighlighter</summary>
+
+```ts
+import type { Tree } from '@lezer/common'
+import { parser as cssParser } from '@lezer/css'
+import { classHighlighter } from '@lezer/highlight'
+import { parser as javascriptParser } from '@lezer/javascript'
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser, type ParserOptions } from 'prosemirror-highlight/lezer'
+
+function parse({ content, language }: ParserOptions): Tree | undefined {
+  const lang = language?.toLowerCase() || ''
+  switch (lang) {
+    case 'js':
+    case 'javascript':
+    case 'ts':
+    case 'typescript':
+    case 'jsx':
+    case 'tsx':
+      return javascriptParser.parse(content)
+    case 'css':
+    case 'scss':
+    case 'sass':
+      return cssParser.parse(content)
+    default:
+      return undefined
+  }
+}
+
+const parser = createParser({ highlighter: classHighlighter, parse })
+export const lezerPlugin = createHighlightPlugin({ parser })
+```
+
+</details>
+
 ### With [Sugar high]
 
 <details>
@@ -223,5 +261,6 @@ MIT
 [Highlight.js]: https://github.com/highlightjs/highlight.js
 [Shiki]: https://github.com/shikijs/shiki
 [refractor]: https://github.com/wooorm/refractor
+[Lezer]: https://lezer.codemirror.net
 [Prism]: https://github.com/PrismJS/prism
 [Sugar high]: https://github.com/huozhi/sugar-high
