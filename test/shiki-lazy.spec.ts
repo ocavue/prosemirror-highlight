@@ -25,7 +25,12 @@ describe('shikiLazyPlugin', () => {
     const html = formatHTML(view.dom.outerHTML)
 
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre
           data-language="javascript"
           style="--prosemirror-highlight: #adbac7; --shiki-light: #24292e; --shiki-dark: #e1e4e8; --prosemirror-highlight-bg: #22272e; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e;"
@@ -51,7 +56,7 @@ describe('shikiLazyPlugin', () => {
             </span>
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
@@ -68,16 +73,23 @@ describe('shikiLazyPlugin', () => {
     const html = formatHTML(view.dom.outerHTML)
 
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre
           data-language="plaintext"
           style="--prosemirror-highlight: #adbac7; --shiki-light: #24292e; --shiki-dark: #e1e4e8; --prosemirror-highlight-bg: #22272e; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e;"
         >
           <code>
-            <span class="shiki">1+2</span>
+            <span class="shiki">
+              1+2
+            </span>
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
@@ -111,7 +123,12 @@ describe('shikiLazyPlugin', () => {
     const html = formatHTML(view.dom.outerHTML)
 
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre
           data-language="javascript"
           style="--prosemirror-highlight: #adbac7; --shiki-light: #24292e; --shiki-dark: #e1e4e8; --prosemirror-highlight-bg: #22272e; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e;"
@@ -138,12 +155,19 @@ describe('shikiLazyPlugin', () => {
           </code>
         </pre>
         <pre data-language="unknown-language">
-          <code>2+2</code>
+          <code>
+            2+2
+          </code>
         </pre>
-        <pre data-language="javascript" style="">
-          <code>3+3</code>
+        <pre
+          data-language="javascript"
+          style
+        >
+          <code>
+            3+3
+          </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
