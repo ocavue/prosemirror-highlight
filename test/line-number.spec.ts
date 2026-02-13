@@ -236,13 +236,13 @@ describe('withLineNumbers', () => {
     const plugin = createHighlightPlugin({ parser })
 
     const doc = nodes.doc([
-      nodes.codeBlock('typescript', '1\r\n2\r\n'),
+      nodes.codeBlock('typescript', 'First\r\nSecond\r\n'),
     ])
 
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    expect(view.dom.innerHTML.replaceAll(/\r/g, 'R').replaceAll(/\n/g, 'N')).toMatchInlineSnapshot(`"<pre data-language="typescript"><code><span class="line-number ProseMirror-widget">1</span>1R<span class="line-number ProseMirror-widget">2</span>N2R<span class="line-number ProseMirror-widget">3</span>N<br class="ProseMirror-trailingBreak"></code></pre>"`)
+    expect(view.dom.innerHTML.replaceAll(/\r/g, 'R').replaceAll(/\n/g, 'N')).toMatchInlineSnapshot(`"<pre data-language="typescript"><code><span class="line-number ProseMirror-widget">1</span>FirstR<span class="line-number ProseMirror-widget">2</span>NSecondR<span class="line-number ProseMirror-widget">3</span>N<br class="ProseMirror-trailingBreak"></code></pre>"`)
   })
 
   it('works with empty code blocks', async () => {
