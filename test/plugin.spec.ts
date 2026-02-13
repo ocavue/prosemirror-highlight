@@ -92,6 +92,26 @@ describe('createHighlightPlugin', () => {
     `)
   })
 
+  it('can highlight code blocks with lezer', async () => {
+    const { createParser } = await import('../src/lezer')
+    const { parser: javascript } = await import('@lezer/javascript')
+
+    const parser = createParser({
+      typescript: javascript.configure({ dialect: 'ts' }),
+    })
+    const plugin = createHighlightPlugin({ parser })
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+    const dom = new DOMParser().parseFromString(view.dom.outerHTML, 'text/html')
+
+    const codeBlocks = dom.querySelectorAll('pre code')
+
+    expect(codeBlocks[0]?.querySelector('.tok-variableName')).not.toBeNull()
+    expect(codeBlocks[0]?.querySelector('.tok-number')).not.toBeNull()
+    expect(codeBlocks[1]?.querySelector('span')).toBeNull()
+  })
+
   it('can highlight code blocks with sugar-high', async () => {
     const { createParser } = await import('../src/sugar-high')
 

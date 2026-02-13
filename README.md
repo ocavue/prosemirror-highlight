@@ -122,6 +122,35 @@ You can use these variables to set the background color and text color of the co
 
 </details>
 
+### With [Lezer]
+
+<details>
+<summary>Highlight with token classes</summary>
+
+```ts
+import { parser as javascript } from '@lezer/javascript'
+import { createHighlightPlugin } from 'prosemirror-highlight'
+import { createParser } from 'prosemirror-highlight/lezer'
+
+const parser = createParser({
+  javascript,
+  typescript: javascript.configure({ dialect: 'ts' }),
+})
+export const lezerPlugin = createHighlightPlugin({ parser })
+```
+
+```css
+.tok-keyword {
+  color: #cf222e;
+}
+
+.tok-string {
+  color: #0a3069;
+}
+```
+
+</details>
+
 ### With [lowlight] (based on [Highlight.js])
 
 <details>
@@ -203,6 +232,7 @@ MIT
 [lowlight]: https://github.com/wooorm/lowlight
 [Highlight.js]: https://github.com/highlightjs/highlight.js
 [Shiki]: https://github.com/shikijs/shiki
+[Lezer]: https://lezer.codemirror.net/
 [refractor]: https://github.com/wooorm/refractor
 [Prism]: https://github.com/PrismJS/prism
 [Sugar high]: https://github.com/huozhi/sugar-high
