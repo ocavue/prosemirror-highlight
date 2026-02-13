@@ -197,7 +197,9 @@ describe('createHighlightPlugin', () => {
 
     const parse = (options: ParserOptions) => {
       const lang = options.language?.toLowerCase() || ''
-      if (['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx'].includes(lang)) {
+      if (
+        ['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx'].includes(lang)
+      ) {
         return javascriptParser.parse(options.content)
       }
       if (['css'].includes(lang)) {

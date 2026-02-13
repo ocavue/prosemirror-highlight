@@ -5,7 +5,7 @@ import { Decoration } from 'prosemirror-view'
 
 import type { Parser, ParserOptions } from './types'
 
-export type { Parser }
+export type { Parser, ParserOptions }
 
 export function createParser({
   parse,
