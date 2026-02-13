@@ -18,6 +18,7 @@ describe('shikiLazyPlugin', () => {
     const state = EditorState.create({ doc, plugins: [shikiLazyPlugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
+    // Wait for the shiki to load and apply the decorations
     await expect.poll(() => view.dom.outerHTML).toContain('shiki')
 
     const html = await formatHtml(view.dom.outerHTML)
