@@ -1,29 +1,38 @@
-import type { Parser as LezerParser } from '@lezer/common'
-import { highlightTree } from '@lezer/highlight'
+import type { Tree } from '@lezer/common'
 import type { Highlighter } from '@lezer/highlight'
+import { highlightTree } from '@lezer/highlight'
 import { Decoration } from 'prosemirror-view'
 
-import type { Parser } from './types'
+import type { Parser, ParserOptions } from './types'
 
 export type { Parser }
 
+
 export function createParser(
-  languageParsers: Record<string, LezerParser>,
-  highlighter: Highlighter | readonly Highlighter[],
+  {
+    parse,
+    highlighter
+  }: {
+    parse: (options: ParserOptions) => Tree | undefined
+    highlighter: Highlighter | readonly Highlighter[]
+  }
 ): Parser {
-  return function parser({ content, language, pos }) {
-    const lezerParser = language ? languageParsers[language] : undefined
-    if (!lezerParser) {
+  return function lezerParser(options) {
+    const tree = parse(options)
+
+    if (!tree) {
       return []
     }
 
-    const tree = lezerParser.parse(content)
-    const decorations: Decoration[] = []
 
+    const decorations: Decoration[] = []
+    const offset = options.pos + 1
     highlightTree(tree, highlighter, (from, to, classes) => {
-      decorations.push(
-        Decoration.inline(pos + 1 + from, pos + 1 + to, { class: classes }),
-      )
+      if (classes && from < to) {
+        decorations.push(
+          Decoration.inline(offset + from, offset + to, { class: classes }),
+        )
+      }
     })
 
     return decorations
