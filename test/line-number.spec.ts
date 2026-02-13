@@ -245,7 +245,11 @@ describe('withLineNumbers', () => {
     )
     const plugin = createHighlightPlugin({ parser })
 
-    const doc = nodes.doc([nodes.codeBlock('typescript', ''), nodes.codeBlock('typescript', '\n'), nodes.codeBlock('typescript', '\n\n')])
+    const doc = nodes.doc([
+      nodes.codeBlock('typescript', ''),
+      nodes.codeBlock('typescript', '\n'),
+      nodes.codeBlock('typescript', '\n\n'),
+    ])
 
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })

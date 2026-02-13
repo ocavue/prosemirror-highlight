@@ -1,9 +1,16 @@
 code .line-number {
-  width: 1rem;
-  padding-right: 1.5rem;
-  display: inline-block;
+  width: 2em;
+  position: absolute;
+  left: 2em;
+  display: inline-flex;
+  justify-content: flex-end;
   font-variant-numeric: tabular-nums;
-  text-align: right;
+  overflow: visible;
+  text-wrap: nowrap;
   opacity: 0.3;
   user-select: none;
+}
+
+code:has(.line-number.ProseMirror-widget) {
+  padding-left: 4em;
 }

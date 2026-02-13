@@ -203,21 +203,7 @@ const parser = withLineNumbers(createParser(highlighter))
 export const shikiPlugin = createHighlightPlugin({ parser })
 ```
 
-This inserts `<span class="line-number">` widget decorations at the start of each line. Style them with CSS:
-
-```css
-code .line-number {
-  width: 1rem;
-  padding-right: 1.5rem;
-  display: inline-block;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-  opacity: 0.3;
-  user-select: none;
-}
-```
-
-`withLineNumbers` works with all supported parsers (Shiki, lowlight, refractor, sugar-high, Lezer).
+This inserts `<span class="line-number">` elements with class name `line-number` at the start of each line.
 
 ## Online demo
 
