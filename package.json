@@ -55,7 +55,7 @@
     "prepublishOnly": "pnpm run build",
     "start": "esno src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc -b"
   },
   "peerDependencies": {
     "@shikijs/types": "^1.29.2 || ^2.0.0 || ^3.0.0",
