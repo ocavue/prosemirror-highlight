@@ -10,7 +10,7 @@ function parse({ content, language }: ParserOptions): Tree | undefined {
   if (['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx'].includes(lang)) {
     return javascriptParser.parse(content)
   }
-  if (['css'].includes(lang)) {
+  if (['css', 'scss', 'sass'].includes(lang)) {
     return cssParser.parse(content)
   }
 }
