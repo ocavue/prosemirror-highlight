@@ -32,6 +32,7 @@ export const shikiPlugin = createHighlightPlugin({ parser })
 ```ts
 import { createHighlightPlugin } from 'prosemirror-highlight'
 import { createParser, type Parser } from 'prosemirror-highlight/shiki'
+import type { Decoration } from 'prosemirror-view'
 import {
   getSingletonHighlighter,
   type BuiltinLanguage,
@@ -39,7 +40,9 @@ import {
 } from 'shiki'
 
 let highlighter: Highlighter | undefined
+let highlighterPromise: Promise<void> | undefined
 let parser: Parser | undefined
+const loadedLanguages = new Set<string>()
 
 /**
  * Lazy load highlighter and highlighter languages.
@@ -48,19 +51,24 @@ let parser: Parser | undefined
  * promise that resolves when the highlighter or the language is loaded.
  * Otherwise, it returns an array of decorations.
  */
-const lazyParser: Parser = (options) => {
+const lazyParser: Parser = (options): Promise<void> | Decoration[] => {
   if (!highlighter) {
-    return getSingletonHighlighter({
-      themes: ['github-light'],
-      langs: [],
-    }).then((h) => {
-      highlighter = h
-    })
+    if (!highlighterPromise) {
+      highlighterPromise = getSingletonHighlighter({
+        themes: ['github-light'],
+        langs: [],
+      }).then((h) => {
+        highlighter = h
+      })
+    }
+    return highlighterPromise
   }
 
   const language = options.language as BuiltinLanguage
-  if (language && !highlighter.getLoadedLanguages().includes(language)) {
-    return highlighter.loadLanguage(language)
+  if (language && !loadedLanguages.has(language)) {
+    return highlighter.loadLanguage(language).finally(() => {
+      loadedLanguages.add(language)
+    })
   }
 
   if (!parser) {
