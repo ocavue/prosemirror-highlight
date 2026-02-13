@@ -10,7 +10,7 @@ import type { LanguageExtractor, Parser } from './types'
  */
 export interface HighlightPluginState {
   cache: DecorationCache
-  decorations: DecorationSet
+  decorations: DecorationSet | undefined
   promises: Promise<void>[]
 }
 
@@ -64,7 +64,7 @@ export function createHighlightPlugin({
         const refresh = !!tr.getMeta('prosemirror-highlight-refresh')
 
         if (!tr.docChanged && !refresh) {
-          const decorations = data.decorations.map(tr.mapping, tr.doc)
+          const decorations = data.decorations?.map(tr.mapping, tr.doc)
           const promises = data.promises
           return { cache, decorations, promises }
         }
@@ -101,7 +101,11 @@ export function createHighlightPlugin({
               promises.delete(promise)
               refresh()
             })
-            .catch(() => {
+            .catch((error) => {
+              console.error(
+                '[prosemirror-highlight] Error resolving parser:',
+                error,
+              )
               promises.delete(promise)
             })
         }
@@ -129,41 +133,65 @@ function calculateDecoration(
   nodeTypes: string[],
   languageExtractor: LanguageExtractor,
   cache: DecorationCache,
-) {
-  const result: Decoration[] = []
+): [DecorationSet | undefined, Promise<void>[]] {
+  const allDecorations: Decoration[][] = []
   const promises: Promise<void>[] = []
+  const nodes = collectCodeBlocks(doc, nodeTypes)
 
-  doc.descendants((node, pos) => {
-    if (!node.type.isTextblock) {
-      return true
-    }
-
-    if (nodeTypes.includes(node.type.name)) {
+  try {
+    for (const [node, pos] of nodes) {
       const language = languageExtractor(node)
       const cached = cache.get(pos)
 
       if (cached) {
         const [_, decorations] = cached
-        result.push(...decorations)
+        if (decorations.length > 0) {
+          allDecorations.push(decorations)
+        }
       } else {
-        const decorations = parser({
+        const parsed = parser({
           content: node.textContent,
           language: language || undefined,
           pos,
           size: node.nodeSize,
         })
-
-        if (decorations && Array.isArray(decorations)) {
-          cache.set(pos, node, decorations)
-          result.push(...decorations)
-        } else if (decorations instanceof Promise) {
+        if (parsed && Array.isArray(parsed)) {
+          cache.set(pos, node, parsed)
+          if (parsed.length > 0) {
+            allDecorations.push(parsed)
+          }
+        } else if (parsed instanceof Promise) {
           cache.remove(pos)
-          promises.push(decorations)
+          promises.push(parsed)
+        } else {
+          console.error(
+            `[prosemirror-highlight] Invalid parser result:`,
+            parsed,
+          )
         }
       }
     }
-    return false
-  })
+  } catch (error) {
+    console.error(`[prosemirror-highlight] Error parsing code blocks:`, error)
+  }
 
-  return [DecorationSet.create(doc, result), promises] as const
+  const decorationSet =
+    allDecorations.length > 0
+      ? DecorationSet.create(doc, allDecorations.flat())
+      : undefined
+  return [decorationSet, promises]
+}
+
+function collectCodeBlocks(
+  doc: ProseMirrorNode,
+  nodeTypes: string[],
+): Array<[node: ProseMirrorNode, pos: number]> {
+  const nodes: Array<[node: ProseMirrorNode, pos: number]> = []
+  doc.descendants((node, pos) => {
+    if (node.type.isTextblock && nodeTypes.includes(node.type.name)) {
+      nodes.push([node, pos])
+      return false
+    }
+  })
+  return nodes
 }

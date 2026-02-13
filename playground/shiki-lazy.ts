@@ -12,6 +12,29 @@ let highlighterPromise: Promise<void> | undefined
 let parser: Parser | undefined
 const loadedLanguages = new Set<string>()
 
+function loadHighlighter(): Promise<void> {
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
+      themes: ['github-light', 'github-dark', 'github-dark-dimmed'],
+      langs: [],
+    }).then((h) => {
+      highlighter = h
+    })
+  }
+  return highlighterPromise
+}
+
+async function loadLanguage(
+  highlighter: Highlighter,
+  language: string,
+): Promise<void> {
+  try {
+    return await highlighter.loadLanguage(language as BuiltinLanguage)
+  } finally {
+    loadedLanguages.add(language)
+  }
+}
+
 /**
  * Lazy load highlighter and highlighter languages.
  *
@@ -21,22 +44,12 @@ const loadedLanguages = new Set<string>()
  */
 const lazyParser: Parser = (options): Promise<void> | Decoration[] => {
   if (!highlighter) {
-    if (!highlighterPromise) {
-      highlighterPromise = createHighlighter({
-        themes: ['github-light', 'github-dark', 'github-dark-dimmed'],
-        langs: [],
-      }).then((h) => {
-        highlighter = h
-      })
-    }
-    return highlighterPromise
+    return loadHighlighter()
   }
 
-  const language = options.language as BuiltinLanguage
+  const language = options.language
   if (language && !loadedLanguages.has(language)) {
-    return highlighter.loadLanguage(language).finally(() => {
-      loadedLanguages.add(language)
-    })
+    return loadLanguage(highlighter, language)
   }
 
   if (!parser) {
