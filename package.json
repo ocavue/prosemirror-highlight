@@ -102,10 +102,10 @@
     }
   },
   "devDependencies": {
-    "@ocavue/eslint-config": "^3.4.0",
+    "@ocavue/eslint-config": "^3.11.2",
     "@types/hast": "^3.0.4",
     "@types/node": "^20.17.5",
-    "eslint": "^9.34.0",
+    "eslint": "^9.39.2",
     "highlight.js": "^11.11.1",
     "jsdom": "^26.1.0",
     "lowlight": "^3.3.0",
