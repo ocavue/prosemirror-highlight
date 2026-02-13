@@ -48,7 +48,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsup",
+    "build": "tsdown",
     "build:playground": "vite build",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
@@ -103,6 +103,7 @@
   },
   "devDependencies": {
     "@ocavue/eslint-config": "^3.11.2",
+    "@ocavue/tsconfig": "^0.6.3",
     "@shikijs/types": "^3.13.0",
     "@types/hast": "^3.0.4",
     "@types/node": "^24.0.0",
@@ -121,7 +122,7 @@
     "refractor": "^5.0.0",
     "shiki": "^3.13.0",
     "sugar-high": "^0.9.3",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.2",
     "vite": "^7.1.9",
     "vitest": "^3.2.4"
