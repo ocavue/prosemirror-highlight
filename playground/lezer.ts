@@ -7,11 +7,20 @@ import { createParser, type ParserOptions } from 'prosemirror-highlight/lezer'
 
 function parse({ content, language }: ParserOptions): Tree | undefined {
   const lang = language?.toLowerCase() || ''
-  if (['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx'].includes(lang)) {
-    return javascriptParser.parse(content)
-  }
-  if (['css', 'scss', 'sass'].includes(lang)) {
-    return cssParser.parse(content)
+  switch (lang) {
+    case 'js':
+    case 'javascript':
+    case 'ts':
+    case 'typescript':
+    case 'jsx':
+    case 'tsx':
+      return javascriptParser.parse(content)
+    case 'css':
+    case 'scss':
+    case 'sass':
+      return cssParser.parse(content)
+    default:
+      return undefined
   }
 }
 
