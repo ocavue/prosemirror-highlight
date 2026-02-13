@@ -4,7 +4,6 @@ import { describe, expect, it } from 'vitest'
 
 import { schema } from '../playground/schema'
 import { createHighlightPlugin } from '../src/plugin'
-import type { ParserOptions } from '../src/types'
 
 import { formatHtml, setupNodes } from './helpers'
 
@@ -190,27 +189,8 @@ describe('createHighlightPlugin', () => {
   })
 
   it('can highlight code blocks with lezer', async () => {
-    const { createParser } = await import('../src/lezer')
-    const { classHighlighter } = await import('@lezer/highlight')
-    const { parser: javascriptParser } = await import('@lezer/javascript')
-    const { parser: cssParser } = await import('@lezer/css')
-
-    const parse = (options: ParserOptions) => {
-      const lang = options.language?.toLowerCase() || ''
-      if (
-        ['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx'].includes(lang)
-      ) {
-        return javascriptParser.parse(options.content)
-      }
-      if (['css'].includes(lang)) {
-        return cssParser.parse(options.content)
-      }
-    }
-
-    const parser = createParser({ parse, highlighter: classHighlighter })
-    const plugin = createHighlightPlugin({ parser })
-
-    const state = EditorState.create({ doc, plugins: [plugin] })
+    const { lezerPlugin } = await import('../playground/lezer')
+    const state = EditorState.create({ doc, plugins: [lezerPlugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
     const html = await formatHtml(view.dom.outerHTML)
