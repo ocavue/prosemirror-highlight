@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.13.0...v0.13.1) (2026-02-13)
+
+
+### Bug Fixes
+
+* enable npm OIDC publishing ([#101](https://github.com/ocavue/prosemirror-highlight/issues/101)) ([4e6cd3d](https://github.com/ocavue/prosemirror-highlight/commit/4e6cd3d0c38b7c39be114e94f81901fc6a2ad331))
+
 ## [0.13.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.12.2...v0.13.0) (2025-03-14)
 
 
