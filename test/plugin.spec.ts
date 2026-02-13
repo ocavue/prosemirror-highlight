@@ -1,3 +1,4 @@
+import { formatHTML } from 'diffable-html-snapshot'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { describe, expect, it } from 'vitest'
@@ -5,7 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { schema } from '../playground/schema'
 import { createHighlightPlugin } from '../src/plugin'
 
-import { formatHtml, setupNodes } from './helpers'
+import { setupNodes } from './helpers'
 
 describe('createHighlightPlugin', () => {
   const nodes = setupNodes(schema)
@@ -26,25 +27,55 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre data-language="typescript">
           <code>
-            <span class="hljs-variable language_">console</span>.
-            <span class="hljs-title function_">log</span>(
-            <span class="hljs-number">123</span>+
-            <span class="hljs-string">"456"</span>);
+            <span class="hljs-variable language_">
+              console
+            </span>
+            .
+            <span class="hljs-title function_">
+              log
+            </span>
+            (
+            <span class="hljs-number">
+              123
+            </span>
+            +
+            <span class="hljs-string">
+              "456"
+            </span>
+            );
           </code>
         </pre>
         <pre data-language="python">
           <code>
-            <span class="hljs-built_in">print</span>(
-            <span class="hljs-string">"1+1"</span>,
-            <span class="hljs-string">"="</span>,<span class="hljs-number">2</span>)
+            <span class="hljs-built_in">
+              print
+            </span>
+            (
+            <span class="hljs-string">
+              "1+1"
+            </span>
+            ,
+            <span class="hljs-string">
+              "="
+            </span>
+            ,
+            <span class="hljs-number">
+              2
+            </span>
+            )
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
@@ -59,35 +90,74 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre data-language="typescript">
           <code>
-            <span class="token builtin">console</span>
-            <span class="token punctuation">.</span>
-            <span class="token function">log</span>
-            <span class="token punctuation">(</span>
-            <span class="token number">123</span>
-            <span class="token operator">+</span>
-            <span class="token string">"456"</span>
-            <span class="token punctuation">)</span>
-            <span class="token punctuation">;</span>
+            <span class="token builtin">
+              console
+            </span>
+            <span class="token punctuation">
+              .
+            </span>
+            <span class="token function">
+              log
+            </span>
+            <span class="token punctuation">
+              (
+            </span>
+            <span class="token number">
+              123
+            </span>
+            <span class="token operator">
+              +
+            </span>
+            <span class="token string">
+              "456"
+            </span>
+            <span class="token punctuation">
+              )
+            </span>
+            <span class="token punctuation">
+              ;
+            </span>
           </code>
         </pre>
         <pre data-language="python">
           <code>
-            <span class="token keyword">print</span>
-            <span class="token punctuation">(</span>
-            <span class="token string">"1+1"</span>
-            <span class="token punctuation">,</span>
-            <span class="token string">"="</span>
-            <span class="token punctuation">,</span>
-            <span class="token number">2</span>
-            <span class="token punctuation">)</span>
+            <span class="token keyword">
+              print
+            </span>
+            <span class="token punctuation">
+              (
+            </span>
+            <span class="token string">
+              "1+1"
+            </span>
+            <span class="token punctuation">
+              ,
+            </span>
+            <span class="token string">
+              "="
+            </span>
+            <span class="token punctuation">
+              ,
+            </span>
+            <span class="token number">
+              2
+            </span>
+            <span class="token punctuation">
+              )
+            </span>
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
@@ -101,88 +171,162 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(
       `
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre data-language="typescript">
           <code>
-            <span class="sh__token--identifier" style="color: var(--sh-identifier);">
+            <span
+              class="sh__token--identifier"
+              style="color: var(--sh-identifier);"
+            >
               console
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               .
             </span>
-            <span class="sh__token--property" style="color: var(--sh-property);">
+            <span
+              class="sh__token--property"
+              style="color: var(--sh-property);"
+            >
               log
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               (
             </span>
-            <span class="sh__token--class" style="color: var(--sh-class);">
+            <span
+              class="sh__token--class"
+              style="color: var(--sh-class);"
+            >
               123
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               +
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               "
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               456
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               "
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               )
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               ;
             </span>
           </code>
         </pre>
         <pre data-language="python">
           <code>
-            <span class="sh__token--identifier" style="color: var(--sh-identifier);">
+            <span
+              class="sh__token--identifier"
+              style="color: var(--sh-identifier);"
+            >
               print
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               (
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               "
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               1+1
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               "
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               ,
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               "
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               =
             </span>
-            <span class="sh__token--string" style="color: var(--sh-string);">
+            <span
+              class="sh__token--string"
+              style="color: var(--sh-string);"
+            >
               "
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               ,
             </span>
-            <span class="sh__token--class" style="color: var(--sh-class);">
+            <span
+              class="sh__token--class"
+              style="color: var(--sh-class);"
+            >
               2
             </span>
-            <span class="sh__token--sign" style="color: var(--sh-sign);">
+            <span
+              class="sh__token--sign"
+              style="color: var(--sh-sign);"
+            >
               )
             </span>
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `,
     )
@@ -193,26 +337,51 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [lezerPlugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre data-language="typescript">
           <code>
-            <span class="tok-variableName">console</span>
-            <span class="tok-operator">.</span>
-            <span class="tok-propertyName">log</span>
-            <span class="tok-punctuation">(</span>
-            <span class="tok-number">123</span>
-            <span class="tok-operator">+</span>
-            <span class="tok-string">"456"</span>
-            <span class="tok-punctuation">)</span>
-            <span class="tok-punctuation">;</span>
+            <span class="tok-variableName">
+              console
+            </span>
+            <span class="tok-operator">
+              .
+            </span>
+            <span class="tok-propertyName">
+              log
+            </span>
+            <span class="tok-punctuation">
+              (
+            </span>
+            <span class="tok-number">
+              123
+            </span>
+            <span class="tok-operator">
+              +
+            </span>
+            <span class="tok-string">
+              "456"
+            </span>
+            <span class="tok-punctuation">
+              )
+            </span>
+            <span class="tok-punctuation">
+              ;
+            </span>
           </code>
         </pre>
         <pre data-language="python">
-          <code>print("1+1","=",2)</code>
+          <code>
+            print("1+1","=",2)
+          </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
@@ -235,33 +404,59 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre
           data-language="typescript"
           style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               console.
             </span>
-            <span class="shiki" style="color: rgb(179, 146, 240);">
+            <span
+              class="shiki"
+              style="color: rgb(179, 146, 240);"
+            >
               log
             </span>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               (
             </span>
-            <span class="shiki" style="color: rgb(121, 184, 255);">
+            <span
+              class="shiki"
+              style="color: rgb(121, 184, 255);"
+            >
               123
             </span>
-            <span class="shiki" style="color: rgb(249, 117, 131);">
+            <span
+              class="shiki"
+              style="color: rgb(249, 117, 131);"
+            >
               +
             </span>
-            <span class="shiki" style="color: rgb(158, 203, 255);">
+            <span
+              class="shiki"
+              style="color: rgb(158, 203, 255);"
+            >
               "456"
             </span>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               );
             </span>
           </code>
@@ -271,33 +466,57 @@ describe('createHighlightPlugin', () => {
           style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
-            <span class="shiki" style="color: rgb(121, 184, 255);">
+            <span
+              class="shiki"
+              style="color: rgb(121, 184, 255);"
+            >
               print
             </span>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               (
             </span>
-            <span class="shiki" style="color: rgb(158, 203, 255);">
+            <span
+              class="shiki"
+              style="color: rgb(158, 203, 255);"
+            >
               "1+1"
             </span>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               ,
             </span>
-            <span class="shiki" style="color: rgb(158, 203, 255);">
+            <span
+              class="shiki"
+              style="color: rgb(158, 203, 255);"
+            >
               "="
             </span>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               ,
             </span>
-            <span class="shiki" style="color: rgb(121, 184, 255);">
+            <span
+              class="shiki"
+              style="color: rgb(121, 184, 255);"
+            >
               2
             </span>
-            <span class="shiki" style="color: rgb(225, 228, 232);">
+            <span
+              class="shiki"
+              style="color: rgb(225, 228, 232);"
+            >
               )
             </span>
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
@@ -325,9 +544,14 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
-      "<div contenteditable="true" translate="no" class="ProseMirror">
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
         <pre
           data-language="typescript"
           style="--custom-prefix-light: #24292e; --custom-prefix-dark: #e1e4e8; --custom-prefix-dim: #adbac7; --custom-prefix-light-bg: #fff; --custom-prefix-dark-bg: #24292e; --custom-prefix-dim-bg: #22272e;"
@@ -432,7 +656,7 @@ describe('createHighlightPlugin', () => {
             </span>
           </code>
         </pre>
-      </div>;
+      </div>
       "
     `)
   })
