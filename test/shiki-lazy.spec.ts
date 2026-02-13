@@ -51,7 +51,7 @@ describe('shikiLazyPlugin', () => {
     `)
   })
 
-  it.skip('can highlight plaintext code block', async () => {
+  it('can highlight plaintext code block', async () => {
     const nodes = setupNodes(schema)
     const doc = nodes.doc([nodes.codeBlock('plaintext', '1+2')])
     const state = EditorState.create({ doc, plugins: [shikiLazyPlugin] })
@@ -62,6 +62,18 @@ describe('shikiLazyPlugin', () => {
 
     const html = await formatHtml(view.dom.outerHTML)
 
-    expect(html).toMatchInlineSnapshot()
+    expect(html).toMatchInlineSnapshot(`
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre
+          data-language="plaintext"
+          style="--prosemirror-highlight: #adbac7; --shiki-light: #24292e; --shiki-dark: #e1e4e8; --prosemirror-highlight-bg: #22272e; --shiki-light-bg: #fff; --shiki-dark-bg: #24292e;"
+        >
+          <code>
+            <span class="shiki">1+2</span>
+          </code>
+        </pre>
+      </div>;
+      "
+    `)
   })
 })
