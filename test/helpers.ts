@@ -1,11 +1,4 @@
-import Prettier from 'prettier'
 import type { Schema, Node as ProseMirrorNode } from 'prosemirror-model'
-
-export async function formatHtml(htmlString: string) {
-  return await Prettier.format(htmlString, {
-    parser: 'typescript',
-  })
-}
 
 export function setupNodes(schema: Schema) {
   const doc = (nodes: ProseMirrorNode[]) => {

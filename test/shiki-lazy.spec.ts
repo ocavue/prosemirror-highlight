@@ -1,3 +1,4 @@
+import { formatHTML } from 'diffable-html-snapshot'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -5,7 +6,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { schema } from '../playground/schema'
 import { shikiLazyPlugin } from '../playground/shiki-lazy'
 
-import { formatHtml, setupNodes } from './helpers'
+import { setupNodes } from './helpers'
 
 describe('shikiLazyPlugin', () => {
   afterEach(() => {
@@ -21,7 +22,7 @@ describe('shikiLazyPlugin', () => {
     // Wait for the shiki to load and apply the decorations
     await expect.poll(() => view.dom.outerHTML).toContain('shiki')
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
 
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
@@ -64,7 +65,7 @@ describe('shikiLazyPlugin', () => {
     // Wait for the shiki to load and apply the decorations
     await expect.poll(() => view.dom.outerHTML).toContain('shiki')
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
 
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
@@ -107,7 +108,7 @@ describe('shikiLazyPlugin', () => {
     await expect.poll(() => view.dom.outerHTML).toContain('shiki')
     await expectCalledWith('[prosemirror-highlight] Error parsing code blocks')
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
 
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">

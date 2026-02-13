@@ -1,3 +1,4 @@
+import { formatHTML } from 'diffable-html-snapshot'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { describe, expect, it } from 'vitest'
@@ -5,7 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { schema } from '../playground/schema'
 import { createHighlightPlugin } from '../src/plugin'
 
-import { formatHtml, setupNodes } from './helpers'
+import { setupNodes } from './helpers'
 
 describe('createHighlightPlugin', () => {
   const nodes = setupNodes(schema)
@@ -26,7 +27,7 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre data-language="typescript">
@@ -59,7 +60,7 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre data-language="typescript">
@@ -101,7 +102,7 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(
       `
       "<div contenteditable="true" translate="no" class="ProseMirror">
@@ -193,7 +194,7 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [lezerPlugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre data-language="typescript">
@@ -235,7 +236,7 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre
@@ -325,7 +326,7 @@ describe('createHighlightPlugin', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = await formatHtml(view.dom.outerHTML)
+    const html = formatHTML(view.dom.outerHTML)
     expect(html).toMatchInlineSnapshot(`
       "<div contenteditable="true" translate="no" class="ProseMirror">
         <pre
