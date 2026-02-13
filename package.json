@@ -2,7 +2,7 @@
   "name": "prosemirror-highlight",
   "type": "module",
   "version": "0.13.0",
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.28.0",
   "description": "A ProseMirror plugin to highlight code blocks",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
@@ -48,14 +48,13 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsup",
+    "build": "tsdown",
     "build:playground": "vite build",
     "lint": "eslint .",
     "fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "pnpm run build",
-    "start": "esno src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc -b"
   },
   "peerDependencies": {
     "@shikijs/types": "^1.29.2 || ^2.0.0 || ^3.0.0",
@@ -70,6 +69,9 @@
     "sugar-high": "^0.6.1 || ^0.7.0 || ^0.8.0 || ^0.9.0"
   },
   "peerDependenciesMeta": {
+    "@shikijs/types": {
+      "optional": true
+    },
     "@types/hast": {
       "optional": true
     },
@@ -94,23 +96,22 @@
     "refractor": {
       "optional": true
     },
-    "@shikijs/types": {
-      "optional": true
-    },
     "sugar-high": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@ocavue/eslint-config": "^3.4.0",
+    "@ocavue/eslint-config": "^3.11.2",
+    "@ocavue/tsconfig": "^0.6.3",
+    "@shikijs/types": "^3.13.0",
     "@types/hast": "^3.0.4",
-    "@types/node": "^20.17.5",
-    "eslint": "^9.34.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.39.2",
     "highlight.js": "^11.11.1",
-    "jsdom": "^26.1.0",
+    "jsdom": "^28.0.0",
     "lowlight": "^3.3.0",
-    "pkg-pr-new": "^0.0.60",
-    "prettier": "^3.6.2",
+    "pkg-pr-new": "^0.0.63",
+    "prettier": "^3.8.0",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-model": "^1.25.3",
     "prosemirror-schema-basic": "^1.2.4",
@@ -120,10 +121,10 @@
     "refractor": "^5.0.0",
     "shiki": "^3.13.0",
     "sugar-high": "^0.9.3",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.9",
-    "vitest": "^3.2.4"
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.0"
   },
   "publishConfig": {
     "main": "./dist/index.js",
@@ -159,11 +160,5 @@
         ]
       }
     }
-  },
-  "renovate": {
-    "dependencyDashboard": true,
-    "extends": [
-      "github>ocavue/config-renovate"
-    ]
   }
 }

@@ -1,7 +1,7 @@
 import { Schema } from 'prosemirror-model'
 import { schema as basicSchema } from 'prosemirror-schema-basic'
 
-export const schema = new Schema({
+export const schema: Schema = new Schema({
   nodes: basicSchema.spec.nodes.update('code_block', {
     content: 'text*',
     group: 'block',
