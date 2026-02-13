@@ -113,10 +113,10 @@
     }
   },
   "devDependencies": {
-    "@lezer/common": "^1.2.3",
+    "@lezer/common": "^1.5.1",
     "@lezer/css": "^1.3.0",
-    "@lezer/highlight": "^1.2.1",
-    "@lezer/javascript": "^1.4.21",
+    "@lezer/highlight": "^1.2.3",
+    "@lezer/javascript": "^1.5.4",
     "@ocavue/eslint-config": "^3.11.2",
     "@ocavue/tsconfig": "^0.6.3",
     "@shikijs/types": "^3.22.0",
