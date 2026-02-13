@@ -1,3 +1,4 @@
+import lezerCode from './lezer?raw'
 import lowlightCode from './lowlight?raw'
 import refractorCode from './refractor?raw'
 import { setupView } from './setup'
@@ -56,6 +57,13 @@ function main() {
     plugin: () => import('./shiki-lazy').then((mod) => mod.shikiLazyPlugin),
     title: 'Shiki (Lazy language loading)',
     code: shikiLazyCode,
+  })
+
+  void setupView({
+    mount: getOrCreateElement('editor-lezer'),
+    plugin: () => import('./lezer').then((mod) => mod.lezerPlugin),
+    title: 'Lezer',
+    code: lezerCode,
   })
 }
 

@@ -188,6 +188,24 @@ describe('createHighlightPlugin', () => {
     )
   })
 
+  it('can highlight code blocks with lezer', async () => {
+    const { createParser } = await import('../src/lezer')
+    const { classHighlighter } = await import('@lezer/highlight')
+    const { parser: jsParser } = await import('@lezer/javascript')
+
+    const parser = createParser(
+      { typescript: jsParser, javascript: jsParser },
+      classHighlighter,
+    )
+    const plugin = createHighlightPlugin({ parser })
+
+    const state = EditorState.create({ doc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchSnapshot()
+  })
+
   it('can highlight code blocks with shiki', async () => {
     const { createParser } = await import('../src/shiki')
     const { createHighlighter } = await import('shiki')
