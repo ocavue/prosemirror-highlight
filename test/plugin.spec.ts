@@ -188,6 +188,35 @@ describe('createHighlightPlugin', () => {
     )
   })
 
+  it('can highlight code blocks with lezer', async () => {
+    const { lezerPlugin } = await import('../playground/lezer')
+    const state = EditorState.create({ doc, plugins: [lezerPlugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = await formatHtml(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(`
+      "<div contenteditable="true" translate="no" class="ProseMirror">
+        <pre data-language="typescript">
+          <code>
+            <span class="tok-variableName">console</span>
+            <span class="tok-operator">.</span>
+            <span class="tok-propertyName">log</span>
+            <span class="tok-punctuation">(</span>
+            <span class="tok-number">123</span>
+            <span class="tok-operator">+</span>
+            <span class="tok-string">"456"</span>
+            <span class="tok-punctuation">)</span>
+            <span class="tok-punctuation">;</span>
+          </code>
+        </pre>
+        <pre data-language="python">
+          <code>print("1+1","=",2)</code>
+        </pre>
+      </div>;
+      "
+    `)
+  })
+
   it('can highlight code blocks with shiki', async () => {
     const { createParser } = await import('../src/shiki')
     const { createHighlighter } = await import('shiki')

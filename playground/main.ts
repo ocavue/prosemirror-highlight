@@ -1,3 +1,4 @@
+import lezerCode from './lezer?raw'
 import lowlightCode from './lowlight?raw'
 import refractorCode from './refractor?raw'
 import { setupView } from './setup'
@@ -49,6 +50,13 @@ function main() {
     plugin: () => import('./sugar-high').then((mod) => mod.sugarHighPlugin),
     title: 'Sugar High',
     code: sugarHighCode,
+  })
+
+  void setupView({
+    mount: getOrCreateElement('editor-lezer'),
+    plugin: () => import('./lezer').then((mod) => mod.lezerPlugin),
+    title: 'Lezer',
+    code: lezerCode,
   })
 
   void setupView({
