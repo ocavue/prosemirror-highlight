@@ -1,3 +1,4 @@
 export { DecorationCache } from './cache'
 export { createHighlightPlugin, type HighlightPluginState } from './plugin'
 export type { LanguageExtractor, Parser, ParserOptions } from './types'
+export { withLineNumbers } from './line-number'

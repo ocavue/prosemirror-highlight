@@ -1,0 +1,9 @@
+code .line-number {
+  width: 1rem;
+  padding-right: 1.5rem;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  opacity: 0.3;
+  user-select: none;
+}
