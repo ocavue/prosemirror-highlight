@@ -107,7 +107,7 @@
     "@types/node": "^20.17.5",
     "eslint": "^9.34.0",
     "highlight.js": "^11.11.1",
-    "jsdom": "^26.1.0",
+    "jsdom": "^27.4.0",
     "lowlight": "^3.3.0",
     "pkg-pr-new": "^0.0.60",
     "prettier": "^3.6.2",
