@@ -16,7 +16,7 @@ export function withLineNumbers(parser: Parser): Parser {
       const start = pos + 1
       const lineStarts = [start]
       for (const match of content.matchAll(/(?:\r?\n)/g)) {
-        lineStarts.push(start + match.index + match[0].length )
+        lineStarts.push(start + match.index + match[0].length)
       }
       const decorations: Decoration[] = []
       for (const [index, lineStart] of lineStarts.entries()) {

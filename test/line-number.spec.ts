@@ -231,7 +231,7 @@ describe('withLineNumbers', () => {
     `)
   })
 
-  it(String.raw`can handle \r\n line endings`,   () => {
+  it(String.raw`can handle \r\n line endings`, () => {
     const parser = withLineNumbers(() => [])
     const plugin = createHighlightPlugin({ parser })
 
@@ -242,7 +242,11 @@ describe('withLineNumbers', () => {
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    expect(view.dom.querySelector('code')!.innerHTML.replaceAll(/\r/g, 'R').replaceAll(/\n/g, 'N')).toMatchInlineSnapshot(`"<span class="line-number ProseMirror-widget">1</span>FirstRN<span class="line-number ProseMirror-widget">2</span>SecondRN<span class="line-number ProseMirror-widget">3</span><img class="ProseMirror-separator" alt=""><br class="ProseMirror-trailingBreak">"`)
+    let html = view.dom.querySelector('code')!.innerHTML
+    html = html.replaceAll(/\r/g, '_R').replaceAll(/\n/g, '_N')
+    expect(html).toMatchInlineSnapshot(
+      `"<span class="line-number ProseMirror-widget">1</span>First_R_N<span class="line-number ProseMirror-widget">2</span>Second_R_N<span class="line-number ProseMirror-widget">3</span><img class="ProseMirror-separator" alt=""><br class="ProseMirror-trailingBreak">"`,
+    )
   })
 
   it('works with empty code blocks', async () => {
