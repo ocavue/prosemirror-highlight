@@ -231,51 +231,18 @@ describe('withLineNumbers', () => {
     `)
   })
 
-  it('can handle \\r\\n line endings', async () => {
-    const { createParser } = await import('../src/lowlight')
-    const { common, createLowlight } = await import('lowlight')
-
-    const lowlight = createLowlight(common)
-    const parser = withLineNumbers(createParser(lowlight))
+  it(String.raw`can handle \r\n line endings`,   () => {
+    const parser = withLineNumbers(() => [])
     const plugin = createHighlightPlugin({ parser })
 
     const doc = nodes.doc([
-      // eslint-disable-next-line unicorn/prefer-string-raw
-      nodes.codeBlock('typescript', 'const a = 1\r\nconst b = 2'),
+      nodes.codeBlock('typescript', '1\r\n2\r\n'),
     ])
 
     const state = EditorState.create({ doc, plugins: [plugin] })
     const view = new EditorView(document.createElement('div'), { state })
 
-    const html = formatHTML(view.dom.outerHTML)
-    expect(html).toMatchInlineSnapshot(`
-      "
-      <div
-        class="ProseMirror"
-        contenteditable="true"
-        translate="no"
-      >
-        <pre data-language="typescript">
-          <code>
-            <span class="line-number ProseMirror-widget">
-              1
-            </span>
-            <span class="hljs-keyword">
-              const
-            </span>
-            a =
-            <span class="hljs-number">
-              1
-            </span>
-            \\r\\nconst b =
-            <span class="hljs-number">
-              2
-            </span>
-          </code>
-        </pre>
-      </div>
-      "
-    `)
+    expect(view.dom.innerHTML.replaceAll(/\r/g, 'R').replaceAll(/\n/g, 'N')).toMatchInlineSnapshot(`"<pre data-language="typescript"><code><span class="line-number ProseMirror-widget">1</span>1R<span class="line-number ProseMirror-widget">2</span>N2R<span class="line-number ProseMirror-widget">3</span>N<br class="ProseMirror-trailingBreak"></code></pre>"`)
   })
 
   it('works with empty code blocks', async () => {
