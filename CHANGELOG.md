@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.14.0...v0.15.0) (2026-02-13)
+
+
+### Features
+
+* add Lezer parser support ([#107](https://github.com/ocavue/prosemirror-highlight/issues/107)) ([43531e3](https://github.com/ocavue/prosemirror-highlight/commit/43531e3099935433853b19ddf9b60ba5a9bcf2a6))
+* support line numbers ([#110](https://github.com/ocavue/prosemirror-highlight/issues/110)) ([13c860b](https://github.com/ocavue/prosemirror-highlight/commit/13c860ba79a1a1665170f6c05c45c28e2be638be))
+
 ## [0.14.0](https://github.com/ocavue/prosemirror-highlight/compare/v0.13.1...v0.14.0) (2026-02-13)
 
 
