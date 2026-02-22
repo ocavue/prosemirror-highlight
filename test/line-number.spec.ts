@@ -243,7 +243,7 @@ describe('withLineNumbers', () => {
     const view = new EditorView(document.createElement('div'), { state })
 
     let html = view.dom.querySelector('code')!.innerHTML
-    html = html.replaceAll(/\r/g, '_R').replaceAll(/\n/g, '_N')
+    html = html.replaceAll('\r', '_R').replaceAll('\n', '_N')
     expect(html).toMatchInlineSnapshot(
       `"<span class="line-number ProseMirror-widget">1</span>First_R_N<span class="line-number ProseMirror-widget">2</span>Second_R_N<span class="line-number ProseMirror-widget">3</span><img class="ProseMirror-separator" alt=""><br class="ProseMirror-trailingBreak">"`,
     )
