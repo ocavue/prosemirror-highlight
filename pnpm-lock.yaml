@@ -81,8 +81,8 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2
       sugar-high:
-        specifier: ^0.9.5
-        version: 0.9.5
+        specifier: ^1.0.0
+        version: 1.0.0
       tsdown:
         specifier: ^0.21.4
         version: 0.21.4(synckit@0.11.12)(typescript@5.9.3)
@@ -2184,8 +2184,8 @@ packages:
     resolution: {integrity: sha512-SlyRoSkdh1dYP0PzclLE7r0M9sgbFKKMFXpFRUMNuKhQSbC6VQIGzq3E0qsfvGJaUFJPGv6Ws1NZ/haTAjfbMA==}
     engines: {node: '>=12'}
 
-  sugar-high@0.9.5:
-    resolution: {integrity: sha512-eirwp9p7QcMg6EFCD6zrGh4H30uFx2YtfiMJUavagceP6/YUUjLeiQmis7QuwqKB3nXrWXlLaRumCqOd9AKpSA==}
+  sugar-high@1.0.0:
+    resolution: {integrity: sha512-QXI5DHWxBI4kph38jBgfq0a8859NxA1fZMpkbiUmd332/SMdBKOQ+8f6gdCfEWg0ZY2216Oh8OqS5lC0IOTQmA==}
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
@@ -4971,7 +4971,7 @@ snapshots:
 
   strip-indent@4.1.1: {}
 
-  sugar-high@0.9.5: {}
+  sugar-high@1.0.0: {}
 
   symbol-tree@3.2.4: {}
 
