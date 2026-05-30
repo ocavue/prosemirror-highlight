@@ -140,8 +140,8 @@
     "sugar-high": "^1.0.0",
     "tsdown": "^0.21.5",
     "typescript": "^6.0.3",
-    "vite": "^8.0.2",
-    "vitest": "^4.1.1"
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
   },
   "publishConfig": {
     "main": "./dist/index.js",
