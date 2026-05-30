@@ -127,7 +127,7 @@
     "highlight.js": "^11.11.1",
     "jsdom": "^28.1.0",
     "lowlight": "^3.3.0",
-    "pkg-pr-new": "^0.0.66",
+    "pkg-pr-new": "^0.0.75",
     "prettier": "^3.8.1",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-model": "^1.25.4",
