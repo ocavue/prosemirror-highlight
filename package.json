@@ -125,7 +125,7 @@
     "diffable-html-snapshot": "^0.2.0",
     "eslint": "^10.4.0",
     "highlight.js": "^11.11.1",
-    "jsdom": "^28.1.0",
+    "jsdom": "^29.1.1",
     "lowlight": "^3.3.0",
     "pkg-pr-new": "^0.0.75",
     "prettier": "^3.8.1",
