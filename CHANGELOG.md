@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.2](https://github.com/ocavue/prosemirror-highlight/compare/v0.15.1...v0.15.2) (2026-06-13)
+
+
+### Bug Fixes
+
+* skip refresh after the editor view is destroyed ([#132](https://github.com/ocavue/prosemirror-highlight/issues/132)) ([dc9f499](https://github.com/ocavue/prosemirror-highlight/commit/dc9f4991d7c4429933f038785204f003fd652bac))
+
 ## [0.15.1](https://github.com/ocavue/prosemirror-highlight/compare/v0.15.0...v0.15.1) (2026-03-24)
 
 
