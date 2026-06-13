@@ -84,7 +84,7 @@ export function createHighlightPlugin({
 
       // Refresh the decorations when all promises resolve
       const refresh = () => {
-        if (promises.size > 0) {
+        if (promises.size > 0 || view.isDestroyed) {
           return
         }
         const tr = view.state.tr.setMeta('prosemirror-highlight-refresh', true)
