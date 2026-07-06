@@ -15,13 +15,13 @@ export function withLineNumbers(parser: Parser): Parser {
       const { pos, content } = options
       const start = pos + 1
       const lineStarts = [start]
-      for (const match of content.matchAll(/(?:\r?\n)/g)) {
+      for (const match of content.matchAll(/\r?\n/g)) {
         lineStarts.push(start + match.index + match[0].length)
       }
-      const decorations: Decoration[] = []
-      for (const [index, lineStart] of lineStarts.entries()) {
-        decorations.push(createLineStartWidget(lineStart, index + 1))
-      }
+      const decorations: Decoration[] = Array.from(
+        lineStarts,
+        (lineStart, index) => createLineStartWidget(lineStart, index + 1),
+      )
       return [...decorations, ...parsed]
     }
     return parsed
