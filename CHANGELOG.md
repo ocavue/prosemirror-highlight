@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.3](https://github.com/ocavue/prosemirror-highlight/compare/v0.15.2...v0.15.3) (2026-07-09)
+
+
+### Bug Fixes
+
+* allow inline nodes with inlineContent to be highlighted ([#137](https://github.com/ocavue/prosemirror-highlight/issues/137)) ([7ad9d16](https://github.com/ocavue/prosemirror-highlight/commit/7ad9d16e7af96e21768a85f127b04ea28058dc06))
+
 ## [0.15.2](https://github.com/ocavue/prosemirror-highlight/compare/v0.15.1...v0.15.2) (2026-06-13)
 
 
