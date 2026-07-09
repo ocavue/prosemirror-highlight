@@ -188,7 +188,7 @@ function collectCodeBlocks(
 ): Array<[node: ProseMirrorNode, pos: number]> {
   const nodes: Array<[node: ProseMirrorNode, pos: number]> = []
   doc.descendants((node, pos) => {
-    if (node.type.isTextblock && nodeTypes.includes(node.type.name)) {
+    if (node.type.inlineContent && nodeTypes.includes(node.type.name)) {
       nodes.push([node, pos])
       return false
     }
