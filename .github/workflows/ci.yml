@@ -67,6 +67,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    # Forked repositories don't have access to the Cloudflare secrets.
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     permissions:
       contents: read
       deployments: write
