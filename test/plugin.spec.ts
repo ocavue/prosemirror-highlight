@@ -689,7 +689,7 @@ describe('createHighlightPlugin', () => {
         inlineNodes.text('before '),
         inlineSchema.nodes.inline_code.createChecked(
           { language: 'javascript' },
-          inlineSchema.text('1 + 1'),
+          inlineSchema.text('1 + "a"'),
         ),
         inlineNodes.text(' after'),
       ]),
@@ -720,8 +720,8 @@ describe('createHighlightPlugin', () => {
               1
             </span>
             +
-            <span class="hljs-number">
-              1
+            <span class="hljs-string">
+              "a"
             </span>
           </code>
           after
