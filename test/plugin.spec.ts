@@ -1,4 +1,5 @@
 import { formatHTML } from 'diffable-html-snapshot'
+import { Schema } from 'prosemirror-model'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { describe, expect, it } from 'vitest'
@@ -7,6 +8,23 @@ import { schema } from '../playground/schema'
 import { createHighlightPlugin } from '../src/plugin'
 
 import { setupNodes } from './helpers'
+
+const inlineSchema: Schema = new Schema({
+  nodes: schema.spec.nodes.addToEnd('inline_code', {
+    inline: true,
+    group: 'inline',
+    content: 'text*',
+    code: true,
+    marks: '',
+    attrs: {
+      language: { default: '' },
+    },
+    toDOM(node) {
+      return ['code', { 'data-language': node.attrs.language as string }, 0]
+    },
+  }),
+  marks: schema.spec.marks,
+})
 
 describe('createHighlightPlugin', () => {
   const nodes = setupNodes(schema)
@@ -656,6 +674,58 @@ describe('createHighlightPlugin', () => {
             </span>
           </code>
         </pre>
+      </div>
+      "
+    `)
+  })
+
+  it('can highlight inline nodes with inline content', async () => {
+    const { createParser } = await import('../src/lowlight')
+    const { common, createLowlight } = await import('lowlight')
+
+    const inlineNodes = setupNodes(inlineSchema)
+    const inlineDoc = inlineNodes.doc([
+      inlineNodes.paragraph([
+        inlineNodes.text('before '),
+        inlineSchema.nodes.inline_code.createChecked(
+          { language: 'javascript' },
+          inlineSchema.text('1 + 1'),
+        ),
+        inlineNodes.text(' after'),
+      ]),
+    ])
+
+    const lowlight = createLowlight(common)
+    const parser = createParser(lowlight)
+    const plugin = createHighlightPlugin({
+      parser,
+      nodeTypes: ['inline_code'],
+    })
+
+    const state = EditorState.create({ doc: inlineDoc, plugins: [plugin] })
+    const view = new EditorView(document.createElement('div'), { state })
+
+    const html = formatHTML(view.dom.outerHTML)
+    expect(html).toMatchInlineSnapshot(`
+      "
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
+        <p>
+          before
+          <code data-language="javascript">
+            <span class="hljs-number">
+              1
+            </span>
+            +
+            <span class="hljs-number">
+              1
+            </span>
+          </code>
+          after
+        </p>
       </div>
       "
     `)

@@ -10,6 +10,12 @@ export function setupNodes(schema: Schema) {
       text ? schema.text(text) : null,
     )
   }
+  const paragraph = (content: ProseMirrorNode[]) => {
+    return schema.nodes.paragraph.createChecked({}, content)
+  }
+  const text = (value: string) => {
+    return schema.text(value)
+  }
 
-  return { doc, codeBlock }
+  return { doc, codeBlock, paragraph, text }
 }
