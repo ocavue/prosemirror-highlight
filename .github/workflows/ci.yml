@@ -67,6 +67,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    # Forked repositories don't have access to the Cloudflare secrets.
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     permissions:
       contents: read
       deployments: write
@@ -75,8 +77,6 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - uses: ./.github/actions/setup
-        with:
-          node-version: ${{ matrix.node }}
 
       - name: Build
         run: pnpm run build:playground
