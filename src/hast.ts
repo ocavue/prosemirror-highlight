@@ -1,5 +1,5 @@
 import type { Element, ElementContent, Root, RootContent } from 'hast'
-import { Decoration } from 'prosemirror-view'
+import { Decoration, type DecorationAttrs } from 'prosemirror-view'
 
 export function fillFromRoot(
   decorations: Decoration[],
@@ -19,17 +19,17 @@ function fillFromRootContent(
   if (node.type === 'element') {
     const to = from + getElementSize(node)
     const { className, ...rest } = node.properties || {}
-    decorations.push(
-      Decoration.inline(from, to, {
-        class: className
-          ? Array.isArray(className)
-            ? className.join(' ')
-            : String(className)
-          : undefined,
-        ...rest,
-        nodeName: node.tagName,
-      }),
-    )
+    const attrs: DecorationAttrs = {}
+    for (const [key, value] of Object.entries(rest)) {
+      if (value != null) {
+        attrs[key] = String(value)
+      }
+    }
+    attrs.nodeName = node.tagName
+    if (className) {
+      attrs.class = Array.isArray(className) ? className.join(' ') : String(className)
+    }
+    decorations.push(Decoration.inline(from, to, attrs))
     return to
   } else if (node.type === 'text') {
     return from + node.value.length
