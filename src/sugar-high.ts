@@ -6,7 +6,6 @@ import type { Parser } from './types'
 
 export type { Parser }
 
-const types = SugarHigh.TokenTypes
 
 export function createParser(): Parser {
   return function parser({ content, pos, language }) {
@@ -19,6 +18,9 @@ export function createParser(): Parser {
     const tokens = tokenize(content, languageConfig)
 
     let from = pos + 1
+
+    const types = SugarHigh.TokenTypes
+
 
     for (const [type, content] of tokens) {
       const to = from + content.length
