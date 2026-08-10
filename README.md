@@ -251,6 +251,10 @@ This inserts `<span class="line-number">` elements with class name `line-number`
 
 - [prosemirror-highlightjs] - Highlight.js syntax highlighting for ProseMirror
 
+## Sponsors
+
+<p align="center"><a href="https://github.com/sponsors/ocavue"><img src="https://cdn.jsdelivr.net/gh/ocavue/sponsors/sponsorkit/sponsors.svg" alt="My Sponsors"></a></p>
+
 ## License
 
 MIT
