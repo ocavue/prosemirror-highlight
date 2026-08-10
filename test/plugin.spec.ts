@@ -190,8 +190,7 @@ describe('createHighlightPlugin', () => {
     const view = new EditorView(document.createElement('div'), { state })
 
     const html = formatHTML(view.dom.outerHTML)
-    expect(html).toMatchInlineSnapshot(
-      `
+    expect(html).toMatchInlineSnapshot(`
       "
       <div
         class="ProseMirror"
@@ -286,19 +285,7 @@ describe('createHighlightPlugin', () => {
               class="sh__token--string"
               style="color: var(--sh-string);"
             >
-              "
-            </span>
-            <span
-              class="sh__token--string"
-              style="color: var(--sh-string);"
-            >
-              1+1
-            </span>
-            <span
-              class="sh__token--string"
-              style="color: var(--sh-string);"
-            >
-              "
+              "1+1"
             </span>
             <span
               class="sh__token--sign"
@@ -310,19 +297,7 @@ describe('createHighlightPlugin', () => {
               class="sh__token--string"
               style="color: var(--sh-string);"
             >
-              "
-            </span>
-            <span
-              class="sh__token--string"
-              style="color: var(--sh-string);"
-            >
-              =
-            </span>
-            <span
-              class="sh__token--string"
-              style="color: var(--sh-string);"
-            >
-              "
+              "="
             </span>
             <span
               class="sh__token--sign"
@@ -346,8 +321,7 @@ describe('createHighlightPlugin', () => {
         </pre>
       </div>
       "
-    `,
-    )
+    `)
   })
 
   it('can highlight code blocks with lezer', async () => {
