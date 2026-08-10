@@ -1,5 +1,5 @@
 import { Decoration } from 'prosemirror-view'
-import { tokenize, SugarHigh } from 'sugar-high'
+import { tokenize, SugarHigh } from 'sugar-high/core'
 
 import type { Parser } from './types'
 
