@@ -27,7 +27,9 @@ function fillFromRootContent(
     }
     attrs.nodeName = node.tagName
     if (className) {
-      attrs.class = Array.isArray(className) ? className.join(' ') : String(className)
+      attrs.class = Array.isArray(className)
+        ? className.join(' ')
+        : String(className)
     }
     decorations.push(Decoration.inline(from, to, attrs))
     return to
