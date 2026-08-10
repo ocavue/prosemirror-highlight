@@ -1,5 +1,6 @@
 import { Decoration } from 'prosemirror-view'
-import { tokenize, SugarHigh } from 'sugar-high'
+import { SugarHigh, tokenize } from 'sugar-high/core'
+import { lang, languages } from 'sugar-high/lang'
 
 import type { Parser } from './types'
 
@@ -8,10 +9,14 @@ export type { Parser }
 const types = SugarHigh.TokenTypes
 
 export function createParser(): Parser {
-  return function parser({ content, pos }) {
+  return function parser({ content, pos, language }) {
     const decorations: Decoration[] = []
 
-    const tokens = tokenize(content)
+    const languageId = language == null ? undefined : lang(language)
+    const languageConfig =
+      languageId && languages.find((lang) => lang.id === languageId)?.config
+
+    const tokens = tokenize(content, languageConfig)
 
     let from = pos + 1
 

@@ -2,5 +2,4 @@ allowBuilds:
   esbuild: false
 ignoreWorkspaceRootCheck: true
 minimumReleaseAgeExclude:
-  - '@ocavue/eslint-config@4.11.0'
-  - eslint-plugin-unicorn@71.0.0
+  - sugar-high@2.0.0
