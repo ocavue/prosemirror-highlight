@@ -130,7 +130,7 @@
     "pkg-pr-new": "^0.0.87",
     "prettier": "^3.9.6",
     "prosemirror-example-setup": "^1.2.3",
-    "prosemirror-model": "^1.25.13",
+    "prosemirror-model": "^1.25.11",
     "prosemirror-schema-basic": "^1.2.4",
     "prosemirror-state": "^1.4.4",
     "prosemirror-transform": "^1.12.0",
