@@ -1,0 +1,7 @@
+import { n as Parser } from "./types-3awqZyN3.js";
+import { Refractor } from "refractor/core";
+//#region src/refractor.d.ts
+declare function createParser(refractor: Refractor): Parser;
+//#endregion
+export { type Parser, createParser };
+//# sourceMappingURL=refractor.d.ts.map
