@@ -2,7 +2,7 @@
   "name": "prosemirror-highlight",
   "type": "module",
   "version": "0.16.0",
-  "packageManager": "pnpm@11.20.0",
+  "packageManager": "pnpm@11.28.11",
   "description": "A ProseMirror plugin to highlight code blocks",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
@@ -128,7 +128,7 @@
     "jsdom": "^30.0.1",
     "lowlight": "^3.3.0",
     "pkg-pr-new": "^0.0.87",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.9",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-model": "^1.25.11",
     "prosemirror-schema-basic": "^1.2.4",
@@ -141,7 +141,8 @@
     "tsdown": "^0.22.14",
     "typescript": "^6.0.3",
     "vite": "^8.2.1",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "wrangler": "^4.160.1"
   },
   "publishConfig": {
     "main": "./dist/index.js",

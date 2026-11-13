@@ -1,5 +1,5 @@
 allowBuilds:
   esbuild: false
+  workerd: false
+
 ignoreWorkspaceRootCheck: true
-minimumReleaseAgeExclude:
-  - sugar-high@2.0.0
