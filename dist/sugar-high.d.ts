@@ -1,6 +1,4 @@
-import { n as Parser } from "./types-3awqZyN3.js";
-//#region src/sugar-high.d.ts
-declare function createParser(): Parser;
-//#endregion
-export { type Parser, createParser };
+import { n as Parser } from "./types-Cu_XqW3r.js";
+export declare function createParser(): Parser;
+export type { Parser };
 //# sourceMappingURL=sugar-high.d.ts.map

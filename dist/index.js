@@ -1,6 +1,6 @@
 import { Plugin, PluginKey } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
-//#region src/cache.ts
+// src/cache.ts
 /**
 * Represents a cache of doc positions to the node and decorations at that position
 */
@@ -70,8 +70,7 @@ var DecorationCache = class DecorationCache {
 		return returnCache;
 	}
 };
-//#endregion
-//#region src/plugin.ts
+// src/plugin.ts
 /**
 * Creates a plugin that highlights the contents of all nodes (via Decorations)
 * with a type passed in blockTypes
@@ -178,8 +177,7 @@ function collectCodeBlocks(doc, nodeTypes) {
 	});
 	return nodes;
 }
-//#endregion
-//#region src/line-number.ts
+// src/line-number.ts
 /**
 * Returns a new parser that adds line numbers to the parsed decorations.
 *
@@ -211,7 +209,6 @@ function createLineStartSpan(lineNumber) {
 	span.textContent = lineNumber.toString();
 	return span;
 }
-//#endregion
 export { DecorationCache, createHighlightPlugin, withLineNumbers };
 
 //# sourceMappingURL=index.js.map

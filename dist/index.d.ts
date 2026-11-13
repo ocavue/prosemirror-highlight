@@ -1,12 +1,11 @@
-import { n as Parser, r as ParserOptions, t as LanguageExtractor } from "./types-3awqZyN3.js";
+import { n as Parser, r as ParserOptions, t as LanguageExtractor } from "./types-Cu_XqW3r.js";
 import { Plugin, Transaction } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
-//#region src/cache.d.ts
 /**
  * Represents a cache of doc positions to the node and decorations at that position
  */
-declare class DecorationCache {
+export declare class DecorationCache {
   private cache;
   constructor(cache?: Map<number, [node: Node, decorations: Decoration[]]>);
   /**
@@ -45,8 +44,6 @@ declare class DecorationCache {
    */
   invalidate(tr: Transaction): DecorationCache;
 }
-//#endregion
-//#region src/plugin.d.ts
 /**
  * Describes the current state of the highlightPlugin
  */
@@ -59,7 +56,7 @@ interface HighlightPluginState {
  * Creates a plugin that highlights the contents of all nodes (via Decorations)
  * with a type passed in blockTypes
  */
-declare function createHighlightPlugin({ parser, nodeTypes, languageExtractor }: {
+export declare function createHighlightPlugin({ parser, nodeTypes, languageExtractor }: {
   /**
    * A function that returns an array of decorations for the given node text
    * content, language, and position.
@@ -77,15 +74,12 @@ declare function createHighlightPlugin({ parser, nodeTypes, languageExtractor }:
    */
   languageExtractor?: LanguageExtractor;
 }): Plugin<HighlightPluginState>;
-//#endregion
-//#region src/line-number.d.ts
 /**
  * Returns a new parser that adds line numbers to the parsed decorations.
  *
  * Line numbers are added as `<span class="line-number">` elements with
  * the line number as the text content.
  */
-declare function withLineNumbers(parser: Parser): Parser;
-//#endregion
-export { DecorationCache, type HighlightPluginState, type LanguageExtractor, type Parser, type ParserOptions, createHighlightPlugin, withLineNumbers };
+export declare function withLineNumbers(parser: Parser): Parser;
+export type { HighlightPluginState, LanguageExtractor, Parser, ParserOptions };
 //# sourceMappingURL=index.d.ts.map

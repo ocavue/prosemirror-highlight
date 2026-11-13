@@ -1,7 +1,5 @@
-import { n as Parser } from "./types-3awqZyN3.js";
+import { n as Parser } from "./types-Cu_XqW3r.js";
 import { CodeToTokensOptions, HighlighterGeneric } from "@shikijs/types";
-//#region src/shiki.d.ts
-declare function createParser<Language extends string = string, Theme extends string = string>(highlighter: HighlighterGeneric<Language, Theme>, options?: CodeToTokensOptions<Language, Theme>): Parser;
-//#endregion
-export { type Parser, createParser };
+export declare function createParser<Language extends string = string, Theme extends string = string>(highlighter: HighlighterGeneric<Language, Theme>, options?: CodeToTokensOptions<Language, Theme>): Parser;
+export type { Parser };
 //# sourceMappingURL=shiki.d.ts.map

@@ -1,7 +1,7 @@
 import { Decoration } from "prosemirror-view";
 import { SugarHigh, tokenize } from "sugar-high/core";
 import { lang, languages } from "sugar-high/lang";
-//#region src/sugar-high.ts
+// src/sugar-high.ts
 const types = SugarHigh.TokenTypes;
 function createParser() {
 	return function parser({ content, pos, language }) {
@@ -22,7 +22,6 @@ function createParser() {
 		return decorations;
 	};
 }
-//#endregion
 export { createParser };
 
 //# sourceMappingURL=sugar-high.js.map

@@ -1,6 +1,6 @@
 import { Decoration } from "prosemirror-view";
 import { highlightTree } from "@lezer/highlight";
-//#region src/lezer.ts
+// src/lezer.ts
 function createParser({ parse, highlighter }) {
 	return function lezerParser(options) {
 		const tree = parse(options);
@@ -13,7 +13,6 @@ function createParser({ parse, highlighter }) {
 		return decorations;
 	};
 }
-//#endregion
 export { createParser };
 
 //# sourceMappingURL=lezer.js.map

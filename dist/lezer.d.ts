@@ -1,11 +1,9 @@
-import { n as Parser, r as ParserOptions } from "./types-3awqZyN3.js";
+import { n as Parser, r as ParserOptions } from "./types-Cu_XqW3r.js";
 import { Highlighter } from "@lezer/highlight";
 import { Tree } from "@lezer/common";
-//#region src/lezer.d.ts
-declare function createParser({ parse, highlighter }: {
+export declare function createParser({ parse, highlighter }: {
   parse: (options: ParserOptions) => Tree | undefined;
   highlighter: Highlighter | readonly Highlighter[];
 }): Parser;
-//#endregion
-export { type Parser, type ParserOptions, createParser };
+export type { Parser, ParserOptions };
 //# sourceMappingURL=lezer.d.ts.map

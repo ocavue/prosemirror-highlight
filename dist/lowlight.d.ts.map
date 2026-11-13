@@ -1,1 +1,1 @@
-{"version":3,"file":"lowlight.d.ts","names":[],"sources":["../src/lowlight.ts"],"mappings":";;;KAQY;EACV,YAAY,kBAAkB,kBAAkB;EAChD,gBAAgB,kBAAkB;;iBAGpB,aAAa,UAAU,WAAW"}
+{"version":3,"file":"lowlight.d.ts","names":[],"sources":["../src/lowlight.ts"],"mappings":";;YAQY;EACV,YAAY,kBAAkB,kBAAkB;EAChD,gBAAgB,kBAAkB;;wBAGpB,aAAa,UAAU,WAAW"}

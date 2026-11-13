@@ -1,5 +1,5 @@
-import { t as fillFromRoot } from "./hast-CWwTaJDq.js";
-//#region src/lowlight.ts
+import { t as fillFromRoot } from "./hast-HXBCbBz6.js";
+// src/lowlight.ts
 function createParser(lowlight) {
 	return function highlighter({ content, language, pos }) {
 		const root = language ? lowlight.highlight(language, content) : lowlight.highlightAuto(content);
@@ -9,7 +9,6 @@ function createParser(lowlight) {
 		return decorations;
 	};
 }
-//#endregion
 export { createParser };
 
 //# sourceMappingURL=lowlight.js.map

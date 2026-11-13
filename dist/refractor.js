@@ -1,5 +1,5 @@
-import { t as fillFromRoot } from "./hast-CWwTaJDq.js";
-//#region src/refractor.ts
+import { t as fillFromRoot } from "./hast-HXBCbBz6.js";
+// src/refractor.ts
 function createParser(refractor) {
 	return function highlighter({ content, language, pos }) {
 		const root = refractor.highlight(content, language || "");
@@ -9,7 +9,6 @@ function createParser(refractor) {
 		return decorations;
 	};
 }
-//#endregion
 export { createParser };
 
 //# sourceMappingURL=refractor.js.map

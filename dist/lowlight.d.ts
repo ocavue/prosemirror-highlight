@@ -1,11 +1,9 @@
-import { n as Parser } from "./types-3awqZyN3.js";
+import { n as Parser } from "./types-Cu_XqW3r.js";
 import { Root } from "hast";
-//#region src/lowlight.d.ts
-type Lowlight = {
+export type Lowlight = {
   highlight: (language: string, value: string) => Root;
   highlightAuto: (value: string) => Root;
 };
-declare function createParser(lowlight: Lowlight): Parser;
-//#endregion
-export { Lowlight, type Parser, createParser };
+export declare function createParser(lowlight: Lowlight): Parser;
+export type { Parser };
 //# sourceMappingURL=lowlight.d.ts.map

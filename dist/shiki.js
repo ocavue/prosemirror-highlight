@@ -1,5 +1,5 @@
 import { Decoration } from "prosemirror-view";
-//#region src/shiki.ts
+// src/shiki.ts
 function createParser(highlighter, options) {
 	return function parser({ content, language, pos, size }) {
 		const decorations = [];
@@ -37,7 +37,6 @@ function stringifyTokenStyle(token) {
 	if (typeof token === "string") return token;
 	return Object.entries(token).map(([key, value]) => `${key}:${value}`).join(";");
 }
-//#endregion
 export { createParser };
 
 //# sourceMappingURL=shiki.js.map
