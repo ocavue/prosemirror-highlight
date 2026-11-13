@@ -128,7 +128,7 @@
     "jsdom": "^30.0.1",
     "lowlight": "^3.3.0",
     "pkg-pr-new": "^0.0.87",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.9",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-model": "^1.25.11",
     "prosemirror-schema-basic": "^1.2.4",
