@@ -27,8 +27,8 @@ importers:
         specifier: ^0.7.1
         version: 0.7.1
       '@shikijs/types':
-        specifier: ^4.4.2
-        version: 4.4.2
+        specifier: ^4.6.0
+        version: 4.6.0
       '@types/hast':
         specifier: ^3.0.5
         version: 3.0.5
@@ -57,8 +57,8 @@ importers:
         specifier: ^3.9.9
         version: 3.10.0
       prosemirror-example-setup:
-        specifier: ^1.2.3
-        version: 1.2.3
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-model:
         specifier: ^1.25.13
         version: 1.25.13
@@ -78,8 +78,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       shiki:
-        specifier: ^4.4.2
-        version: 4.4.2
+        specifier: ^4.6.0
+        version: 4.6.0
       sugar-high:
         specifier: ^2.6.4
         version: 2.6.4
@@ -1017,36 +1017,36 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@shikijs/core@4.4.2':
-    resolution: {integrity: sha512-StyzbAyxg2/tBGf78gwbBkGyeQ73lf8UiJArFaQhTQIDqQOCKPCQFanvrs4/Yv3Yfyc+ONInJM6K+FMIf+P+kA==}
+  '@shikijs/core@4.6.0':
+    resolution: {integrity: sha512-bfd4OKgvoyXYiYmMRuleA656P4V7M/Du9lcTl38Ngm6KszMj7bq4J1IGZwSYR4c95Tv5UQALtYNWUwaI9UT3xw==}
     engines: {node: '>=20'}
 
-  '@shikijs/engine-javascript@4.4.2':
-    resolution: {integrity: sha512-MnIkeqWdVPUWsxlx8gKLVCJFTsqrQJgpTPBPpQwaFeJ56lOnJxj5aN2LUFnfxUEcvOQuNocmbaMnVrCEln6rkw==}
+  '@shikijs/engine-javascript@4.6.0':
+    resolution: {integrity: sha512-K0oqxFoL+kEMdz89mHLFO15Tsbv3kFZ6WR1cXZKMvLSc+oqaM00A6pyga1qSeXB22dP0tTiSApRcGBaKWsEccg==}
     engines: {node: '>=20'}
 
-  '@shikijs/engine-oniguruma@4.4.2':
-    resolution: {integrity: sha512-GLhowz1+jixjz+wiZ3wMnOn1jTxiFCGl2PkXufivbnwPHKuyw1AYqu5/hbWhZZ2oAb0NP05WUJhYeigY14drnw==}
+  '@shikijs/engine-oniguruma@4.6.0':
+    resolution: {integrity: sha512-aggd6Q7SuJOXNnsUbfG2XesxBJKBMAw/PDTUo9PyRjMaaJJ2dNrI+q0C+25ARXAK9yLHAlwxc9oRT2u68YKZ7w==}
     engines: {node: '>=20'}
 
-  '@shikijs/langs@4.4.2':
-    resolution: {integrity: sha512-8DfeusD+Zdv/eYIDdXyJTUnSMHt+aAWjAOCXV20HNGAHRlInXpG8wh421v6B91WOm9TFwRLN+b/LG5F2NAIojg==}
+  '@shikijs/langs@4.6.0':
+    resolution: {integrity: sha512-1yMEX3oCVV54LUq/ovfpRkDQoYDkcvjSWFFa/YLUDMiSoRzMi2uxLJYbv41ahT8Lu9lFMaa7hecd3Q39trqUyg==}
     engines: {node: '>=20'}
 
-  '@shikijs/primitive@4.4.2':
-    resolution: {integrity: sha512-l6fQQKsOMlz72n38fztmSgZ76MO6KSWuw8o+GJ+FhmqrpC9pIOJNQNXGgbb5yX2AwpzlEHwsaLPnk/8o4Fm+rA==}
+  '@shikijs/primitive@4.6.0':
+    resolution: {integrity: sha512-c54+TQEo9ToqgfL/AU8FpjnV09+GA9Oa7M5ROkkXteZfp5XzpAJGXjjvZQFQioJOwm/w/6Z3lIzQstAkl8coag==}
     engines: {node: '>=20'}
 
-  '@shikijs/themes@4.4.2':
-    resolution: {integrity: sha512-H0CFoL07ddDC2Dd6EdrPYNkRhUR6YCkJlnuYFceYYUJJA5TIm2b5B33qqiDYryBExgbKMndFJPb2u1gTuqO37g==}
+  '@shikijs/themes@4.6.0':
+    resolution: {integrity: sha512-qHAVAs80RiGD+IRuH9G+JPDOEc9A/kHsng4EzCUCwB9bLzW6Z0y9WETh2YyCcADJBmfrIaJ1Jp7KBNP6FHkgtQ==}
     engines: {node: '>=20'}
 
-  '@shikijs/types@4.4.2':
-    resolution: {integrity: sha512-PFYitV4vpDr/iPCIhnHp+Q4ftic5N5VeNJ3KQ1O8gn3h2ar8qgwMAXF7tq4m1CWaMS60fV4VqF6vfnWH4F7vqQ==}
+  '@shikijs/types@4.6.0':
+    resolution: {integrity: sha512-+ENG1adsKt/X7cRYw1Nl7BEpBmPOjmQ7bR/eGmHuMlT8gtOFf3KEi5l31DJYyAWhW6Y6bjP1plU7FmaxWGENFw==}
     engines: {node: '>=20'}
 
-  '@shikijs/vscode-textmate@10.0.2':
-    resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
+  '@shikijs/vscode-textmate@10.1.0':
+    resolution: {integrity: sha512-cVBuhDQjBZaNMTwBquYfPydrUP+E3hE6oYGasx8h6ZrODIM7/r+gxLDXdd66oszbrggZHEntdE6j+5gYIVyMWQ==}
 
   '@sindresorhus/base62@1.0.0':
     resolution: {integrity: sha512-TeheYy0ILzBEI/CO55CP6zJCSdSWeRtGnHy8U8dWSUH4I68iqTsy7HkMktR4xakThc9jotkPQUXT4ITdbV7cHA==}
@@ -1778,8 +1778,8 @@ packages:
   hast-util-parse-selector@4.0.0:
     resolution: {integrity: sha512-wkQCkSYoOGCRKERFWcxMVMOcYE2K1AaNLU8DXS9arxnLOUEWbOXKXiJUNzEpqZ3JOKpnha3jkFrumEjVliDe7A==}
 
-  hast-util-to-html@9.0.5:
-    resolution: {integrity: sha512-OguPdidb+fbHQSU4Q4ZiLKnzWo8Wwsf5bZfbvu7//a9oTYoqD/fWpe96NuHkoS9h0ccGOTe0C4NGXdtS0iObOw==}
+  hast-util-to-html@9.0.6:
+    resolution: {integrity: sha512-1SZUxCN3TtJAE7e2BQN2MBHsoZ1gnmi9GoCP5Di59CSWptIezSAW09yDZyVbanb78V9eCwrKqdQsjtfVTxYHWA==}
 
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
@@ -2298,6 +2298,7 @@ packages:
   postcss-selector-parser@7.2.0:
     resolution: {integrity: sha512-Khh/tERVBn0I1499dvBSHY0pWJloMJWUxDsOBM0CCDPAcVZ10Jl2L1qy1f19uEX22spa8Mv7DCdEQJc0cGwBhQ==}
     engines: {node: '>=4'}
+    deprecated: Double-escapes CSS Modules class names (#362). Use 7.2.1.
 
   postcss@8.5.32:
     resolution: {integrity: sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g==}
@@ -2325,8 +2326,8 @@ packages:
   prosemirror-dropcursor@1.8.2:
     resolution: {integrity: sha512-CCk6Gyx9+Tt2sbYk5NK0nB1ukHi2ryaRgadV/LvyNuO3ena1payM2z6Cg0vO1ebK8cxbzo41ku2DE5Axj1Zuiw==}
 
-  prosemirror-example-setup@1.2.3:
-    resolution: {integrity: sha512-+hXZi8+xbFvYM465zZH3rdZ9w7EguVKmUYwYLZjIJIjPK+I0nPTwn8j0ByW2avchVczRwZmOJGNvehblyIerSQ==}
+  prosemirror-example-setup@1.2.4:
+    resolution: {integrity: sha512-7zanBXCP5MzbLTqcjAB6MjqitFq+oAhC7k1eosQqYOuacR6rbPX5z434lI8HAmjcwpTz6uW7o9XuA6CXXuDExg==}
 
   prosemirror-gapcursor@1.4.1:
     resolution: {integrity: sha512-pMdYaEnjNMSwl11yjEGtgTmLkR08m/Vl+Jj443167p9eB3HVQKhYCc4gmHVDsLPODfZfjr/MmirsdyZziXbQKw==}
@@ -2334,8 +2335,8 @@ packages:
   prosemirror-history@1.5.0:
     resolution: {integrity: sha512-zlzTiH01eKA55UAf1MEjtssJeHnGxO0j4K4Dpx+gnmX9n+SHNlDqI2oO1Kv1iPN5B1dm5fsljCfqKF9nFL6HRg==}
 
-  prosemirror-inputrules@1.5.1:
-    resolution: {integrity: sha512-7wj4uMjKaXWAQ1CDgxNzNtR9AlsuwzHfdFH1ygEHA2KHF2DOEaXl1CJfNPAKCg9qNEh4rum975QLaCiQPyY6Fw==}
+  prosemirror-inputrules@1.6.0:
+    resolution: {integrity: sha512-e/Ukf5qy6Pq49l7M7/ObOQThIyBR2Is5g2qJq4e6LXKuCGr66/Rr4MjghkL3kB5ty4MOG92P8LyqwC5ET7Qx7g==}
 
   prosemirror-keymap@1.2.3:
     resolution: {integrity: sha512-4HucRlpiLd1IPQQXNqeo81BGtkY8Ai5smHhKW9jjPKRc2wQIxksg7Hl1tTI2IfT2B/LgX6bfYvXxEpJl7aKYKw==}
@@ -2476,8 +2477,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@4.4.2:
-    resolution: {integrity: sha512-P8F/dFhRevaw2uSdeIYlq/5SXZNY85DPtmXQ947gD1Zj2JqO5AkNvVVBar0Me9JkFx3uzVud/qOtP5ek9NEQGA==}
+  shiki@4.6.0:
+    resolution: {integrity: sha512-imjLsVHgPuWhvpU3P+zOekvMYqnel7QmKsFC4Sn0fCuAvaaalBsxwKEsrU8Ko5BdFnZA6Go/8a0RzahS634UgA==}
     engines: {node: '>=20'}
 
   sort-object-keys@2.1.0:
@@ -3684,45 +3685,45 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@shikijs/core@4.4.2':
+  '@shikijs/core@4.6.0':
     dependencies:
-      '@shikijs/primitive': 4.4.2
-      '@shikijs/types': 4.4.2
-      '@shikijs/vscode-textmate': 10.0.2
+      '@shikijs/primitive': 4.6.0
+      '@shikijs/types': 4.6.0
+      '@shikijs/vscode-textmate': 10.1.0
       '@types/hast': 3.0.5
-      hast-util-to-html: 9.0.5
+      hast-util-to-html: 9.0.6
 
-  '@shikijs/engine-javascript@4.4.2':
+  '@shikijs/engine-javascript@4.6.0':
     dependencies:
-      '@shikijs/types': 4.4.2
-      '@shikijs/vscode-textmate': 10.0.2
+      '@shikijs/types': 4.6.0
+      '@shikijs/vscode-textmate': 10.1.0
       oniguruma-to-es: 4.3.6
 
-  '@shikijs/engine-oniguruma@4.4.2':
+  '@shikijs/engine-oniguruma@4.6.0':
     dependencies:
-      '@shikijs/types': 4.4.2
-      '@shikijs/vscode-textmate': 10.0.2
+      '@shikijs/types': 4.6.0
+      '@shikijs/vscode-textmate': 10.1.0
 
-  '@shikijs/langs@4.4.2':
+  '@shikijs/langs@4.6.0':
     dependencies:
-      '@shikijs/types': 4.4.2
+      '@shikijs/types': 4.6.0
 
-  '@shikijs/primitive@4.4.2':
+  '@shikijs/primitive@4.6.0':
     dependencies:
-      '@shikijs/types': 4.4.2
-      '@shikijs/vscode-textmate': 10.0.2
+      '@shikijs/types': 4.6.0
+      '@shikijs/vscode-textmate': 10.1.0
       '@types/hast': 3.0.5
 
-  '@shikijs/themes@4.4.2':
+  '@shikijs/themes@4.6.0':
     dependencies:
-      '@shikijs/types': 4.4.2
+      '@shikijs/types': 4.6.0
 
-  '@shikijs/types@4.4.2':
+  '@shikijs/types@4.6.0':
     dependencies:
-      '@shikijs/vscode-textmate': 10.0.2
+      '@shikijs/vscode-textmate': 10.1.0
       '@types/hast': 3.0.5
 
-  '@shikijs/vscode-textmate@10.0.2': {}
+  '@shikijs/vscode-textmate@10.1.0': {}
 
   '@sindresorhus/base62@1.0.0': {}
 
@@ -4532,7 +4533,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.5
 
-  hast-util-to-html@9.0.5:
+  hast-util-to-html@9.0.6:
     dependencies:
       '@types/hast': 3.0.5
       '@types/unist': 3.0.3
@@ -5271,13 +5272,13 @@ snapshots:
       prosemirror-transform: 1.12.5
       prosemirror-view: 1.42.9
 
-  prosemirror-example-setup@1.2.3:
+  prosemirror-example-setup@1.2.4:
     dependencies:
       prosemirror-commands: 1.7.1
       prosemirror-dropcursor: 1.8.2
       prosemirror-gapcursor: 1.4.1
       prosemirror-history: 1.5.0
-      prosemirror-inputrules: 1.5.1
+      prosemirror-inputrules: 1.6.0
       prosemirror-keymap: 1.2.3
       prosemirror-menu: 1.3.2
       prosemirror-schema-list: 1.5.1
@@ -5297,7 +5298,7 @@ snapshots:
       prosemirror-view: 1.42.9
       rope-sequence: 1.3.4
 
-  prosemirror-inputrules@1.5.1:
+  prosemirror-inputrules@1.6.0:
     dependencies:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.5
@@ -5500,15 +5501,15 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@4.4.2:
+  shiki@4.6.0:
     dependencies:
-      '@shikijs/core': 4.4.2
-      '@shikijs/engine-javascript': 4.4.2
-      '@shikijs/engine-oniguruma': 4.4.2
-      '@shikijs/langs': 4.4.2
-      '@shikijs/themes': 4.4.2
-      '@shikijs/types': 4.4.2
-      '@shikijs/vscode-textmate': 10.0.2
+      '@shikijs/core': 4.6.0
+      '@shikijs/engine-javascript': 4.6.0
+      '@shikijs/engine-oniguruma': 4.6.0
+      '@shikijs/langs': 4.6.0
+      '@shikijs/themes': 4.6.0
+      '@shikijs/types': 4.6.0
+      '@shikijs/vscode-textmate': 10.1.0
       '@types/hast': 3.0.5
 
   sort-object-keys@2.1.0: {}
