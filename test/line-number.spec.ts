@@ -37,7 +37,10 @@ describe('withLineNumbers', () => {
       >
         <pre data-language="typescript">
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
             <span class="hljs-keyword">
@@ -47,7 +50,10 @@ describe('withLineNumbers', () => {
             <span class="hljs-number">
               1
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               2
             </span>
             <span class="hljs-keyword">
@@ -85,7 +91,10 @@ describe('withLineNumbers', () => {
       >
         <pre data-language="typescript">
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
             <span
@@ -156,7 +165,10 @@ describe('withLineNumbers', () => {
       >
         <pre data-language="typescript">
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
             <span class="token keyword">
@@ -169,7 +181,10 @@ describe('withLineNumbers', () => {
             <span class="token number">
               1
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               2
             </span>
             <span class="token keyword">
@@ -182,7 +197,10 @@ describe('withLineNumbers', () => {
             <span class="token number">
               2
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               3
             </span>
             <img
@@ -194,7 +212,10 @@ describe('withLineNumbers', () => {
         </pre>
         <pre data-language="python">
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
             x
@@ -204,7 +225,10 @@ describe('withLineNumbers', () => {
             <span class="token number">
               1
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               2
             </span>
             y
@@ -214,7 +238,10 @@ describe('withLineNumbers', () => {
             <span class="token number">
               2
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               3
             </span>
             z
@@ -245,7 +272,7 @@ describe('withLineNumbers', () => {
     let html = view.dom.querySelector('code')!.innerHTML
     html = html.replaceAll('\r', '_R').replaceAll('\n', '_N')
     expect(html).toMatchInlineSnapshot(
-      `"<span class="line-number ProseMirror-widget">1</span>First_R_N<span class="line-number ProseMirror-widget">2</span>Second_R_N<span class="line-number ProseMirror-widget">3</span><img class="ProseMirror-separator" alt=""><br class="ProseMirror-trailingBreak">"`,
+      `"<span class="line-number ProseMirror-widget" contenteditable="false">1</span>First_R_N<span class="line-number ProseMirror-widget" contenteditable="false">2</span>Second_R_N<span class="line-number ProseMirror-widget" contenteditable="false">3</span><img class="ProseMirror-separator" alt=""><br class="ProseMirror-trailingBreak">"`,
     )
   })
 
@@ -285,7 +312,10 @@ describe('withLineNumbers', () => {
           style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
             <img
@@ -300,10 +330,16 @@ describe('withLineNumbers', () => {
           style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               2
             </span>
             <img
@@ -318,13 +354,22 @@ describe('withLineNumbers', () => {
           style="--prosemirror-highlight: #e1e4e8; --prosemirror-highlight-bg: #24292e;"
         >
           <code>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               1
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               2
             </span>
-            <span class="line-number ProseMirror-widget">
+            <span
+              class="line-number ProseMirror-widget"
+              contenteditable="false"
+            >
               3
             </span>
             <img
