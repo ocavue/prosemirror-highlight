@@ -1,4 +1,4 @@
 {
-  "dependencyDashboard": true,
+  "dependencyDashboard": { "enabled": true },
   "extends": ["github>ocavue/config-renovate"]
 }
