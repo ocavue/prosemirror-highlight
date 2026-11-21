@@ -48,6 +48,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Install browser
+        run: pnpm run test:install
+
       - name: Test
         run: pnpm run test
 
